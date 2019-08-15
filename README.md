@@ -1,3 +1,7 @@
+# Notes
+[!记录在使用 yii2-starter-kit 中遇到的问题、注意点及经验。](https://github.com/calefy/bsk/wiki)
+
+
 # Yii 2 Starter Kit
 
 <!-- BADGES/ -->

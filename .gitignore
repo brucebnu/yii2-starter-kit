@@ -4,6 +4,8 @@
 # Composer
 /vendor
 composer.phar
+/node_modules
+yii
 
 # JS
 node_modules

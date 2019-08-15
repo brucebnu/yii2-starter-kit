@@ -1,4 +1,7 @@
 <?php
+
+
+$crudNs = '\backend\modules\crud';
 return [
     'id' => 'console',
     'basePath' => dirname(__DIR__),
@@ -17,9 +20,28 @@ return [
         ],
         'rbac-migrate' => [
             'class' => console\controllers\RbacMigrateController::class,
-            'migrationPath' => '@common/migrations/rbac/',
-            'migrationTable' => '{{%system_rbac_migration}}',
-            'templateFile' => '@common/rbac/views/migration.php'
+            'migrationPath'     => '@common/migrations/rbac/',
+            'migrationTable'    => '{{%system_rbac_migration}}',
+            'templateFile'       => '@common/rbac/views/migration.php'
         ],
+        'batch' => [
+            'class'                     => \schmunk42\giiant\commands\BatchController::class,
+            'overwrite'                 => true,
+            'modelNamespace'            => $crudNs . '\models',
+            'modelQueryNamespace'       => $crudNs . '\models\query',
+            'crudControllerNamespace'   => $crudNs . '\controllers',
+            'crudSearchModelNamespace'  => $crudNs . '\models\search',
+            'crudViewPath'              => '@backend/modules/crud/views',
+            'crudPathPrefix'            => '/crud/',
+            'crudTidyOutput'            => true,
+            'crudActionButtonColumnPosition' => 'right', //left by default
+            'crudProviders' => [
+                \schmunk42\giiant\generators\crud\providers\core\OptsProvider::class
+            ],
+            'tablePrefix' => 'app_',
+            'tables' => [
+                'app_profile',
+            ]
+        ]
     ],
 ];

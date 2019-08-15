@@ -31,20 +31,38 @@ use yii\web\JsExpression;
     'title'
 ), ['prompt' => '']) ?>
 
-<?php echo $form->field($model, 'body')->widget(
-    \yii\imperavi\Widget::class,
-    [
-        'plugins' => ['fullscreen', 'fontcolor', 'video'],
-        'options' => [
-            'minHeight' => 400,
-            'maxHeight' => 400,
-            'buttonSource' => true,
-            'convertDivs' => false,
-            'removeEmptyTags' => true,
-            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/storage/upload-imperavi']),
+<?php
+//echo $form->field($model, 'body')->widget(
+//    \yii\imperavi\Widget::class,
+//    [
+//        'plugins' => ['fullscreen', 'fontcolor', 'video'],
+//        'options' => [
+//            'minHeight' => 400,
+//            'maxHeight' => 400,
+//            'buttonSource' => true,
+//            'convertDivs' => false,
+//            'removeEmptyTags' => true,
+//            'imageUpload' => Yii::$app->urlManager->createUrl(['/file/storage/upload-imperavi']),
+//        ],
+//    ]
+//);
+echo $form->field($model, 'body')->widget(\vova07\imperavi\Widget::class, [
+    'settings' => [
+        'lang' => 'ru',
+        'minHeight' => 200,
+        'plugins' => [
+            'clips',
+            'fullscreen',
         ],
-    ]
-) ?>
+        'clips' => [
+            ['Lorem ipsum...', 'Lorem...'],
+            ['red', '<span class="label-red">red</span>'],
+            ['green', '<span class="label-green">green</span>'],
+            ['blue', '<span class="label-blue">blue</span>'],
+        ],
+    ],
+])->label(Yii::t('backend','内容'));
+?>
 
 <?php echo $form->field($model, 'thumbnail')->widget(
     Upload::class,
