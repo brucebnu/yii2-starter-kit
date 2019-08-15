@@ -3,6 +3,8 @@ use schmunk42\giiant\generators\crud\callbacks\base\Callback;
 use schmunk42\giiant\generators\crud\callbacks\yii\Db;
 use schmunk42\giiant\generators\crud\callbacks\yii\Html;
 
+# Universal CallbackProvider examples
+# https://github.com/schmunk42/yii2-giiant/blob/master/docs/31-callback-provider-examples.md
 $aceEditorField = function ($attribute, $model, $generator) {
     return "\$form->field(\$model, '{$attribute}')->widget(\\trntv\\aceeditor\\AceEditor::className())";
 };
@@ -27,6 +29,7 @@ $aceEditorField = function ($attribute, $model, $generator) {
         ],
     ]
 );
+
 $crudNs = '\backend\modules\crud';
 
 
@@ -53,7 +56,14 @@ return [
             'templateFile'      => '@common/rbac/views/migration.php'
         ],
 
+        # https://github.com/schmunk42/yii2-giiant
         # https://github.com/schmunk42/yii2-giiant/blob/master/docs/25-cli-commands.md
+        #
+        /**
+         * ./yii batch --tables=user_profile --db:db
+         * yii help gii
+         * yii gii/giiant-module
+         */
         'batch' => [
             'class' => \schmunk42\giiant\commands\BatchController::class,
             'overwrite' => true,
@@ -72,11 +82,11 @@ return [
                 \schmunk42\giiant\generators\crud\providers\core\OptsProvider::class
             ],
             //'tablePrefix' => 'project_',
-            'skipTables' => [
-                'article',
-                'user',
-
-            ],
+//            'skipTables' => [
+//                'article',
+//                'user',
+//
+//            ],
         ]
 
 
