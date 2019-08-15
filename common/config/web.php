@@ -32,8 +32,8 @@ if (YII_ENV_DEV) {
                 //setting for out templates
                 'templates' => [
                     // template name => path to template
-                    'mymodel' =>
-                        '@app/giiTemplates/model/default',
+                    'myModel' => '@app/giiTemplates/model/default',
+                    'myCrud'  => '@app/myTemplates/crud/default',
                 ]
             ]
         ],
