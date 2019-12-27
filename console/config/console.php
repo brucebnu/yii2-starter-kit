@@ -30,8 +30,11 @@ $aceEditorField = function ($attribute, $model, $generator) {
     ]
 );
 
-$crudNs = '\backend\modules\crud';
+$crudNs = '\backend\modules\ota';          // ota
+$crudNs = '\backend\modules\logs';          // record
+$crudNs = '\backend\modules\market';          //  market analysis 市场分析
 
+$crudNs = '\backend\modules\organization'; // shop school
 
 return [
     'id' => 'console',

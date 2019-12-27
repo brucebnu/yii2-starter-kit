@@ -6,6 +6,7 @@
 composer.phar
 /node_modules
 yii
+.phptidy-cache
 
 # JS
 node_modules

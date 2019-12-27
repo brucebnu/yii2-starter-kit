@@ -157,7 +157,7 @@ $this->registerJsFile(
             <div class="small-box bg-green">
                 <div class="inner">
                     <h3>
-                        <?php echo gmdate('H:i:s', $provider->getUptime()) ?>
+                        <?php echo gmdate('H:i:s', @$provider->getUptime()) ?>
                     </h3>
                     <p>
                         <?php echo Yii::t('backend', 'Uptime') ?>
