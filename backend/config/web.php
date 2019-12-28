@@ -18,6 +18,41 @@ $config = [
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
         ],
+        /*
+        'view' => [
+            'theme' => [
+                'basePath'  => '@backend/themes/adminlte3',
+                'baseUrl'   => '@backendUrl/themes/adminlte3',
+                'pathMap'   => [
+                    '@app/views' => '@backend/themes/adminlte3',
+                ],
+            ],
+        ],
+        */
+
+        'view' => [
+            'theme' => [
+                'basePath' => '@backend/themes/'.env('THEME_BACKEND'),
+                'baseUrl'  => '@backend/themes/'.env('THEME_BACKEND'),
+
+                'pathMap'  => [
+                    '@backend/views' => '@backend/themes/'.env('THEME_BACKEND'),
+                    '@backend/views'     => [
+                        //'@backend/themes/adminlte3',
+                        '@backend/themes/'.env('THEME_BACKEND'),
+                        '@backend/themes/basic',
+                    ],
+                    // '@backend/views' => '@backend/themes/'.env('THEME_BACKEND'),
+                    // '@backend/views' => '@backend/themes/'.env('THEME_BACKEND'),
+
+                    # 主题化模块
+                    # 它允许你将 @app/modules/blog/views/comment/index.php 主题化成 @app/themes/basic/modules/blog/views/comment/index.php。
+                    // '@app/views' => '@app/themes/basic',
+                    // '@app/modules' => '@backend /themes/basic/modules',
+                ],
+            ],
+        ],
+
     ],
     'modules' => [
         'content' => [

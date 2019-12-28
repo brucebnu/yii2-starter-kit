@@ -2,16 +2,15 @@
 
 namespace backend\controllers;
 
-use backend\models\search\TimelineEventSearch;
 use Yii;
-use yii\web\Controller;
+use backend\models\search\TimelineEventSearch;
 
 /**
  * Application timeline controller
  */
-class TimelineEventController extends Controller
+class TimelineEventController extends \backend\controllers\Controller
 {
-    public $layout = 'common';
+    public $layout = '@backend/themes/adminlte3/layout/master.php';
 
     /**
      * Lists all TimelineEvent models.
@@ -30,4 +29,5 @@ class TimelineEventController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
 }

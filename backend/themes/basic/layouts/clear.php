@@ -4,6 +4,6 @@
  * @var $content string
  */
 ?>
-<?php $this->beginContent('@backend/views/layouts/common.php'); ?>
+<?php $this->beginContent('@backend/themes/basic/layouts/common.php'); ?>
     <?php echo $content ?>
 <?php $this->endContent(); ?>

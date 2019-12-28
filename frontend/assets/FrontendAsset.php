@@ -8,32 +8,44 @@
 namespace frontend\assets;
 
 use common\assets\Html5shiv;
+use common\assets\AdminLte;
 use yii\bootstrap\BootstrapAsset;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
+
 
 /**
  * Frontend application asset
  */
 class FrontendAsset extends AssetBundle
 {
+
     /**
      * @var string
      */
-    public $sourcePath = '@frontend/web/bundle';
+    public $basePath = '@webroot';
+    /**
+     * @var string
+     */
+    public $baseUrl = '@web';
 
     /**
      * @var array
+     *
+     * frontend/web/css/style.css
      */
     public $css = [
-        'style.css',
+        'css/style.css',
     ];
 
     /**
      * @var array
+     *
+     * frontend/web/js/app/js
      */
     public $js = [
-        'app.js',
+        'js/app.js',
+        //'js/jquery.qrcode.min.js',
     ];
 
     /**
@@ -43,5 +55,6 @@ class FrontendAsset extends AssetBundle
         YiiAsset::class,
         BootstrapAsset::class,
         Html5shiv::class,
+        AdminLte::class,
     ];
 }

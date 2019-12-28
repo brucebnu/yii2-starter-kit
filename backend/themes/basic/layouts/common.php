@@ -19,7 +19,7 @@ $bundle = BackendAsset::register($this);
 Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
 ?>
 
-<?php $this->beginContent('@backend/views/layouts/base.php'); ?>
+<?php $this->beginContent('@backend/themes/basic/layouts/base.php'); ?>
 
 <div class="wrapper">
     <!-- header logo: style can be found in header.less -->

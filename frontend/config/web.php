@@ -55,7 +55,21 @@ $config = [
             'loginUrl' => ['/user/sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => common\behaviors\LoginTimestampBehavior::class
-        ]
+        ],
+        /*
+        'view' => [
+            'theme' => [
+                'basePath' => '@frontend/themes/'.env('THEME_FRONTEND'),
+                'baseUrl' => '@frontend/themes/'.env('THEME_FRONTEND'),
+                'pathMap' => [
+                    '@frontend/views' => '@app/themes/'.env('THEME_FRONTEND'),
+                    //'@frontend/views' => '@app/themes/basic',
+                    //'@frontend/views' => '@app/themes/edu',
+                    //'@frontend/views' => '@app/themes/react',
+                ],
+            ],
+        ],
+        */
     ]
 ];
 

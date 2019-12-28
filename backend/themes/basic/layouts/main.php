@@ -4,7 +4,7 @@
  * @var $content string
  */
 ?>
-<?php $this->beginContent('@backend/views/layouts/common.php'); ?>
+<?php $this->beginContent('@backend/themes/basic/layouts/common.php'); ?>
     <div class="box">
         <div class="box-body">
             <?php echo $content ?>

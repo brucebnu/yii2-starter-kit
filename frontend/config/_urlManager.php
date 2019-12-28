@@ -4,8 +4,8 @@ use Sitemaped\Sitemap;
 
 return [
     'class' => 'yii\web\UrlManager',
-    'enablePrettyUrl' => true,
-    'showScriptName' => false,
+    'enablePrettyUrl' => false,
+    'showScriptName'  => false,
     'rules' => [
         // Pages
         ['pattern' => 'page/<slug>', 'route' => 'page/view'],
