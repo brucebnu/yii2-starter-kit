@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\TimelineEventSearch */
+/* @var $model backend\models\search\UserSearch */
 /* @var $form yii\bootstrap\ActiveForm */
 ?>
 
-<div class="system-event-search">
+<div class="user-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,9 +17,19 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'application') ?>
+    <?php echo $form->field($model, 'username') ?>
 
-    <?php echo $form->field($model, 'event') ?>
+    <?php echo $form->field($model, 'auth_key') ?>
+
+    <?php echo $form->field($model, 'email') ?>
+
+    <?php echo $form->field($model, 'role') ?>
+
+    <?php echo $form->field($model, 'status') ?>
+
+    <?php echo $form->field($model, 'created_at') ?>
+
+    <?php echo $form->field($model, 'updated_at') ?>
 
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

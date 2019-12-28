@@ -156,6 +156,7 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
                         'active' => Yii::$app->controller->id === 'user',
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
+
                     [
                         'label' => Yii::t('backend', 'Content'),
                         'options' => ['class' => 'header'],

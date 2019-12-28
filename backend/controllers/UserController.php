@@ -9,13 +9,12 @@ use common\models\UserToken;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends \backend\controllers\Controller
 {
     public function behaviors()
     {

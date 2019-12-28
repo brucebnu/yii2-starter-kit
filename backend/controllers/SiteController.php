@@ -7,7 +7,7 @@ use Yii;
 /**
  * Site controller
  */
-class SiteController extends \yii\web\Controller
+class SiteController extends \backend\controllers\Controller
 {
     /**
      * @inheritdoc

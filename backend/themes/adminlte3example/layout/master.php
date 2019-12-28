@@ -6,7 +6,8 @@
 use common\assets\AdminLte3Asset;
 use yii\helpers\Html;
 
-$lteBundle=$this->registerAssetBundle(AdminLte3Asset::class);
+$lteBundle = $this->registerAssetBundle(AdminLte3Asset::class);
+
 Yii::$app->params['AdminlteWebUrl'] = $lteBundle->baseUrl;
 $this->beginPage();
 ?>
@@ -14,22 +15,26 @@ $this->beginPage();
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class="hold-transition sidebar-mini">
-<?php $this->beginBody() ?>
 
+<body class="hold-transition sidebar-mini">
+
+<?php $this->beginBody() ?>
 <div class="wrapper">
     <?= $this->render('_nav') ?>
     <?= $this->render('_side') ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
+        <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
@@ -49,7 +54,7 @@ $this->beginPage();
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
-        </div>
+        </section>
         <!-- /.content-header -->
         <section class="content">
             <div class="container-fluid">
@@ -62,5 +67,6 @@ $this->beginPage();
 </div>
 <?php $this->endBody() ?>
 </body>
+
 </html>
 <?php $this->endPage() ?>

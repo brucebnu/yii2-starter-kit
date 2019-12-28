@@ -10,8 +10,6 @@ use backend\models\search\TimelineEventSearch;
  */
 class TimelineEventController extends \backend\controllers\Controller
 {
-    public $layout = '@backend/themes/adminlte3/layout/master.php';
-
     /**
      * Lists all TimelineEvent models.
      * @return mixed

@@ -16,9 +16,8 @@ use trntv\filekit\actions\UploadAction;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\imagine\Image;
-use yii\web\Controller;
 
-class SignInController extends Controller
+class SignInController extends \backend\controllers\Controller
 {
 
     public $defaultAction = 'login';
