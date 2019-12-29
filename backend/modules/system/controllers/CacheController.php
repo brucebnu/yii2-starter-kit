@@ -9,7 +9,6 @@ use Yii;
 use yii\caching\Cache;
 use yii\caching\TagDependency;
 use yii\data\ArrayDataProvider;
-use yii\web\Controller;
 use yii\web\HttpException;
 
 /**
@@ -17,7 +16,7 @@ use yii\web\HttpException;
  *
  * @package backend\controllers
  */
-class CacheController extends Controller
+class CacheController extends \backend\controllers\Controller
 {
     /**
      * @return string

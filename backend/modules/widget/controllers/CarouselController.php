@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class CarouselController extends Controller
+class CarouselController extends \backend\controllers\Controller
 {
     use FormAjaxValidationTrait;
 

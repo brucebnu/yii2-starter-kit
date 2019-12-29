@@ -87,11 +87,10 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
                             <li class="user-header light-blue">
                                 <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
                                      class="img-circle" alt="User Image"/>
-                                <p>
-                                    <?php echo Yii::$app->user->identity->username ?>
-                                    <small>
-                                        <?php echo Yii::t('backend', 'Member since {0, date, short}', Yii::$app->user->identity->created_at) ?>
-                                    </small>
+                                <p><?php echo Yii::$app->user->identity->username ?></p>
+                                <small>
+                                    <?php echo Yii::t('backend', 'Member since {0, date, short}', Yii::$app->user->identity->created_at) ?>
+                                </small>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
@@ -121,7 +120,8 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" class="img-circle" />
+                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>"
+                         class="img-circle"/>
                 </div>
                 <div class="pull-left info">
                     <p><?php echo Yii::t('backend', 'Hello, {username}', ['username' => Yii::$app->user->identity->getPublicIdentity()]) ?></p>
@@ -343,7 +343,7 @@ Yii::info(Yii::$app->components["i18n"]["translations"]['*']['class'], 'test');
     <footer class="main-footer">
         <strong>&copy; My Company <?php echo date('Y') ?></strong>
         <div class="pull-right"><?php echo Yii::powered() ?></div>
-  </footer>
+    </footer>
 </div><!-- ./wrapper -->
 
 <?php $this->endContent(); ?>

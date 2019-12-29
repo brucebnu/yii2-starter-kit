@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * RbacAuthAssignmentController implements the CRUD actions for RbacAuthAssignment model.
  */
-class RbacAuthAssignmentController extends Controller
+class RbacAuthAssignmentController extends \backend\controllers\Controller
 {
     public function behaviors()
     {

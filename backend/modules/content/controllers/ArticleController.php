@@ -11,7 +11,7 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class ArticleController extends Controller
+class ArticleController extends \backend\controllers\Controller
 {
     use FormAjaxValidationTrait;
 

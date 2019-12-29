@@ -6,10 +6,10 @@ use alexantr\elfinder\ConnectorAction;
 use Yii;
 use yii\web\Controller;
 
-class ManagerController extends Controller
+class ManagerController extends \backend\controllers\Controller
 {
     /** @var string */
-    public $layout = '//clear';
+    //public $layout = '//clear';
 
     /**
      * @return array

@@ -10,7 +10,7 @@ use yii\web\Controller;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
-class CarouselItemController extends Controller
+class CarouselItemController extends \backend\controllers\Controller
 {
 
     /** @inheritdoc */

@@ -6,13 +6,12 @@ use backend\modules\system\models\search\SystemLogSearch;
 use backend\modules\system\models\SystemLog;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * LogController implements the CRUD actions for SystemLog model.
  */
-class LogController extends Controller
+class LogController extends \backend\controllers\Controller
 {
 
     /** @inheritdoc */

@@ -1,4 +1,6 @@
 <?php
+
+use common\assets\AdminLte3Asset;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -9,6 +11,10 @@ use yii\bootstrap\ActiveForm;
 $this->title = Yii::t('backend', 'Sign In');
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['body-class'] = 'login-page';
+
+//$lteBundle = $this->registerAssetBundle(AdminLte3Asset::class);
+
+// Yii::$app->params['AdminlteWebUrl'] = $lteBundle->baseUrl;
 ?>
 <div class="login-box">
     <div class="login-logo">

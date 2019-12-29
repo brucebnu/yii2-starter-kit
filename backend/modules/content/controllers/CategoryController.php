@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class CategoryController extends Controller
+class CategoryController extends \backend\controllers\Controller
 {
     use FormAjaxValidationTrait;
 

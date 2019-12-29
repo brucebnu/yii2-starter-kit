@@ -65,6 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'size:size',
         'name',
         'upload_ip',
+        'created_at:datetime',
+        /*
         [
             'attribute' => 'created_at',
             'format' => 'datetime',
@@ -78,6 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]),
         ],
+        */
 
         [
             'class' => 'yii\grid\ActionColumn',

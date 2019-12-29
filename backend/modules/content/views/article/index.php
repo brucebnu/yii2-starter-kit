@@ -72,6 +72,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'enum' => Article::statuses(),
             'filter' => Article::statuses(),
         ],
+        'published_at:datetime',
+        'created_at:datetime',
+        /*
         [
             'attribute' => 'published_at',
             'options' => ['style' => 'width: 10%'],
@@ -100,6 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]),
         ],
+        */
         [
             'class' => 'yii\grid\ActionColumn',
             'options' => ['style' => 'width: 5%'],

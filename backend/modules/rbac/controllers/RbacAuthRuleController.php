@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * RbacAuthRuleController implements the CRUD actions for RbacAuthRule model.
  */
-class RbacAuthRuleController extends Controller
+class RbacAuthRuleController extends \backend\controllers\Controller
 {
     /**
      * @inheritdoc

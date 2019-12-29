@@ -7,13 +7,12 @@ use common\models\KeyStorageItem;
 use common\traits\FormAjaxValidationTrait;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * KeyStorageController implements the CRUD actions for KeyStorageItem model.
  */
-class KeyStorageController extends Controller
+class KeyStorageController extends \backend\controllers\Controller
 {
     use FormAjaxValidationTrait;
 

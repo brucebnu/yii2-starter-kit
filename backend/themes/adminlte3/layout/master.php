@@ -5,10 +5,11 @@
 
 use common\assets\AdminLte3Asset;
 use yii\helpers\Html;
+use yii\widgets\Breadcrumbs;
 
 $lteBundle = $this->registerAssetBundle(AdminLte3Asset::class);
-
 Yii::$app->params['AdminlteWebUrl'] = $lteBundle->baseUrl;
+
 $this->beginPage();
 ?>
 <!DOCTYPE html>
@@ -19,6 +20,7 @@ $this->beginPage();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <link rel="shortcut icon" href="<?= Yii::$app->homeUrl?>/themes/adminlte3/favicon.ico?t=123456">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -37,11 +39,26 @@ $this->beginPage();
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
+
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark"><?= Html::encode($this->title) ?></h1>
+                        <h1 class="m-0 text-dark">
+                            <?= Html::encode($this->title) ?>
+                            <?php if (isset($this->params['subtitle'])): ?>
+                                <small><?php echo $this->params['subtitle'] ?></small>
+                            <?php endif; ?>
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
-                        <?= \yii\widgets\Breadcrumbs::widget([
+                        <?php
+                        echo Breadcrumbs::widget([
+                            'tag' => 'ol',
+                            'options' => ['class' => 'breadcrumb float-sm-right'],
+                            'itemTemplate' => '<li class="breadcrumb-item">{link}</li>',
+                            'activeItemTemplate' => '<li class="breadcrumb-item active">{link}</li>',
+                            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                        ]);
+                        /*
+                        echo \yii\widgets\Breadcrumbs::widget([
                             'tag' => 'ol',
                             'options' => ['class' => 'breadcrumb float-sm-right'],
                             'itemTemplate' => '<li class="breadcrumb-item">{link}</li>',
@@ -50,7 +67,9 @@ $this->beginPage();
                                 ['label' => 'First', 'url' => '#'],
                                 ['label' => 'Second', 'url' => '#'],
                             ],
-                        ]) ?>
+                        ]);
+                        */
+                        ?>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->

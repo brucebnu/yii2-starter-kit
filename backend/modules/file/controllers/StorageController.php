@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class StorageController extends Controller
+class StorageController extends \backend\controllers\Controller
 {
 
     /** @inheritdoc */

@@ -3,11 +3,10 @@
 namespace backend\modules\system\controllers;
 
 
-use common\components\keyStorage\FormModel;
 use Yii;
-use yii\web\Controller;
+use common\components\keyStorage\FormModel;
 
-class SettingsController extends Controller
+class SettingsController extends \backend\controllers\Controller
 {
 
     public function actionIndex()

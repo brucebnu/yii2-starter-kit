@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
     <!-- Left navbar links -->
@@ -37,7 +42,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar( Yii::$app->params['AdminlteWebUrl'].'/img/user2-160x160.jpg' ); ?>" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                             alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -53,7 +59,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar( Yii::$app->params['AdminlteWebUrl'].'/img/user2-160x160.jpg' ); ?>" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                             alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -69,7 +76,8 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar( Yii::$app->params['AdminlteWebUrl'].'/img/user2-160x160.jpg' ); ?>" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                             alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Nora Silvester
@@ -85,6 +93,7 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
             </div>
         </li>
+
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
@@ -112,11 +121,49 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
+
+        <li class="nav-item">
+            <?php echo \yii\helpers\Html::a('<i class="fas fa-cogs"></i>', ['/system/settings'], ['class' => 'nav-link']) ?>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
+
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="nav-item dropdown user user-menu">
+            <a href="#" class="nav-link" data-toggle="dropdown">
+                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                     class="user-image">
+                <span><?php echo Yii::$app->user->identity->username ?> <i class="caret"></i></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <!-- User image -->
+                <li class="user-header light-blue">
+                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                         class="img-circle" alt="User Image"/>
+                    <p><?php echo Yii::$app->user->identity->username ?></p>
+                    <small>
+                        <?php echo Yii::t('backend', 'Member since {0, date, short}', Yii::$app->user->identity->created_at) ?>
+                    </small>
+                </li>
+                <!-- Menu Footer-->
+                <li class="btn-group">
+                    <div class="pull-left">
+                        <?php echo Html::a(Yii::t('backend', 'Profile'), ['/sign-in/profile'], ['class' => 'btn btn-default btn-flat']) ?>
+                    </div>
+                    <div class="pull-left">
+                        <?php echo Html::a(Yii::t('backend', 'Account'), ['/sign-in/account'], ['class' => 'btn btn-default btn-flat']) ?>
+                    </div>
+                    <div class="pull-right">
+                        <?php echo Html::a(Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'btn btn-default btn-flat', 'data-method' => 'post']) ?>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
     </ul>
 </nav>
 <!-- /.navbar -->

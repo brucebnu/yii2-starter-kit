@@ -15,13 +15,17 @@ composer require "almasaeed2010/adminlte=~3.0"
 
 ```
 
-
 ## 升级AdminLTE3问题
 - 文件404
 frontend/web/assets/3b1c4115/style.css net::ERR_ABORTED 404 (Not Found)
 frontend/web/assets/3b1c4115/app.js net::ERR_ABORTED 404 (Not Found)
 
+
+## 模块
+- 控制器、模型、视图都在同一个目录下
+
 ## 参考
+[yii2-adminlte3 menu](https://github.com/kmergen/yii2-adminlte3/blob/master/examples/themes/adminlte/views/layouts/main.php)
 [Yii2 adminlte3 layout examples](https://github.com/Insolita/yii2-adminlte3-asset/tree/master/src/layout_examples)
 
 [Yii2 guide](https://www.yiiframework.com/doc/guide/2.0/zh-cn/structure-assets)

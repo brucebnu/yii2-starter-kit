@@ -5,15 +5,15 @@
 
 namespace backend\modules\system\controllers;
 
-use Probe\ProviderFactory;
-use Yii;
-use yii\web\Controller;
-use yii\web\Response;
 
-class InformationController extends Controller
+use Yii;
+use yii\web\Response;
+use Probe\ProviderFactory;
+
+class InformationController extends \backend\controllers\Controller
 {
 
-    public $layout = '@backend/views/layouts/common';
+    //public $layout = '@backend/views/layouts/common';
 
     public function actionIndex()
     {

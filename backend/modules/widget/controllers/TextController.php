@@ -10,7 +10,7 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class TextController extends Controller
+class TextController extends \backend\controllers\Controller
 {
     use FormAjaxValidationTrait;
 
