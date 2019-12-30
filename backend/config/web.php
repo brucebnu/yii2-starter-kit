@@ -1,5 +1,6 @@
 <?php
 $config = [
+    'name'    => env('NAME_BACKEND'),
     'homeUrl' => Yii::getAlias('@backendUrl'),
     'controllerNamespace' => 'backend\controllers',
     'defaultRoute' => 'timeline-event/index',

@@ -2,11 +2,14 @@
 /**
  * @var \yii\web\View $this
  */
-use insolita\adminlte3bs4\assets\AdminLte3Asset;
+
+use common\assets\AdminLte3Asset;
+use backend\assets\BackendAsset3;
 use yii\helpers\Html;
 
 $lteBundle=$this->registerAssetBundle(AdminLte3Asset::class);
 Yii::$app->params['AdminlteWebUrl'] = $lteBundle->baseUrl;
+$bundle = BackendAsset3::register($this);
 $this->beginPage();
 ?>
 <!DOCTYPE html>

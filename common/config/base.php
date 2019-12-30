@@ -95,14 +95,14 @@ $config = [
 
         'mailer' => [
             'class' => yii\swiftmailer\Mailer::class,
-            'useFileTransport' =>false,//这句一定有，false发送邮件，true只是生成邮件在runtime文件夹下，不发邮件
+            'useFileTransport' =>false,              //这句一定有，false发送邮件，true只是生成邮件在runtime文件夹下，不发邮件
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => env('SMTP_HOST'),//每种邮箱的host配置不一样
+                'host' => env('SMTP_HOST'),     //每种邮箱的host配置不一样
                 'username' => env('SMTP_EMAIL'),
-                'password' => env('SMTP_PS'),//注意这里不是填写阿里云企业邮箱密码而是填写邮件推送SMTP密码
-                'port' => env('SMTP_PORT'),//这里25或者80都是可以的
-                //'encryption' => 'tls',//这里设置tls或者ssl加密方式都不能成功发送,即使ssl时端口修改为465
+                'password' => env('SMTP_PS'),   //注意这里不是填写阿里云企业邮箱密码而是填写邮件推送SMTP密码
+                'port' => env('SMTP_PORT'),     //这里25或者80都是可以的
+                //'encryption' => 'tls',             //这里设置tls或者ssl加密方式都不能成功发送,即使ssl时端口修改为465
             ],
             'messageConfig' => [
                 'charset' => 'UTF-8',

@@ -77,7 +77,6 @@
     "light/yii2-swagger": "~2.0.0-alpha",
     "yii2mod/yii2-swagger": "^1.1"
 
-
   },
   "require-dev": {
     "schmunk42/yii2-giiant": "^0.11.2",
@@ -91,7 +90,7 @@
   "autoload-dev": {
     "psr-4": {
       "tests\\": "tests/",
-      "brucebnu\\swagger\\": "brucebnu/yii3-api-swagger/src"
+      "bnu\\widgets\\": "brucebnu/yii2-widget-pack/src"
     }
   },
 

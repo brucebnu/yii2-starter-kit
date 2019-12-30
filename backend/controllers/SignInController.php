@@ -56,7 +56,8 @@ class SignInController extends \backend\controllers\Controller
 
     public function actionLogin()
     {
-        $this->layout = 'base';
+        $this->layout = '@backend/themes/adminlte3/layout/blank';
+        //dd(Yii::$app->user->isGuest,$this->goHome());
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }

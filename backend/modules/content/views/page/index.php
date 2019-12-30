@@ -18,17 +18,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="box box-success collapsed-box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Page']) ?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+<div class="card collapsed-card">
+    <div class="card-header bg-success">
+        <h3 class="card-title"><i class="fas fa-edit"></i> <?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Page']) ?></h3>
+        <small class="text-white m-md-1">请按要求填写空格</small>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fas fa-plus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove"><i class="fas fa-times"></i></button>
         </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <?php echo $this->render('_form', [
             'model' => $model,
         ]) ?>
+    </div>
+    <div class="card-footer">
+        Footer
     </div>
 </div>
 

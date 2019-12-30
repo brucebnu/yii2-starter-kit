@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 
+$avatar = Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg';
+if(!Yii::$app->user->isGuest){
+    $avatar =  Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg');
+}
 ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
@@ -42,7 +46,7 @@ use yii\helpers\Html;
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                        <img src="<?php echo $avatar; ?>"
                              alt="User Avatar" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -59,7 +63,7 @@ use yii\helpers\Html;
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                        <img src="<?php echo $avatar; ?>"
                              alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -76,7 +80,7 @@ use yii\helpers\Html;
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                        <img src="<?php echo $avatar; ?>"
                              alt="User Avatar" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -135,14 +139,14 @@ use yii\helpers\Html;
         <!-- User Account: style can be found in dropdown.less -->
         <li class="nav-item dropdown user user-menu">
             <a href="#" class="nav-link" data-toggle="dropdown">
-                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                <img src="<?php echo $avatar; ?>"
                      class="user-image">
                 <span><?php echo Yii::$app->user->identity->username ?> <i class="caret"></i></span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header light-blue">
-                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg'); ?>"
+                    <img src="<?php echo $avatar; ?>"
                          class="img-circle" alt="User Image"/>
                     <p><?php echo Yii::$app->user->identity->username ?></p>
                     <small>
@@ -150,16 +154,14 @@ use yii\helpers\Html;
                     </small>
                 </li>
                 <!-- Menu Footer-->
-                <li class="btn-group">
-                    <div class="pull-left">
-                        <?php echo Html::a(Yii::t('backend', 'Profile'), ['/sign-in/profile'], ['class' => 'btn btn-default btn-flat']) ?>
-                    </div>
-                    <div class="pull-left">
-                        <?php echo Html::a(Yii::t('backend', 'Account'), ['/sign-in/account'], ['class' => 'btn btn-default btn-flat']) ?>
-                    </div>
-                    <div class="pull-right">
-                        <?php echo Html::a(Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'btn btn-default btn-flat', 'data-method' => 'post']) ?>
-                    </div>
+                <li class="text-right">
+
+                    <?php echo Html::a(Yii::t('backend', 'Profile'), ['/sign-in/profile'], ['class' => 'btn btn-sm btn-primary']) ?>
+
+                    <?php echo Html::a(Yii::t('backend', 'Account'), ['/sign-in/account'], ['class' => 'btn btn-sm bg-teal']) ?>
+
+                    <?php echo Html::a(Yii::t('backend', 'Logout'), ['/sign-in/logout'], ['class' => 'btn btn-sm bg-teal', 'data-method' => 'post']) ?>
+
                 </li>
             </ul>
         </li>

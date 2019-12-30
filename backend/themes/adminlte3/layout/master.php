@@ -4,12 +4,13 @@
  */
 
 use common\assets\AdminLte3Asset;
+use backend\assets\BackendAsset3;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 
 $lteBundle = $this->registerAssetBundle(AdminLte3Asset::class);
 Yii::$app->params['AdminlteWebUrl'] = $lteBundle->baseUrl;
-
+$bundle = BackendAsset3::register($this);
 $this->beginPage();
 ?>
 <!DOCTYPE html>
