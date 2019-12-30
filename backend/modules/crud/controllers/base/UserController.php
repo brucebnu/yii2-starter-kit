@@ -22,7 +22,7 @@ use dmstr\bootstrap\Tabs;
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends \backend\controllers\Controller
 {
 
 

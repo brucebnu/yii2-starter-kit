@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="card collapsed-card">
     <div class="card-header bg-success">
-        <h3 class="card-title"><i class="fas fa-edit"></i> <?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Page']) ?></h3>
+        <h3 class="card-title"> <i class="fas fa-edit"></i> <?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Page']) ?></h3>
         <small class="text-white m-md-1">请按要求填写空格</small>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fas fa-plus"></i></button>

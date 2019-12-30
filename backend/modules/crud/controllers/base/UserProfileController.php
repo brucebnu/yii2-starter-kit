@@ -22,10 +22,8 @@ use dmstr\bootstrap\Tabs;
 /**
  * UserProfileController implements the CRUD actions for UserProfile model.
  */
-class UserProfileController extends Controller
+class UserProfileController extends \backend\controllers\Controller
 {
-
-
 	/**
 	 *
 	 * @var boolean whether to enable CSRF validation for the actions in this controller.

@@ -27,7 +27,12 @@ class InformationController extends \backend\controllers\Controller
                             return $provider->getCpuUsage();
                             break;
                         case 'memory_usage':
-                            return ($provider->getTotalMem() - $provider->getFreeMem()) / $provider->getTotalMem();
+                            if($provider->getTotalMem()){
+                                return ($provider->getTotalMem() - $provider->getFreeMem()) / $provider->getTotalMem();
+                            }else{
+                                return 0;
+                            }
+
                             break;
                     }
                 }

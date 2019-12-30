@@ -51,6 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'value' => function ($model) {
                 return (int)$model->log_time;
             },
+            /*
             'filter' => DateTimeWidget::widget([
                 'model' => $searchModel,
                 'attribute' => 'log_time',
@@ -60,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'dp.change' => new JsExpression('(e) => $(e.target).find("input").trigger("change.yiiGridView")'),
                 ],
             ]),
+            */
         ],
 
         [

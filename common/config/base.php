@@ -118,6 +118,24 @@ $config = [
             'charset' => env('DB_CHARSET', 'utf8'),
             'enableSchemaCache' => YII_ENV_PROD,
         ],
+        'org' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => env('DB_DSN_ORG'),
+            'username' => env('DB_USERNAME_ORG'),
+            'password' => env('DB_PASSWORD_ORG'),
+            'tablePrefix' => env('DB_TABLE_PREFIX_ORG'),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'enableSchemaCache' => YII_ENV_PROD,
+        ],
+        'logs' => [
+            'class' => yii\db\Connection::class,
+            'dsn' => env('DB_DSN'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'tablePrefix' => env('DB_TABLE_PREFIX'),
+            'charset' => env('DB_CHARSET', 'utf8'),
+            'enableSchemaCache' => YII_ENV_PROD,
+        ],
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

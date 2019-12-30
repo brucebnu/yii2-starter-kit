@@ -79,7 +79,7 @@
 
   },
   "require-dev": {
-    "schmunk42/yii2-giiant": "^0.11.2",
+
     "yiisoft/yii2-debug": "^2.0.0",
     "yiisoft/yii2-gii": "^2.0.0",
     "yiisoft/yii2-faker": "^2.0.0",
@@ -90,6 +90,7 @@
   "autoload-dev": {
     "psr-4": {
       "tests\\": "tests/",
+      "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src",
       "bnu\\widgets\\": "brucebnu/yii2-widget-pack/src"
     }
   },
