@@ -37,3 +37,4 @@ phpunit.phar
 tests/codeception/*/_support/_generated/*
 
 brucebnu
+backend/modules/crud

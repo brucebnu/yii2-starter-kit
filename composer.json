@@ -76,7 +76,8 @@
     "brucebnu/yii3-widget-affix": "dev-master",
     "light/yii2-swagger": "~2.0.0-alpha",
     "yii2mod/yii2-swagger": "^1.1",
-    "2amigos/yii2-translateable-behavior": "~1.1"
+    "2amigos/yii2-translateable-behavior": "~1.1",
+    "dmstr/yii2-web": "~0.4.2"
 
   },
   "require-dev": {

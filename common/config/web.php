@@ -49,10 +49,13 @@ if (YII_DEBUG) {
 if (YII_ENV_DEV) {
     # "schmunk42/yii2-giiant": "^0.10.8",
     # "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src"
-
     $config['modules']['gii'] = [
         'allowedIPs' => ['*'],
         'generators' => [
+            // todolist
+            # 生成config、把模板文件copy到指定目录，可以自定义修改
+            # 国际话中文
+
             // generator name
             'giiant-model' => [
                 //generator class
@@ -60,36 +63,31 @@ if (YII_ENV_DEV) {
                 //setting for out templates
                 'templates' => [
                     // template name => path to template
-                    'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud' => '@app/myTemplates/crud/default',
+                    'myModel' => '@backend/giiTemplates/adminlte3/model/default',
                 ]
             ],
             'giiant-crud' => [
                 'class' => \schmunk42\giiant\generators\crud\Generator::class,
                 'templates' => [
-                    'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud' => '@app/myTemplates/crud/default',
+                    'myModel' => '@backend/giiTemplates/adminlte3/crud/default',
                 ]
             ],
             'giiant-module' => [
                 'class' => \schmunk42\giiant\generators\module\Generator::class,
                 'templates' => [
-                    'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud' => '@app/myTemplates/crud/default',
+                    'myModel' => '@backend/giiTemplates/adminlte3/module/default',
                 ]
             ],
             'giiant-test' => [
                 'class' => \schmunk42\giiant\generators\test\Generator::class,
                 'templates' => [
-                    'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud' => '@app/myTemplates/crud/default',
+                    'myTest' => '@backend/giiTemplates/adminlte3/test/default',
                 ]
             ],
             'giiant-extension' => [
                 'class' => \schmunk42\giiant\generators\extension\Generator::class,
                 'templates' => [
-                    'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud' => '@app/myTemplates/crud/default',
+                    'myModule' => '@backend/giiTemplates/adminlte3/extension/default',
                 ]
             ]
         ],
