@@ -45,20 +45,51 @@ if (YII_DEBUG) {
     ];
 }
 
+
 if (YII_ENV_DEV) {
+    # "schmunk42/yii2-giiant": "^0.10.8",
     # "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src"
+
     $config['modules']['gii'] = [
         'allowedIPs' => ['*'],
         'generators' => [
             // generator name
             'giiant-model' => [
                 //generator class
-                'class'     => \schmunk42\giiant\generators\model\Generator::class,
+                'class' => \schmunk42\giiant\generators\model\Generator::class,
                 //setting for out templates
                 'templates' => [
                     // template name => path to template
                     'myModel' => '@app/giiTemplates/model/default',
-                    'myCrud'  => '@app/myTemplates/crud/default',
+                    'myCrud' => '@app/myTemplates/crud/default',
+                ]
+            ],
+            'giiant-crud' => [
+                'class' => \schmunk42\giiant\generators\crud\Generator::class,
+                'templates' => [
+                    'myModel' => '@app/giiTemplates/model/default',
+                    'myCrud' => '@app/myTemplates/crud/default',
+                ]
+            ],
+            'giiant-module' => [
+                'class' => \schmunk42\giiant\generators\module\Generator::class,
+                'templates' => [
+                    'myModel' => '@app/giiTemplates/model/default',
+                    'myCrud' => '@app/myTemplates/crud/default',
+                ]
+            ],
+            'giiant-test' => [
+                'class' => \schmunk42\giiant\generators\test\Generator::class,
+                'templates' => [
+                    'myModel' => '@app/giiTemplates/model/default',
+                    'myCrud' => '@app/myTemplates/crud/default',
+                ]
+            ],
+            'giiant-extension' => [
+                'class' => \schmunk42\giiant\generators\extension\Generator::class,
+                'templates' => [
+                    'myModel' => '@app/giiTemplates/model/default',
+                    'myCrud' => '@app/myTemplates/crud/default',
                 ]
             ]
         ],

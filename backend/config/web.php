@@ -119,6 +119,7 @@ $config = [
     ],
 ];
 
+/*
 if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => yii\gii\Module::class,
@@ -134,5 +135,5 @@ if (YII_ENV_DEV) {
         ],
     ];
 }
-
+*/
 return $config;
