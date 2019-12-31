@@ -69,7 +69,7 @@ if (YII_ENV_DEV) {
             'giiant-crud' => [
                 'class' => \schmunk42\giiant\generators\crud\Generator::class,
                 'templates' => [
-                    'myModel' => '@backend/giiTemplates/adminlte3/crud/default',
+                    'myCrud' => '@backend/giiTemplates/adminlte3/crud/default',
                 ]
             ],
             'giiant-module' => [

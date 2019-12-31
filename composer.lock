@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0325c36cdb7373c1a4da496ce05c5de3",
+    "content-hash": "740f27304adff5aea527175b4fa88b87",
     "packages": [
         {
             "name": "2amigos/yii2-translateable-behavior",
@@ -623,6 +623,152 @@
             "time": "2018-03-26T11:24:36+00:00"
         },
         {
+            "name": "dmstr/yii2-bootstrap",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-bootstrap.git",
+                "reference": "19520972941fede682f82f9ac3f98ed69bc2d8fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-bootstrap/zipball/19520972941fede682f82f9ac3f98ed69bc2d8fb",
+                "reference": "19520972941fede682f82f9ac3f98ed69bc2d8fb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "yiisoft/yii2-bootstrap": "^2.0.6"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\bootstrap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Stebe",
+                    "email": "c.stebe@herzogkommunikation.de"
+                }
+            ],
+            "description": "yii2 bootstrap components and extensions from diemeisterei GmbH",
+            "keywords": [
+                "bootstrap",
+                "extension",
+                "yii2"
+            ],
+            "time": "2019-04-05T12:37:30+00:00"
+        },
+        {
+            "name": "dmstr/yii2-helpers",
+            "version": "0.4.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-helpers.git",
+                "reference": "a47519426d06536235cea7e4be11739e83f68146"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-helpers/zipball/a47519426d06536235cea7e4be11739e83f68146",
+                "reference": "a47519426d06536235cea7e4be11739e83f68146",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "pheme/yii2-settings": "^0.5.0 || ^0.7.0",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sergej Kunz",
+                    "email": "s.kunz@herzogkommunikation.de"
+                },
+                {
+                    "name": "Tobias Munk",
+                    "email": "t.munk@herzogkommunikation.de"
+                }
+            ],
+            "description": "Yii2 Helpers",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2019-11-13T10:54:34+00:00"
+        },
+        {
+            "name": "dmstr/yii2-web",
+            "version": "0.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmstr/yii2-web.git",
+                "reference": "cb1c388dc1583b45dc99b1c254b15eb5d110a912"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmstr/yii2-web/zipball/cb1c388dc1583b45dc99b1c254b15eb5d110a912",
+                "reference": "cb1c388dc1583b45dc99b1c254b15eb5d110a912",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "yiisoft/yii2": "2.0.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\web\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Christopher Stebe",
+                    "email": "c.stebe@herzogkommunikation.de"
+                }
+            ],
+            "description": "Yii2 Framework web traits",
+            "keywords": [
+                "behaviors",
+                "extension",
+                "traits",
+                "yii2"
+            ],
+            "time": "2017-06-02T16:16:50+00:00"
+        },
+        {
             "name": "doctrine/annotations",
             "version": "v1.8.0",
             "source": {
@@ -879,6 +1025,75 @@
                 "html"
             ],
             "time": "2019-10-28T03:44:26+00:00"
+        },
+        {
+            "name": "fortawesome/font-awesome",
+            "version": "5.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "reference": "d8db3d032d22e7a5e21f3b40905b7867be19bb02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/d8db3d032d22e7a5e21f3b40905b7867be19bb02",
+                "reference": "d8db3d032d22e7a5e21f3b40905b7867be19bb02",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC-BY-4.0",
+                "OFL-1.1",
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Chase",
+                    "homepage": "http://twitter.com/supercodepoet"
+                },
+                {
+                    "name": "Dave Gandy",
+                    "homepage": "http://twitter.com/davegandy"
+                },
+                {
+                    "name": "Rob Madole",
+                    "homepage": "http://twitter.com/robmadole"
+                },
+                {
+                    "name": "Jory Raphael",
+                    "homepage": "http://twitter.com/sensibleworld"
+                },
+                {
+                    "name": "Geremia Taglialatela",
+                    "homepage": "http://twitter.com/gtagliala"
+                },
+                {
+                    "name": "Brian Talbot",
+                    "homepage": "http://twitter.com/talbs"
+                },
+                {
+                    "name": "Mike Wilkerson",
+                    "homepage": "http://twitter.com/mw77"
+                }
+            ],
+            "description": "The iconic font, CSS, and SVG framework",
+            "homepage": "https://fontawesome.com",
+            "keywords": [
+                "FontAwesome",
+                "awesome",
+                "bootstrap",
+                "font",
+                "icon",
+                "svg"
+            ],
+            "time": "2019-12-10T22:52:13+00:00"
         },
         {
             "name": "giggsey/libphonenumber-for-php",
@@ -2790,6 +3005,105 @@
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
+            "name": "pheme/yii2-settings",
+            "version": "0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phemellc/yii2-settings.git",
+                "reference": "5e15e82442a62007727466439735602555dde8df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phemellc/yii2-settings/zipball/5e15e82442a62007727466439735602555dde8df",
+                "reference": "5e15e82442a62007727466439735602555dde8df",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "pheme/yii2-toggle-column": "*",
+                "yiisoft/yii2": ">=2.0.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "pheme\\settings\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aris Karageorgos",
+                    "email": "aris@phe.me"
+                }
+            ],
+            "description": "Yii2 Database settings",
+            "keywords": [
+                "Settings",
+                "config",
+                "yii2"
+            ],
+            "time": "2018-10-30T22:18:20+00:00"
+        },
+        {
+            "name": "pheme/yii2-toggle-column",
+            "version": "0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phemellc/yii2-toggle-column.git",
+                "reference": "ddec0552c5b94d9740e8fd4443539ab1a3d96031"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phemellc/yii2-toggle-column/zipball/ddec0552c5b94d9740e8fd4443539ab1a3d96031",
+                "reference": "ddec0552c5b94d9740e8fd4443539ab1a3d96031",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "yiisoft/yii2": ">=2.0.7"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "\\pheme\\grid\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aris Karageorgos",
+                    "email": "aris@phe.me"
+                }
+            ],
+            "description": "Provides a toggle data column and action",
+            "keywords": [
+                "column",
+                "extension",
+                "toggle",
+                "yii2"
+            ],
+            "time": "2016-12-23T11:21:11+00:00"
+        },
+        {
             "name": "php-curl-class/php-curl-class",
             "version": "8.6.2",
             "source": {
@@ -2861,75 +3175,6 @@
                 "xml"
             ],
             "time": "2019-11-17T08:37:31+00:00"
-        },
-        {
-            "name": "phpoffice/phpexcel",
-            "version": "1.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHPOffice/PHPExcel.git",
-                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/1441011fb7ecdd8cc689878f54f8b58a6805f870",
-                "reference": "1441011fb7ecdd8cc689878f54f8b58a6805f870",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "ext-xml": "*",
-                "ext-xmlwriter": "*",
-                "php": "^5.2|^7.0"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PHPExcel": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Maarten Balliauw",
-                    "homepage": "http://blog.maartenballiauw.be"
-                },
-                {
-                    "name": "Erik Tilt"
-                },
-                {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://rootslabs.net"
-                },
-                {
-                    "name": "Mark Baker",
-                    "homepage": "http://markbakeruk.net"
-                }
-            ],
-            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
-            "homepage": "https://github.com/PHPOffice/PHPExcel",
-            "keywords": [
-                "OpenXML",
-                "excel",
-                "php",
-                "spreadsheet",
-                "xls",
-                "xlsx"
-            ],
-            "abandoned": "phpoffice/phpspreadsheet",
-            "time": "2018-11-22T23:07:24+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -3185,6 +3430,69 @@
             ],
             "description": "A polyfill for getallheaders.",
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "rmrevin/yii2-fontawesome",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmrevin/yii2-fontawesome.git",
+                "reference": "6220d170a40486be681867c3655d231b73b6c6e1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmrevin/yii2-fontawesome/zipball/6220d170a40486be681867c3655d231b73b6c6e1",
+                "reference": "6220d170a40486be681867c3655d231b73b6c6e1",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "fortawesome/font-awesome": "^5.11.0",
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "^2.0.0"
+            },
+            "require-dev": {
+                "doctrine/instantiator": "1.0.*",
+                "phpdocumentor/reflection-docblock": "~3.1.0",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "rmrevin\\yii\\fontawesome\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Revin Roman",
+                    "email": "roman@rmrevin.com",
+                    "homepage": "https://rmrevin.com/"
+                }
+            ],
+            "description": "Asset Bundle for Yii2 with Font Awesome",
+            "keywords": [
+                "asset",
+                "awesome",
+                "bundle",
+                "font",
+                "yii"
+            ],
+            "time": "2019-09-20T14:32:55+00:00"
         },
         {
             "name": "select2/select2",
@@ -8885,7 +9193,8 @@
         "trntv/cheatsheet": 20,
         "npm-asset/flot": 15,
         "brucebnu/yii3-widget-affix": 20,
-        "light/yii2-swagger": 15
+        "light/yii2-swagger": 15,
+        "rmrevin/yii2-fontawesome": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

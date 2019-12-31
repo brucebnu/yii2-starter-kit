@@ -13,7 +13,7 @@ namespace <?= $generator->getControllerNamespace() ?>;
 
 use yii\web\Controller;
 
-class DefaultController extends Controller
+class DefaultController extends \backend\controllers\Controller
 {
     public function actionIndex()
     {

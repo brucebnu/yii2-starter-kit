@@ -20,7 +20,7 @@ use dmstr\web\traits\AccessBehaviorTrait;
 
 class <?= $className ?> extends \yii\base\Module
 {
-    use AccessBehaviorTrait;
+    //use AccessBehaviorTrait;
 
     public $controllerNamespace = '<?= $generator->getControllerNamespace() ?>';
 
