@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </h1>
 
     <div class="clearfix crud-navigation">
-        <div class="pull-left">
+        <div class="float-left">
             <?= '<?= ' ?>
             Html::a(
             <?= $generator->generateString('Cancel') ?>,

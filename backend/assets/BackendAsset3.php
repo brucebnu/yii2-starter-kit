@@ -35,8 +35,8 @@ class BackendAsset3 extends AssetBundle
      * @var array
      */
     public $depends = [
-        YiiAsset::class,
+        //YiiAsset::class,
         //AdminLte::class,
-        Html5shiv::class
+        //Html5shiv::class
     ];
 }

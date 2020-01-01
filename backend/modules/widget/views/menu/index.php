@@ -18,17 +18,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="box box-success collapsed-box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Widget Menu']) ?></h3>
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+<div class="card collapsed-card">
+    <div class="card-header bg-success">
+        <h3 class="card-title"> <i class="fas fa-edit"></i> <?php echo Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Widget Menu']) ?></h3>
+        <small class="text-white m-md-1">请按要求填写空格</small>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove"><i class="fas fa-times"></i></button>
         </div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <?php echo $this->render('_form', [
             'model' => $model,
         ]) ?>
+    </div>
+    <div class="card-footer">
+        Footer
     </div>
 </div>
 
@@ -62,9 +67,35 @@ $this->params['breadcrumbs'][] = $this->title;
             'filter' => WidgetMenu::statuses(),
         ],
         [
-            'class' => 'yii\grid\ActionColumn',
-            'options' => ['style' => 'width: 5%'],
-            'template' => '{update} {delete}',
+            'class' => yii\grid\ActionColumn::class,
+            'options' => ['style' => 'width: 8%'],
+            'template' => '{view} {update} {delete}',
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'View'),
+                        'aria-label' => Yii::t('backend', 'View'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-eye"></i>', $url, $options);
+                },
+                'update' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Update'),
+                        'aria-label' => Yii::t('backend', 'Update'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-edit"></i>', $url, $options);
+                },
+                'delete' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Delete'),
+                        'aria-label' => Yii::t('backend', 'Delete'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-trash"></i>', $url, $options);
+                }
+            ],
         ],
     ],
 ]); ?>

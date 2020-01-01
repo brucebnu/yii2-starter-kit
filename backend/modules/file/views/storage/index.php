@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'class' => 'grid-view table-responsive',
     ],
     'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
+        ['class' => yii\grid\SerialColumn::class],
 
         [
             'attribute' => 'component',
@@ -83,8 +83,35 @@ $this->params['breadcrumbs'][] = $this->title;
         */
 
         [
-            'class' => 'yii\grid\ActionColumn',
-            'template' => '{view} {delete}',
+            'class' => yii\grid\ActionColumn::class,
+            'options' => ['style' => 'width: 8%'],
+            'template' => '{view} {update} {delete}',
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'View'),
+                        'aria-label' => Yii::t('backend', 'View'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-eye"></i>', $url, $options);
+                },
+                'update' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Update'),
+                        'aria-label' => Yii::t('backend', 'Update'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-edit"></i>', $url, $options);
+                },
+                'delete' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Delete'),
+                        'aria-label' => Yii::t('backend', 'Delete'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-trash"></i>', $url, $options);
+                }
+            ],
         ],
     ],
 ]); ?>

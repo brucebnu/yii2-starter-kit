@@ -8,6 +8,7 @@ use yii\helpers\StringHelper;
  * @var schmunk42\giiant\generators\crud\Generator $generator
  */
 
+// dd($generator, $permisions);
 $urlParams = $generator->generateUrlParams();
 $nameAttribute = $generator->getNameAttribute();
 
@@ -46,36 +47,38 @@ $this->title = Yii::t(<?= "'{$generator->modelMessageCategory}', '{$modelName}'"
 $this->params['breadcrumbs'][] = $this->title;
 
 <?php
-if($generator->accessFilter):
-?>
+if ($generator->accessFilter):
+    ?>
 
-/**
-* create action column template depending acces rights
-*/
-$actionColumnTemplates = [];
+    /**
+    * create action column template depending acces rights
+    */
+    $actionColumnTemplates = [];
 
-if (\Yii::$app->user->can('<?=$permisions['view']['name']?>', ['route' => true])) {
-    $actionColumnTemplates[] = '{view}';
-}
+    if (\Yii::$app->user->can('<?= $permisions['view']['name'] ?>', ['route' => true])) {
+        $actionColumnTemplates[] = '{view}';
+    }
 
-if (\Yii::$app->user->can('<?=$permisions['update']['name']?>', ['route' => true])) {
-    $actionColumnTemplates[] = '{update}';
-}
+    if (\Yii::$app->user->can('<?= $permisions['update']['name'] ?>', ['route' => true])) {
+        $actionColumnTemplates[] = '{update}';
+    }
 
-if (\Yii::$app->user->can('<?=$permisions['delete']['name']?>', ['route' => true])) {
-    $actionColumnTemplates[] = '{delete}';
-}
+    if (\Yii::$app->user->can('<?= $permisions['delete']['name'] ?>', ['route' => true])) {
+        $actionColumnTemplates[] = '{delete}';
+    }
 <?php
 endif;
 ?>
 if (isset($actionColumnTemplates)) {
 $actionColumnTemplate = implode(' ', $actionColumnTemplates);
-    $actionColumnTemplateString = $actionColumnTemplate;
+$actionColumnTemplateString = $actionColumnTemplate;
 } else {
-Yii::$app->view->params['pageButtons'] = Html::a('<span class="glyphicon glyphicon-plus"></span> ' . <?= $generator->generateString('New') ?>, ['create'], ['class' => 'btn btn-success']);
-    $actionColumnTemplateString = "{view} {update} {delete}";
+Yii::$app->view->params['pageButtons'] = Html::a('<span
+        class="glyphicon glyphicon-plus"></span> ' . <?= $generator->generateString('New') ?>, ['create'], ['class' => 'btn btn-success']);
+$actionColumnTemplateString = "{view} {update} {delete}";
 }
-$actionColumnTemplateString = '<div class="action-buttons">'.$actionColumnTemplateString.'</div>';
+$actionColumnTemplateString = '
+<div class="action-buttons">'.$actionColumnTemplateString.'</div>';
 <?php
 echo '?>';
 ?>
@@ -83,7 +86,7 @@ echo '?>';
 <div class="giiant-crud <?= Inflector::camel2id(StringHelper::basename($generator->modelClass), '-', true) ?>-index">
 
     <?=
-    "<?php\n".($generator->indexWidgetType === 'grid' ? '// ' : '') ?>
+    "<?php\n" . ($generator->indexWidgetType === 'grid' ? '// ' : '') ?>
     <?php if ($generator->searchModelClass !== ''): ?>
         echo $this->render('_search', ['model' =>$searchModel]);
     <?php endif; ?>
@@ -93,41 +96,33 @@ echo '?>';
 
     <?= "<?php \yii\widgets\Pjax::begin(['id'=>'pjax-main', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-main ul.pagination a, th a', 'clientOptions' => ['pjax:success'=>'function(){alert(\"yo\")}']]) ?>\n"; ?>
 
-    <h1>
-        <?= "<?= Yii::t('{$generator->modelMessageCategory}', '{$modelName}') ?>\n" ?>
-        <small>
-            List
-        </small>
-    </h1>
     <div class="clearfix crud-navigation">
-<?php
-if($generator->accessFilter){ 
-	echo "<?php\n"
-?>
-if(\Yii::$app->user->can('<?=$permisions['create']['name']?>', ['route' => true])){
-<?php
-echo "?>\n"
-?>
-        <div class="pull-left">
-            <?= '<?= ' ?>Html::a('<span class="glyphicon glyphicon-plus"></span> ' . <?= $generator->generateString(
-                'New'
-            ) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-        </div>
-<?php
-	echo "<?php\n}\n?>";
-}else{
-?>
-        <div class="pull-left">
-            <?= '<?= ' ?>Html::a('<span class="glyphicon glyphicon-plus"></span> ' . <?= $generator->generateString(
-                'New'
-            ) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-        </div>
-<?php
-}
-?>
-
-        <div class="pull-right">
-
+        <?php
+        if ($generator->accessFilter) {
+            echo "<?php\n"
+            ?>
+            if(\Yii::$app->user->can('<?= $permisions['create']['name'] ?>', ['route' => true])){
+            <?php
+            echo "?>\n"
+            ?>
+            <div class="float-left">
+                <?= '<?= ' ?>Html::a('<span class="fa fa-plus"></span> ' . <?= $generator->generateString(
+                    'New'
+                ) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+            </div>
+            <?php
+            echo "<?php\n}\n?>";
+        } else {
+            ?>
+            <div class="float-left">
+                <?= '<?= ' ?>Html::a('<span class="fa fa-plus"></span> ' . <?= $generator->generateString(
+                    'New'
+                ) ?>, ['create'], ['class' => 'btn btn-success']) ?>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="float-right">
             <?php
             $items = '';
             $model = new $generator->modelClass();
@@ -139,7 +134,7 @@ echo "?>\n"
                 if ($generator->isPivotRelation($relation)) {
                     $iconType = 'random text-muted';
                 }
-                $controller = $generator->pathPrefix.Inflector::camel2id(
+                $controller = $generator->pathPrefix . Inflector::camel2id(
                         StringHelper::basename($relation->modelClass),
                         '-',
                         true
@@ -149,19 +144,18 @@ echo "?>\n"
                 $items .= <<<PHP
             [
                 'url' => ['{$route}'],
-                'label' => '<i class="glyphicon glyphicon-{$iconType}"></i> ' . Yii::t('$generator->modelMessageCategory', '$label'),
+                'label' => '<i class="fa fa-{$iconType}"></i> ' . Yii::t('$generator->modelMessageCategory', '$label'),
             ],
                     
 PHP;
                 ?>
             <?php endforeach; ?>
-
             <?= "<?= \n" ?>
-            \yii\bootstrap\ButtonDropdown::widget(
+            \yii\bootstrap4\ButtonDropdown::widget(
             [
             'id' => 'giiant-relations',
             'encodeLabel' => false,
-            'label' => '<span class="glyphicon glyphicon-paperclip"></span> ' . <?= $generator->generateString(
+            'label' => '<span class="fa fa-paperclip"></span> ' . <?= $generator->generateString(
                 'Relations'
             ) ?>,
             'dropdown' => [
@@ -169,7 +163,7 @@ PHP;
             'class' => 'dropdown-menu-right'
             ],
             'encodeLabels' => false,
-            'items' => [<?= "\n".$items."\n" ?>]
+            'items' => [<?= "\n" . $items . "\n" ?>]
             ],
             'options' => [
             'class' => 'btn-default'
@@ -180,15 +174,15 @@ PHP;
         </div>
     </div>
 
-    <hr />
+    <hr/>
 
     <div class="table-responsive">
-        <?= '<?= ' ?>GridView::widget([
+        <?= '<?php' ?><?= "\n\t\t" . 'echo ' ?>GridView::widget([
         'dataProvider' => $dataProvider,
         'pager' => [
-        'class' => yii\widgets\LinkPager::className(),
+        'class' => yii\widgets\LinkPager::class,
         'firstPageLabel' => <?= $generator->generateString('First') ?>,
-        'lastPageLabel' => <?= $generator->generateString('Last').",\n" ?>
+        'lastPageLabel' => <?= $generator->generateString('Last') . ",\n" ?>
         ],
         <?php if ($generator->searchModelClass !== ''): ?>
             'filterModel' => $searchModel,
@@ -199,7 +193,7 @@ PHP;
         <?php
         $actionButtonColumn = <<<PHP
         [
-            'class' => '{$generator->actionButtonClass}',
+            'class' => {$generator->actionButtonClass}::class,
             'template' => \$actionColumnTemplateString,
             'buttons' => [
                 'view' => function (\$url, \$model, \$key) {
@@ -208,9 +202,26 @@ PHP;
                         'aria-label' => Yii::t('{$generator->messageCategory}', 'View'),
                         'data-pjax' => '0',
                     ];
-                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', \$url, \$options);
+                    return Html::a('<i class="fa fa-eye"></i>', \$url, \$options);
+                },
+                'update' => function (\$url, \$model, \$key) {
+                    \$options = [
+                        'title' => Yii::t('{$generator->messageCategory}', 'Update'),
+                        'aria-label' => Yii::t('backend', 'Update'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-edit"></i>', \$url, \$options);
+                },
+                'delete' => function (\$url, \$model, \$key) {
+                    \$options = [
+                        'title' => Yii::t('{$generator->messageCategory}', 'Delete'),
+                        'aria-label' => Yii::t('backend', 'Delete'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-trash"></i>', \$url, \$options);
                 }
             ],
+            
             'urlCreator' => function(\$action, \$model, \$key, \$index) {
                 // using the column name as key, not mapping to 'id' like the standard generator
                 \$params = is_array(\$key) ? \$key : [\$model->primaryKey()[0] => (string) \$key];
@@ -227,9 +238,9 @@ PHP;
             echo $actionButtonColumn;
             echo "\n"; // code-formatting
         }
-
         foreach ($safeAttributes as $attribute) {
             $format = trim($generator->columnFormat($attribute, $model));
+            // dd($format, $attribute, $model);
             if ($format == false) {
                 continue;
             }

@@ -99,6 +99,21 @@ if(!Yii::$app->user->isGuest){
                     ],
 
                     [
+                        'label' => Yii::t('backend', 'Translation'),
+                        'url' => '#',
+                        'icon' => 'nav-icon fa fa-language',
+                        'active' => Yii::$app->controller->module->id === 'translation',
+                        'items' => [
+                            [
+                                'label' => Yii::t('backend', 'Translation'),
+                                'url' => ['/translation/default/index'],
+                                'icon' => 'nav-icon fa fa-language',
+                                'active' => Yii::$app->controller->id === 'index',
+                            ]
+                        ],
+                    ],
+
+                    [
                         'label' => Yii::t('backend', 'Widgets'),
                         'url' => '#',
                         'icon' => 'nav-icon fa fa-code',

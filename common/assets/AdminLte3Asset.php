@@ -8,6 +8,7 @@ use yii\bootstrap4\BootstrapAsset;
 use yii\bootstrap4\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 use yii\web\YiiAsset;
+
 class AdminLte3Asset extends AssetBundle
 {
     public $sourcePath = '@vendor/almasaeed2010/adminlte/dist';
@@ -17,11 +18,10 @@ class AdminLte3Asset extends AssetBundle
     public $css = [
         'css/adminlte.css',
     ];
-    public $depends
-        = [
-            YiiAsset::class,
-            BootstrapAsset::class,
-            BootstrapPluginAsset::class,
-            FontAwesome4Asset::class
-        ];
+    public $depends = [
+        YiiAsset::class,
+        BootstrapAsset::class,
+        BootstrapPluginAsset::class,
+        FontAwesome4Asset::class
+    ];
 }

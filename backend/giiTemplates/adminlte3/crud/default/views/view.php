@@ -3,6 +3,10 @@
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
+
+
+// $generator->getModelNameAttribute($generator->modelClass)
+
 /*
  * @var yii\web\View $this
  * @var schmunk42\giiant\generators\crud\Generator $generator
@@ -35,7 +39,7 @@ use yii\helpers\Url;
 use yii\grid\GridView;
 use yii\widgets\DetailView;
 use yii\widgets\Pjax;
-use dmstr\bootstrap\Tabs;
+//use dmstr\bootstrap\Tabs;
 
 /**
 * @var yii\web\View $this
@@ -59,19 +63,10 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
         </span>
     <?php endif; ?>" ?>
 
-
-    <h1>
-        <?= "<?= Yii::t('{$generator->modelMessageCategory}', '{$modelName}') ?>\n" ?>
-        <small>
-            <?= '<?= Html::encode($model->'.$generator->getModelNameAttribute($generator->modelClass).") ?>\n" ?>
-        </small>
-    </h1>
-
-
     <div class="clearfix crud-navigation">
 
         <!-- menu buttons -->
-        <div class='pull-left'>
+        <div class='float-left'>
             <?= '<?= ' ?>Html::a(
             '<span class="glyphicon glyphicon-pencil"></span> ' . <?= $generator->generateString('Edit') ?>,
             [ 'update', <?= $urlParams ?>],
@@ -88,7 +83,7 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
             ['class' => 'btn btn-success']) ?>
         </div>
 
-        <div class="pull-right">
+        <div class="float-right">
             <?= "<?= " ?>Html::a('<span class="glyphicon glyphicon-list"></span> '
             . <?= $generator->generateString('Full list') ?>, ['index'], ['class'=>'btn btn-default']) ?>
         </div>
@@ -171,17 +166,17 @@ EOS;
         }
 
         // relation list, add, create buttons
-        echo "<div style='position: relative'>\n<div style='position:absolute; right: 0px; top: 0px;'>\n";
+        echo "<div style='position: relative'>\n<div style='position:absolute; right: 0px; top: -25px;'>\n";
 
         echo "  <?= Html::a(
-            '<span class=\"glyphicon glyphicon-list\"></span> ' . ".$generator->generateString('List All')." . ' ".
+            '<span class=\"fa fa-list-ul\"></span> ' . ".$generator->generateString('List All')." . ' ".
             Inflector::camel2words($name)."',
             ['".$generator->createRelationRoute($relation, 'index')."'],
             ['class'=>'btn text-muted btn-xs']
         ) ?>\n";
         // TODO: support multiple PKs
         echo "  <?= Html::a(
-            '<span class=\"glyphicon glyphicon-plus\"></span> ' . ".$generator->generateString('New')." . ' ".
+            '<span class=\"fa fa-plus\"></span> ' . ".$generator->generateString('New')." . ' ".
             Inflector::singularize(Inflector::camel2words($name))."',
             ['".$generator->createRelationRoute($relation, 'create')."', '".
             Inflector::id2camel($generator->generateRelationTo($relation),
@@ -225,17 +220,15 @@ EOS;
 EOS;
     }
     ?>
-
     <?=
     // render tabs
-    "<?= Tabs::widget(
-                 [
-                     'id' => 'relation-tabs',
-                     'encodeLabels' => false,
-                     'items' => [\n $items ]
-                 ]
+    "<?= yii\bootstrap4\Tabs::widget(
+         [
+             'id' => 'relation-tabs',
+             'encodeLabels' => false,
+             'items' => [\n $items ]
+         ]
     );
     ?>";
     ?>
-
 </div>

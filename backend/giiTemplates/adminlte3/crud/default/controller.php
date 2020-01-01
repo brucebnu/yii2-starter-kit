@@ -78,7 +78,7 @@ public $enableCsrfValidation = false;
     {
     return [
     'access' => [
-    'class' => AccessControl::className(),
+    'class' => AccessControl::class,
     'rules' => [
 <?php 
 foreach($accessDefinitions['roles'] as $roleName => $actions){
@@ -103,30 +103,30 @@ foreach($accessDefinitions['roles'] as $roleName => $actions){
 */
 public function actionIndex()
 {
-<?php if ($searchModelClass !== '') {
-    ?>
-    $searchModel  = new <?= $searchModelClassName ?>;
-    $dataProvider = $searchModel->search($_GET);
-<?php 
-} else {
-    ?>
-    $dataProvider = new \yii\data\ActiveDataProvider([
-    'query' => <?= $modelClass ?>::find(),
+    <?php if ($searchModelClass !== '') {
+        ?>
+        $searchModel  = new <?= $searchModelClassName ?>;
+        $dataProvider = $searchModel->search($_GET);
+    <?php
+    } else {
+        ?>
+        $dataProvider = new \yii\data\ActiveDataProvider([
+        'query' => <?= $modelClass ?>::find(),
+        ]);
+    <?php
+    } ?>
+
+    Tabs::clearLocalStorage();
+
+    Url::remember();
+    \Yii::$app->session['__crudReturnUrl'] = null;
+
+    return $this->render('index', [
+    'dataProvider' => $dataProvider,
+    <?php if ($searchModelClass !== ''): ?>
+        'searchModel' => $searchModel,
+    <?php endif; ?>
     ]);
-<?php 
-} ?>
-
-Tabs::clearLocalStorage();
-
-Url::remember();
-\Yii::$app->session['__crudReturnUrl'] = null;
-
-return $this->render('index', [
-'dataProvider' => $dataProvider,
-<?php if ($searchModelClass !== ''): ?>
-    'searchModel' => $searchModel,
-<?php endif; ?>
-]);
 }
 
 /**
@@ -137,13 +137,13 @@ return $this->render('index', [
 */
 public function actionView(<?= $actionParams ?>)
 {
-\Yii::$app->session['__crudReturnUrl'] = Url::previous();
-Url::remember();
-Tabs::rememberActiveState();
+    \Yii::$app->session['__crudReturnUrl'] = Url::previous();
+    Url::remember();
+    Tabs::rememberActiveState();
 
-return $this->render('view', [
-'model' => $this->findModel(<?= $actionParams ?>),
-]);
+    return $this->render('view', [
+    'model' => $this->findModel(<?= $actionParams ?>),
+    ]);
 }
 
 /**
@@ -153,38 +153,38 @@ return $this->render('view', [
 */
 public function actionCreate()
 {
-$model = new <?= $modelClass ?>;
+    $model = new <?= $modelClass ?>;
 
-try {
-if ($model->load($_POST) && $model->save()) {
-return $this->redirect(['view', <?= $urlParams ?>]);
-} elseif (!\Yii::$app->request->isPost) {
-$model->load($_GET);
-}
-} catch (\Exception $e) {
-$msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
-$model->addError('_exception', $msg);
-}
-return $this->render('create', ['model' => $model]);
-}
+    try {
+    if ($model->load($_POST) && $model->save()) {
+    return $this->redirect(['view', <?= $urlParams ?>]);
+    } elseif (!\Yii::$app->request->isPost) {
+    $model->load($_GET);
+    }
+    } catch (\Exception $e) {
+    $msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
+    $model->addError('_exception', $msg);
+    }
+    return $this->render('create', ['model' => $model]);
+    }
 
-/**
-* Updates an existing <?= $modelClass ?> model.
-* If update is successful, the browser will be redirected to the 'view' page.
-* <?= implode("\n\t * ", $actionParamComments)."\n" ?>
-* @return mixed
-*/
-public function actionUpdate(<?= $actionParams ?>)
-{
-$model = $this->findModel(<?= $actionParams ?>);
+    /**
+    * Updates an existing <?= $modelClass ?> model.
+    * If update is successful, the browser will be redirected to the 'view' page.
+    * <?= implode("\n\t * ", $actionParamComments)."\n" ?>
+    * @return mixed
+    */
+    public function actionUpdate(<?= $actionParams ?>)
+    {
+    $model = $this->findModel(<?= $actionParams ?>);
 
-if ($model->load($_POST) && $model->save()) {
-return $this->redirect(Url::previous());
-} else {
-return $this->render('update', [
-'model' => $model,
-]);
-}
+    if ($model->load($_POST) && $model->save()) {
+    return $this->redirect(Url::previous());
+    } else {
+    return $this->render('update', [
+    'model' => $model,
+    ]);
+    }
 }
 
 /**
@@ -195,27 +195,28 @@ return $this->render('update', [
 */
 public function actionDelete(<?= $actionParams ?>)
 {
-try {
-$this->findModel(<?= $actionParams ?>)->delete();
-} catch (\Exception $e) {
-$msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
-\Yii::$app->getSession()->addFlash('error', $msg);
-return $this->redirect(Url::previous());
-}
+    exit('sorry :(');
+    try {
+    $this->findModel(<?= $actionParams ?>)->delete();
+    } catch (\Exception $e) {
+    $msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
+    \Yii::$app->getSession()->addFlash('error', $msg);
+    return $this->redirect(Url::previous());
+    }
 
-// TODO: improve detection
-$isPivot = strstr('<?= $actionParams ?>',',');
-if ($isPivot == true) {
-return $this->redirect(Url::previous());
-} elseif (isset(\Yii::$app->session['__crudReturnUrl']) && \Yii::$app->session['__crudReturnUrl'] != '/') {
-Url::remember(null);
-$url = \Yii::$app->session['__crudReturnUrl'];
-\Yii::$app->session['__crudReturnUrl'] = null;
+    // TODO: improve detection
+    $isPivot = strstr('<?= $actionParams ?>',',');
+    if ($isPivot == true) {
+    return $this->redirect(Url::previous());
+    } elseif (isset(\Yii::$app->session['__crudReturnUrl']) && \Yii::$app->session['__crudReturnUrl'] != '/') {
+    Url::remember(null);
+    $url = \Yii::$app->session['__crudReturnUrl'];
+    \Yii::$app->session['__crudReturnUrl'] = null;
 
-return $this->redirect($url);
-} else {
-return $this->redirect(['index']);
-}
+    return $this->redirect($url);
+    } else {
+    return $this->redirect(['index']);
+    }
 }
 
 /**
@@ -227,21 +228,22 @@ return $this->redirect(['index']);
 */
 protected function findModel(<?= $actionParams ?>)
 {
-<?php
-if (count($pks) === 1) {
-    $condition = '$'.$pks[0];
-} else {
-    $condition = [];
-    foreach ($pks as $pk) {
-        $condition[] = "'$pk' => \$$pk";
+    <?php
+    if (count($pks) === 1) {
+        $condition = '$'.$pks[0];
+    } else {
+        $condition = [];
+        foreach ($pks as $pk) {
+            $condition[] = "'$pk' => \$$pk";
+        }
+        $condition = '['.implode(', ', $condition).']';
     }
-    $condition = '['.implode(', ', $condition).']';
+    ?>
+    if (($model = <?= $modelClass ?>::findOne(<?= $condition ?>)) !== null) {
+    return $model;
+    } else {
+    throw new HttpException(404, 'The requested page does not exist.');
+    }
 }
-?>
-if (($model = <?= $modelClass ?>::findOne(<?= $condition ?>)) !== null) {
-return $model;
-} else {
-throw new HttpException(404, 'The requested page does not exist.');
-}
-}
+
 }

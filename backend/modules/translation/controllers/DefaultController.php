@@ -15,7 +15,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\ConflictHttpException;
 
-class DefaultController extends Controller
+class DefaultController extends \backend\controllers\Controller
 {
     use ModuleTrait;
 

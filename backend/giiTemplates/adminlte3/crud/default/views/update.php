@@ -31,26 +31,15 @@ $this->params['breadcrumbs'][] = ['label' => (string)$model-><?= $generator->get
 $this->params['breadcrumbs'][] = <?= $generator->generateString('Edit') ?>;
 ?>
 <div class="giiant-crud <?= Inflector::camel2id(StringHelper::basename($generator->modelClass), '-', true) ?>-update">
-
-    <h1>
-        <?= "<?= Yii::t('{$generator->modelMessageCategory}', '{$modelName}') ?>" ?>
-
-        <small>
-            <?php $label = StringHelper::basename($generator->modelClass); ?>
-            <?= '<?= Html::encode($model->'.$generator->getModelNameAttribute($generator->modelClass).") ?>\n" ?>
-        </small>
-    </h1>
-
-    <div class="crud-navigation">
-        <?= '<?= ' ?>Html::a('<span class="glyphicon glyphicon-file"></span> ' . <?= $generator->generateString(
-            'View'
-        ) ?>, ['view', <?= $urlParams ?>], ['class' => 'btn btn-default']) ?>
+    <div class="clearfix crud-navigation">
+        <div class="float-left">
+            <?= '<?= ' ?>Html::a('<span class="fa fa-eye"></span> ' . <?= $generator->generateString(
+                'View'
+            ) ?>, ['view', <?= $urlParams ?>], ['class' => 'btn btn-block btn-outline-success btn-sm']) ?>
+        </div>
     </div>
-
     <hr />
-
     <?= '<?php ' ?>echo $this->render('_form', [
     'model' => $model,
     ]); ?>
-
 </div>

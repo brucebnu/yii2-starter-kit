@@ -64,6 +64,32 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'Update');
             'options' => ['style' => 'width: 5%'],
             'controller' => '/widget/carousel-item',
             'template' => '{update} {delete}',
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'View'),
+                        'aria-label' => Yii::t('backend', 'View'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-eye"></i>', $url, $options);
+                },
+                'update' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Update'),
+                        'aria-label' => Yii::t('backend', 'Update'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-edit"></i>', $url, $options);
+                },
+                'delete' => function ($url, $model, $key) {
+                    $options = [
+                        'title' => Yii::t('backend', 'Delete'),
+                        'aria-label' => Yii::t('backend', 'Delete'),
+                        'data-pjax' => '0',
+                    ];
+                    return Html::a('<i class="fa fa-trash"></i>', $url, $options);
+                }
+            ],
         ],
     ],
 ]); ?>

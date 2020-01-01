@@ -15,18 +15,26 @@ use yii\helpers\Html;
 
 <?php echo $form->errorSummary($model) ?>
 
-<?php echo $form->field($model, 'image')->widget(
+<?php
+/*
+echo $form->field($model, 'image')->widget(
     \trntv\filekit\widget\Upload::class,
     [
         'url' => ['/file/storage/upload'],
     ]
-) ?>
+)*/
+//dd($model->image['base_url']);
+echo $model->image['base_url'].$model->image['path'];
+//echo $form->field($model, 'image')->textarea();
+?>
 
 <?php echo $form->field($model, 'order')->textInput() ?>
 
 <?php echo $form->field($model, 'url')->textInput(['maxlength' => 1024]) ?>
 
-<?php echo $form->field($model, 'caption')->widget(
+<?php
+/*
+echo $form->field($model, 'caption')->widget(
     \yii\imperavi\Widget::class,
     [
         'plugins' => ['fullscreen', 'fontcolor', 'video'],
@@ -38,7 +46,25 @@ use yii\helpers\Html;
             'removeEmptyTags' => true,
         ],
     ]
-) ?>
+);
+*/
+echo $form->field($model, 'caption')->widget(\vova07\imperavi\Widget::class, [
+    'settings' => [
+        'lang' => 'ru',
+        'minHeight' => 200,
+        'plugins' => [
+            'clips',
+            'fullscreen',
+        ],
+        'clips' => [
+            ['Lorem ipsum...', 'Lorem...'],
+            ['red', '<span class="label-red">red</span>'],
+            ['green', '<span class="label-green">green</span>'],
+            ['blue', '<span class="label-blue">blue</span>'],
+        ],
+    ],
+])->label(Yii::t('backend','内容'));
+?>
 
 <?php echo $form->field($model, 'status')->checkbox() ?>
 

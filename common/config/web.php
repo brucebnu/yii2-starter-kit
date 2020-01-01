@@ -14,21 +14,34 @@ $config = [
                     'ts' => ['js', 'tsc --out {to} {from}'],
                 ],
             ],
-            # https://www.yiiframework.com/doc/guide/2.0/zh-cn/structure-assets
+            */
+
             'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => [],  // 去除 bootstrap.css
+                    'sourcePath' => null, // 防止在 frontend/web/asset 下生产文件
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'js' => [],  // 去除 bootstrap.js
+                    'sourcePath' => null,  // 防止在 frontend/web/asset 下生产文件
+                ],
+
+                # https://www.yiiframework.com/doc/guide/2.0/zh-cn/structure-assets
+                /*
                 'all' => [
-                    'class' => 'yii\web\AssetBundle',
-                    'basePath' => '@webroot/assets',
-                    'baseUrl' => '@web/assets',
-                    'css' => ['all-xyz.css'],
-                    'js' => ['all-xyz.js'],
+                    'class'     => yii\web\AssetBundle::class,
+                    'basePath'  => '@webroot/assets',
+                    'baseUrl'   => '@web/assets',
+                    'css'       => ['all-xyz.css'],
+                    'js'        => ['all-xyz.js'],
                 ],
                 'A' => ['css' => [], 'js' => [], 'depends' => ['all']],
                 'B' => ['css' => [], 'js' => [], 'depends' => ['all']],
                 'C' => ['css' => [], 'js' => [], 'depends' => ['all']],
                 'D' => ['css' => [], 'js' => [], 'depends' => ['all']],
+                */
             ],
-            */
+
         ]
     ],
     'as locale' => [

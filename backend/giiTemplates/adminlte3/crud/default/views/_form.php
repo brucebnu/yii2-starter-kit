@@ -25,7 +25,6 @@ echo "<?php\n";
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use \dmstr\bootstrap\Tabs;
 use yii\helpers\StringHelper;
 
 /**
@@ -35,61 +34,52 @@ use yii\helpers\StringHelper;
 */
 
 ?>
-
-<div class="<?= \yii\helpers\Inflector::camel2id(
+<div class="card card-primary card-outline <?= \yii\helpers\Inflector::camel2id(
     StringHelper::basename($generator->modelClass),
     '-',
     true
 ) ?>-form">
-
     <?= '<?php ' ?>$form = ActiveForm::begin([
-    'id' => '<?= $model->formName() ?>',
-    'layout' => '<?= $generator->formLayout ?>',
-    'enableClientValidation' => true,
-    'errorSummaryCssClass' => 'error-summary alert alert-danger',
-    'fieldConfig' => [
-             'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-             'horizontalCssClasses' => [
-                 'label' => 'col-sm-2',
-                 #'offset' => 'col-sm-offset-4',
-                 'wrapper' => 'col-sm-8',
-                 'error' => '',
-                 'hint' => '',
-             ],
-         ],
-    ]
-    );
+        'id' => '<?= $model->formName() ?>',
+        'layout' => '<?= $generator->formLayout ?>',
+        'enableClientValidation' => true,
+        'errorSummaryCssClass' => 'error-summary alert alert-danger',
+        'fieldConfig' => [
+            'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+            'horizontalCssClasses' => [
+                'label' => 'col-sm-2',
+                #'offset' => 'col-sm-offset-4',
+                'wrapper' => 'col-sm-8',
+                'error' => '',
+                'hint' => '',
+            ],
+        ],
+    ]);
     ?>
-
-    <div class="">
+    <div class="card-body">
         <?php echo "<?php \$this->beginBlock('main'); ?>\n"; ?>
+        <?php
+        foreach ($safeAttributes as $attribute) {
+            echo "\n\n<!-- attribute $attribute -->";
+            $prepend = $generator->prependActiveField($attribute, $model);
+            $field = $generator->activeField($attribute, $model);
+            $append = $generator->appendActiveField($attribute, $model);
 
-        <p>
-            <?php
-            foreach ($safeAttributes as $attribute) {
-                echo "\n\n<!-- attribute $attribute -->";
-                $prepend = $generator->prependActiveField($attribute, $model);
-                $field = $generator->activeField($attribute, $model);
-                $append = $generator->appendActiveField($attribute, $model);
-
-                if ($prepend) {
-                    echo "\n\t\t\t".$prepend;
-                }
-                if ($field) {
-                    echo "\n\t\t\t<?= ".$field.' ?>';
-                }
-                if ($append) {
-                    echo "\n\t\t\t".$append;
-                }
+            if ($prepend) {
+                echo "\n\t\t\t" . $prepend;
             }
-            ?>
-
-        </p>
+            if ($field) {
+                echo "\n\t\t\t<?= " . $field . ' ?>';
+            }
+            if ($append) {
+                echo "\n\t\t\t" . $append;
+            }
+        }
+        ?>
         <?php echo '<?php $this->endBlock(); ?>'; ?>
 
         <?php
         $label = substr(strrchr($model::className(), '\\'), 1);
-
         $items = <<<EOS
 [
     'label'   => Yii::t('$generator->modelMessageCategory', '$label'),
@@ -101,33 +91,30 @@ EOS;
 
         <?=
         "<?=
-    Tabs::widget(
+            yii\bootstrap4\Tabs::widget(
                  [
                     'encodeLabels' => false,
                     'items' => [ 
                         $items
                     ]
                  ]
-    );
-    ?>";
+            );
+        ?>";
         ?>
-
-        <hr/>
-
         <?= '<?php ' ?>echo $form->errorSummary($model); ?>
+    </div>
 
+    <div class="card-footer">
         <?= '<?= ' ?>Html::submitButton(
         '<span class="glyphicon glyphicon-check"></span> ' .
         ($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Save') ?>),
         [
-        'id' => 'save-' . $model->formName(),
-        'class' => 'btn btn-success'
-        ]
-        );
+            'id' => 'save-' . $model->formName(),
+            'class' => 'btn btn-success'
+        ]);
         ?>
 
         <?= '<?php ' ?>ActiveForm::end(); ?>
-
     </div>
 
 </div>

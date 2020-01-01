@@ -20,11 +20,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'name',
         'class',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => yii\grid\ActionColumn::class,
             'template' => '{flush-cache}',
             'buttons' => [
                 'flush-cache' => function ($url, $model) {
-                    return \yii\helpers\Html::a('<i class="fa fa-refresh"></i>', $url, [
+                    return \yii\helpers\Html::a('<i class="fa fa-edit"></i>', $url, [
                         'title' => Yii::t('backend', 'Flush'),
                         'data-confirm' => Yii::t('backend', 'Are you sure you want to flush this cache?'),
                     ]);
