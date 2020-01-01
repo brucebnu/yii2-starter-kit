@@ -53,7 +53,6 @@ $this->params['breadcrumbs'][] = ['label' => (string)$model-><?= $generator->get
 $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
 ?>
 <div class="giiant-crud <?= Inflector::camel2id(StringHelper::basename($generator->modelClass), '-', true) ?>-view">
-
     <!-- flash message -->
     <?= "<?php if (\\Yii::\$app->session->getFlash('deleteError') !== null) : ?>
         <span class=\"alert alert-info alert-dismissible\" role=\"alert\">
@@ -68,23 +67,23 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
         <!-- menu buttons -->
         <div class='float-left'>
             <?= '<?= ' ?>Html::a(
-            '<span class="glyphicon glyphicon-pencil"></span> ' . <?= $generator->generateString('Edit') ?>,
+            '<i class="fa fa-list"></i> ' . <?= $generator->generateString('Edit') ?>,
             [ 'update', <?= $urlParams ?>],
             ['class' => 'btn btn-info']) ?>
 
             <?= '<?= ' ?>Html::a(
-            '<span class="glyphicon glyphicon-copy"></span> ' . <?= $generator->generateString('Copy') ?>,
+            '<i class="fa fa-copy"></i> ' . <?= $generator->generateString('Copy') ?>,
             ['create', <?= $urlParams ?>, '<?= StringHelper::basename($generator->modelClass) ?>'=>$copyParams],
             ['class' => 'btn btn-success']) ?>
 
             <?= '<?= ' ?>Html::a(
-            '<span class="glyphicon glyphicon-plus"></span> ' . <?= $generator->generateString('New') ?>,
+            '<i class="fa fa-plus"></i> ' . <?= $generator->generateString('New') ?>,
             ['create'],
             ['class' => 'btn btn-success']) ?>
         </div>
 
         <div class="float-right">
-            <?= "<?= " ?>Html::a('<span class="glyphicon glyphicon-list"></span> '
+            <?= "<?= " ?>Html::a('<i class="fa fa-list"></i> '
             . <?= $generator->generateString('Full list') ?>, ['index'], ['class'=>'btn btn-default']) ?>
         </div>
 
@@ -118,13 +117,13 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
 
     <hr/>
 
-    <?= '<?= ' ?>Html::a('<span class="glyphicon glyphicon-trash"></span> ' . <?= $generator->generateString(
+    <?= '<?= ' ?>Html::a('<i class="fa fa-trash"></i> ' . <?= $generator->generateString(
         'Delete'
     ) ?>, ['delete', <?= $urlParams ?>],
     [
-    'class' => 'btn btn-danger',
-    'data-confirm' => '' . <?= $generator->generateString('Are you sure to delete this item?') ?> . '',
-    'data-method' => 'post',
+        'class' => 'btn btn-danger',
+        'data-confirm' => '' . <?= $generator->generateString('Are you sure to delete this item?') ?> . '',
+        'data-method' => 'post',
     ]); ?>
     <?= "<?php \$this->endBlock(); ?>\n\n"; ?>
 
@@ -141,12 +140,9 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('View') ?>;
 ],
 
 EOS;
-
     foreach ($generator->getModelRelations($generator->modelClass, ['has_many', 'has_one']) as $name => $relation) {
         echo "\n<?php \$this->beginBlock('$name'); ?>\n";
-
         $showAllRecords = false;
-
         if ($relation->via !== null) {
             $pivotName = Inflector::pluralize($generator->getModelByTableName($relation->via->from[0]));
             $pivotRelation = $model->{'get'.$pivotName}();
@@ -164,10 +160,8 @@ EOS;
         } else {
             $addButton = '';
         }
-
         // relation list, add, create buttons
         echo "<div style='position: relative'>\n<div style='position:absolute; right: 0px; top: -25px;'>\n";
-
         echo "  <?= Html::a(
             '<span class=\"fa fa-list-ul\"></span> ' . ".$generator->generateString('List All')." . ' ".
             Inflector::camel2words($name)."',
