@@ -62,24 +62,24 @@ return [
         # https://github.com/schmunk42/yii2-giiant/blob/master/docs/25-cli-commands.md
         #
         /**
-         * ./yii batch --tables=user_profile --db:org
+         * ./yii batch --tables=organization,org_user,user_address,user_course,user_dormitory,user_express,user_flight,user_to_agency,user_to_org,order_amount,order,dormitory,course,cn_zipcode,cn_town,cn_region,cn_province,cn_city --db:org
+         * ./yii batch --tables=organization --db:org
          * yii help gii
          * yii gii/giiant-module
          */
         'batch' => [
             'class' => \schmunk42\giiant\commands\BatchController::class,
             'overwrite' => true,
-
             'modelNamespace'            => $crudNs . '\models',
             'modelQueryNamespace'       => $crudNs . '\models\query',
             'crudSearchModelNamespace'  => $crudNs . '\models\search',
-
             'crudControllerNamespace'   => $crudNs . '\controllers',
             'crudViewPath' => '@backend/modules/crud/views',
 
             'crudPathPrefix' => '/crud/',
             'crudTidyOutput' => true,
             'crudAccessFilter' => false,
+            'crudActionButtonColumnPosition' => 'right', //left by default
             'crudProviders' => [
                 \schmunk42\giiant\generators\crud\providers\core\OptsProvider::class
             ],
