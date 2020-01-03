@@ -64,6 +64,28 @@ if(!Yii::$app->user->isGuest){
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
 
+                    # 机构
+                    [
+                        'label'  => Yii::t('backend', 'Organization'),
+                        //'icon' => 'nav-icon fa fa-address-book-o',
+                        'options' => ['class' => 'nav-header'],
+                        'url'    => '#Organization'
+                    ],
+                    [
+                        'label' => Yii::t('backend', 'Timeline'),
+                        'icon' => 'nav-icon far fa-calendar-alt',
+                        'url' => ['/org/default/index'],
+                        'badge' => TimelineEvent::find()->today()->count(),
+                        'badgeBgClass' => 'label-success',
+                    ],
+                    [
+                        'label' => Yii::t('backend', 'Users'),
+                        'icon' => 'nav-icon fa fa-user-plus',
+                        'url' => ['/user/index'],
+                        'active' => Yii::$app->controller->id === 'user',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+
                     # Content
                     [
                         'label' => Yii::t('backend', 'Content'),

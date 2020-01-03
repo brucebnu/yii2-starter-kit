@@ -22,6 +22,17 @@ if(!Yii::$app->user->isGuest){
         </li>
     </ul>
 
+    <div class="col-lg-2 col-sm-2">
+        <!-- select -->
+        <select class="custom-select">
+            <option>学校机构 1</option>
+            <option>学校机构 2</option>
+            <option>学校机构 3</option>
+            <option>学校机构 4</option>
+            <option>学校机构 5</option>
+        </select>
+    </div>
+
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
         <div class="input-group input-group-sm">

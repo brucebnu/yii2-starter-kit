@@ -75,6 +75,10 @@ $config = [
             'class' => backend\modules\rbac\Module::class,
             'defaultRoute' => 'rbac-auth-item/index',
         ],
+        # 机构
+        'org' => [
+            'class' => backend\modules\org\Module::class,
+        ],
         # 测试演示
         'crud' => [
             'class' => backend\modules\crud\Module::class,
