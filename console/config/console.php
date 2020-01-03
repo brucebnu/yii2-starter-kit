@@ -62,7 +62,7 @@ return [
         # https://github.com/schmunk42/yii2-giiant/blob/master/docs/25-cli-commands.md
         #
         /**
-         * ./yii batch --tables=user_profile --db:db
+         * ./yii batch --tables=user_profile --db:org
          * yii help gii
          * yii gii/giiant-module
          */
