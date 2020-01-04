@@ -80,7 +80,8 @@
     "dmstr/yii2-web": "~0.4.2",
     "dmstr/yii2-helpers": "~0.4.17",
     "dmstr/yii2-bootstrap": "~0.2.2",
-    "rmrevin/yii2-fontawesome": "dev-master"
+    "rmrevin/yii2-fontawesome": "dev-master",
+    "schmunk42/yii2-giiant": "^0.11.2"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",
@@ -93,7 +94,6 @@
   "autoload-dev": {
     "psr-4": {
       "tests\\": "tests/",
-      "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src",
       "bnu\\widgets\\": "brucebnu/yii2-widget-pack/src"
     }
   },
