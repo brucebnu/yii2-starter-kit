@@ -109,7 +109,7 @@ $config = [
                 'from' => env('SMTP_EMAIL')
             ]
         ],
-        'db' => [
+        'org' => [
             'class' => yii\db\Connection::class,
             'dsn' => env('DB_DSN'),
             'username' => env('DB_USERNAME'),
@@ -118,7 +118,7 @@ $config = [
             'charset' => env('DB_CHARSET', 'utf8'),
             'enableSchemaCache' => YII_ENV_PROD,
         ],
-        'org' => [
+        'db' => [
             'class' => yii\db\Connection::class,
             'dsn' => env('DB_DSN_ORG'),
             'username' => env('DB_USERNAME_ORG'),

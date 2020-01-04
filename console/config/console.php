@@ -74,7 +74,7 @@ return [
             'modelQueryNamespace'       => $crudNs . '\models\query',
             'crudSearchModelNamespace'  => $crudNs . '\models\search',
             'crudControllerNamespace'   => $crudNs . '\controllers',
-            'crudViewPath' => '@backend/modules/crud/views',
+            'crudViewPath' => $crudNs.'\views',
 
             'crudPathPrefix' => '/crud/',
             'crudTidyOutput' => true,
