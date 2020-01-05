@@ -72,17 +72,17 @@ if(!Yii::$app->user->isGuest){
                         'url'    => '#Organization'
                     ],
                     [
-                        'label' => Yii::t('backend', 'Timeline'),
+                        'label' => Yii::t('backend', '机构'),
                         'icon' => 'nav-icon far fa-calendar-alt',
-                        'url' => ['/org/default/index'],
+                        'url' => ['/org/organization/index'],
                         'badge' => TimelineEvent::find()->today()->count(),
                         'badgeBgClass' => 'label-success',
                     ],
                     [
                         'label' => Yii::t('backend', 'Users'),
                         'icon' => 'nav-icon fa fa-user-plus',
-                        'url' => ['/user/index'],
-                        'active' => Yii::$app->controller->id === 'user',
+                        'url' => ['/org/user-org/index'],
+                        'active' => Yii::$app->controller->id === 'user-org',
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
 

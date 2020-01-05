@@ -56,13 +56,21 @@ abstract class UserAddress extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -100,25 +108,25 @@ abstract class UserAddress extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_address_id' => Yii::t('models', 'User Address ID'),
-            'user_id' => Yii::t('models', 'User ID'),
-            'country' => Yii::t('models', 'Country'),
-            'province' => Yii::t('models', 'Province'),
-            'city' => Yii::t('models', 'City'),
-            'region' => Yii::t('models', 'Region'),
-            'town' => Yii::t('models', 'Town'),
-            'sort' => Yii::t('models', 'Sort'),
-            'detailed' => Yii::t('models', 'Detailed'),
-            'consignee' => Yii::t('models', 'Consignee'),
-            'gender' => Yii::t('models', 'Gender'),
-            'phone_number' => Yii::t('models', 'Phone Number'),
-            'email' => Yii::t('models', 'Email'),
-            'longitude' => Yii::t('models', 'Longitude'),
-            'latitude' => Yii::t('models', 'Latitude'),
-            'alias' => Yii::t('models', 'Alias'),
-            'status' => Yii::t('models', 'Status'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'user_address_id' => Yii::t('backend', 'User Address ID'),
+            'user_id' => Yii::t('backend', 'User ID'),
+            'country' => Yii::t('backend', 'Country'),
+            'province' => Yii::t('backend', 'Province'),
+            'city' => Yii::t('backend', 'City'),
+            'region' => Yii::t('backend', 'Region'),
+            'town' => Yii::t('backend', 'Town'),
+            'sort' => Yii::t('backend', 'Sort'),
+            'detailed' => Yii::t('backend', 'Detailed'),
+            'consignee' => Yii::t('backend', 'Consignee'),
+            'gender' => Yii::t('backend', 'Gender'),
+            'phone_number' => Yii::t('backend', 'Phone Number'),
+            'email' => Yii::t('backend', 'Email'),
+            'longitude' => Yii::t('backend', 'Longitude'),
+            'latitude' => Yii::t('backend', 'Latitude'),
+            'alias' => Yii::t('backend', 'Alias'),
+            'status' => Yii::t('backend', 'Status'),
+            'created_at' => Yii::t('backend', 'Created At'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
         ];
     }
 
@@ -128,24 +136,24 @@ abstract class UserAddress extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'user_id' => Yii::t('models', '用户'),
-            'country' => Yii::t('models', '国家'),
-            'province' => Yii::t('models', 'Province'),
-            'city' => Yii::t('models', 'City'),
-            'region' => Yii::t('models', 'Region'),
-            'town' => Yii::t('models', 'Town'),
-            'sort' => Yii::t('models', '排序'),
-            'detailed' => Yii::t('models', '地址详情'),
-            'consignee' => Yii::t('models', '收件人'),
-            'gender' => Yii::t('models', '性别'),
-            'phone_number' => Yii::t('models', '手机'),
-            'email' => Yii::t('models', 'Email'),
-            'longitude' => Yii::t('models', '经度'),
-            'latitude' => Yii::t('models', '维度'),
-            'alias' => Yii::t('models', '别名'),
-            'status' => Yii::t('models', '状态'),
-            'created_at' => Yii::t('models', '创建'),
-            'updated_at' => Yii::t('models', '更新'),
+            'user_id' => Yii::t('backend', '用户'),
+            'country' => Yii::t('backend', '国家'),
+            'province' => Yii::t('backend', 'Province'),
+            'city' => Yii::t('backend', 'City'),
+            'region' => Yii::t('backend', 'Region'),
+            'town' => Yii::t('backend', 'Town'),
+            'sort' => Yii::t('backend', '排序'),
+            'detailed' => Yii::t('backend', '地址详情'),
+            'consignee' => Yii::t('backend', '收件人'),
+            'gender' => Yii::t('backend', '性别'),
+            'phone_number' => Yii::t('backend', '手机'),
+            'email' => Yii::t('backend', 'Email'),
+            'longitude' => Yii::t('backend', '经度'),
+            'latitude' => Yii::t('backend', '维度'),
+            'alias' => Yii::t('backend', '别名'),
+            'status' => Yii::t('backend', '状态'),
+            'created_at' => Yii::t('backend', '创建'),
+            'updated_at' => Yii::t('backend', '更新'),
         ]);
     }
 
@@ -197,8 +205,8 @@ abstract class UserAddress extends \yii\db\ActiveRecord
     public static function optsGender()
     {
         return [
-            self::GENDER_MALE => Yii::t('models', 'Male'),
-            self::GENDER_FEMALE => Yii::t('models', 'Female'),
+            self::GENDER_MALE => Yii::t('backend', 'Male'),
+            self::GENDER_FEMALE => Yii::t('backend', 'Female'),
         ];
     }
 
@@ -222,8 +230,8 @@ abstract class UserAddress extends \yii\db\ActiveRecord
     public static function optsStatus()
     {
         return [
-            self::STATUS_OPEN => Yii::t('models', 'Open'),
-            self::STATUS_CLOSE => Yii::t('models', 'Close'),
+            self::STATUS_OPEN => Yii::t('backend', 'Open'),
+            self::STATUS_CLOSE => Yii::t('backend', 'Close'),
         ];
     }
 

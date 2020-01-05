@@ -32,6 +32,14 @@ abstract class CnRegion extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -51,9 +59,9 @@ abstract class CnRegion extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'region_id' => Yii::t('models', 'Region ID'),
-            'region_name' => Yii::t('models', 'Region Name'),
-            'city_id' => Yii::t('models', 'City ID'),
+            'region_id' => Yii::t('backend', 'Region ID'),
+            'region_name' => Yii::t('backend', 'Region Name'),
+            'city_id' => Yii::t('backend', 'City ID'),
         ];
     }
 
@@ -63,8 +71,8 @@ abstract class CnRegion extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'region_name' => Yii::t('models', '地区名称'),
-            'city_id' => Yii::t('models', '父地区ID'),
+            'region_name' => Yii::t('backend', '地区名称'),
+            'city_id' => Yii::t('backend', '父地区ID'),
         ]);
     }
 

@@ -5,6 +5,7 @@
 namespace backend\modules\org\models\base;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -25,6 +26,8 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $sort
  * @property integer $created_at
  * @property integer $updated_at
+ * @property integer $created_by
+ * @property integer $updated_by
  *
  * @property \backend\modules\org\models\Course[] $courses
  * @property \backend\modules\org\models\Dormitory[] $dormitories
@@ -56,13 +59,24 @@ abstract class Organization extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => BlameableBehavior::class,
+            ],
+            [
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -94,21 +108,23 @@ abstract class Organization extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'org_id' => Yii::t('models', 'Org ID'),
-            'org_parent_id' => Yii::t('models', 'Org Parent ID'),
-            'title' => Yii::t('models', 'Title'),
-            'home_site' => Yii::t('models', 'Home Site'),
-            'school_logo_src' => Yii::t('models', 'School Logo Src'),
-            'country' => Yii::t('models', 'Country'),
-            'address' => Yii::t('models', 'Address'),
-            'inland_phone' => Yii::t('models', 'Inland Phone'),
-            'foreign_phone' => Yii::t('models', 'Foreign Phone'),
-            'email' => Yii::t('models', 'Email'),
-            'created_id' => Yii::t('models', 'Created ID'),
-            'status' => Yii::t('models', 'Status'),
-            'sort' => Yii::t('models', 'Sort'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'org_id' => Yii::t('backend', 'Org ID'),
+            'org_parent_id' => Yii::t('backend', 'Org Parent ID'),
+            'title' => Yii::t('backend', 'Title'),
+            'home_site' => Yii::t('backend', 'Home Site'),
+            'school_logo_src' => Yii::t('backend', 'School Logo Src'),
+            'country' => Yii::t('backend', 'Country'),
+            'address' => Yii::t('backend', 'Address'),
+            'inland_phone' => Yii::t('backend', 'Inland Phone'),
+            'foreign_phone' => Yii::t('backend', 'Foreign Phone'),
+            'email' => Yii::t('backend', 'Email'),
+            'created_id' => Yii::t('backend', 'Created ID'),
+            'status' => Yii::t('backend', 'Status'),
+            'sort' => Yii::t('backend', 'Sort'),
+            'created_at' => Yii::t('backend', 'Created At'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
+            'created_by' => Yii::t('backend', 'Created By'),
+            'updated_by' => Yii::t('backend', 'Updated By'),
         ];
     }
 
@@ -118,18 +134,23 @@ abstract class Organization extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'org_id' => Yii::t('models', '自增ID'),
-            'org_parent_id' => Yii::t('models', '机构上级ID'),
-            'title' => Yii::t('models', '机构名称'),
-            'home_site' => Yii::t('models', '机构首页'),
-            'country' => Yii::t('models', '城市'),
-            'address' => Yii::t('models', '地址'),
-            'inland_phone' => Yii::t('models', '国内联系电话'),
-            'foreign_phone' => Yii::t('models', '国外联系电话'),
-            'email' => Yii::t('models', '联系邮箱'),
-            'created_id' => Yii::t('models', '创建者'),
-            'status' => Yii::t('models', '状态'),
-            'sort' => Yii::t('models', '默认与排序'),
+            'org_id' => Yii::t('backend', '自增ID'),
+            'org_parent_id' => Yii::t('backend', '机构上级ID'),
+            'title' => Yii::t('backend', '机构名称'),
+            'home_site' => Yii::t('backend', '机构首页'),
+            'school_logo_src' => Yii::t('backend', '学校Logo'),
+            'country' => Yii::t('backend', '城市'),
+            'address' => Yii::t('backend', '地址'),
+            'inland_phone' => Yii::t('backend', '国内联系电话'),
+            'foreign_phone' => Yii::t('backend', '国外联系电话'),
+            'email' => Yii::t('backend', '联系邮箱'),
+            'created_id' => Yii::t('backend', '创建者'),
+            'status' => Yii::t('backend', '状态'),
+            'sort' => Yii::t('backend', '默认与排序'),
+            'created_at' => Yii::t('backend', '创建时间'),
+            'updated_at' => Yii::t('backend', '更新时间'),
+            'created_by' => Yii::t('backend', '创建者'),
+            'updated_by' => Yii::t('backend', '更新着'),
         ]);
     }
 
@@ -221,9 +242,9 @@ abstract class Organization extends \yii\db\ActiveRecord
     public static function optsStatus()
     {
         return [
-            self::STATUS_ACTIVE => Yii::t('models', 'Active'),
-            self::STATUS_CLOSE => Yii::t('models', 'Close'),
-            self::STATUS_DELETE => Yii::t('models', 'Delete'),
+            self::STATUS_ACTIVE => Yii::t('backend', 'Active'),
+            self::STATUS_CLOSE => Yii::t('backend', 'Close'),
+            self::STATUS_DELETE => Yii::t('backend', 'Delete'),
         ];
     }
 

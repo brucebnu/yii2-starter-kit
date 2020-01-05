@@ -40,6 +40,14 @@ abstract class Course extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -64,11 +72,11 @@ abstract class Course extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'course_id' => Yii::t('models', 'Course ID'),
-            'org_id' => Yii::t('models', 'Org ID'),
-            'regulation' => Yii::t('models', 'Regulation'),
-            'title' => Yii::t('models', 'Title'),
-            'descript' => Yii::t('models', 'Descript'),
+            'course_id' => Yii::t('backend', 'Course ID'),
+            'org_id' => Yii::t('backend', 'Org ID'),
+            'regulation' => Yii::t('backend', 'Regulation'),
+            'title' => Yii::t('backend', 'Title'),
+            'descript' => Yii::t('backend', 'Descript'),
         ];
     }
 
@@ -78,10 +86,10 @@ abstract class Course extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'org_id' => Yii::t('models', '校区'),
-            'regulation' => Yii::t('models', '生活模式'),
-            'title' => Yii::t('models', '课程'),
-            'descript' => Yii::t('models', '课程描述'),
+            'org_id' => Yii::t('backend', '校区'),
+            'regulation' => Yii::t('backend', '生活模式'),
+            'title' => Yii::t('backend', '课程'),
+            'descript' => Yii::t('backend', '课程描述'),
         ]);
     }
 
@@ -133,9 +141,9 @@ abstract class Course extends \yii\db\ActiveRecord
     public static function optsRegulation()
     {
         return [
-            self::REGULATION_JSPARTA => Yii::t('models', 'J Sparta'),
-            self::REGULATION_SPARTA => Yii::t('models', 'Sparta'),
-            self::REGULATION_VACATION => Yii::t('models', 'Vacation'),
+            self::REGULATION_JSPARTA => Yii::t('backend', 'J Sparta'),
+            self::REGULATION_SPARTA => Yii::t('backend', 'Sparta'),
+            self::REGULATION_VACATION => Yii::t('backend', 'Vacation'),
         ];
     }
 

@@ -64,13 +64,21 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -115,25 +123,25 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_id' => Yii::t('models', 'User ID'),
-            'passport_no' => Yii::t('models', 'Passport No'),
-            'nationality' => Yii::t('models', 'Nationality'),
-            'passport_full_Name' => Yii::t('models', 'Passport Full Name'),
-            'full_name' => Yii::t('models', 'Full Name'),
-            'nick_name' => Yii::t('models', 'Nick Name'),
-            'gender' => Yii::t('models', 'Gender'),
-            'birthday' => Yii::t('models', 'Birthday'),
-            'passport_src' => Yii::t('models', 'Passport Src'),
-            'emergency_contact' => Yii::t('models', 'Emergency Contact'),
-            'phone_calling_code' => Yii::t('models', 'Phone Calling Code'),
-            'phone' => Yii::t('models', 'Phone'),
-            'phone_native_calling_code' => Yii::t('models', 'Phone Native Calling Code'),
-            'phone_native' => Yii::t('models', 'Phone Native'),
-            'linked_training' => Yii::t('models', 'Linked Training'),
-            'company_type' => Yii::t('models', 'Company Type'),
-            'company_title' => Yii::t('models', 'Company Title'),
-            'created_at' => Yii::t('models', 'Created At'),
-            'updated_at' => Yii::t('models', 'Updated At'),
+            'user_id' => Yii::t('backend', 'User ID'),
+            'passport_no' => Yii::t('backend', 'Passport No'),
+            'nationality' => Yii::t('backend', 'Nationality'),
+            'passport_full_Name' => Yii::t('backend', 'Passport Full Name'),
+            'full_name' => Yii::t('backend', 'Full Name'),
+            'nick_name' => Yii::t('backend', 'Nick Name'),
+            'gender' => Yii::t('backend', 'Gender'),
+            'birthday' => Yii::t('backend', 'Birthday'),
+            'passport_src' => Yii::t('backend', 'Passport Src'),
+            'emergency_contact' => Yii::t('backend', 'Emergency Contact'),
+            'phone_calling_code' => Yii::t('backend', 'Phone Calling Code'),
+            'phone' => Yii::t('backend', 'Phone'),
+            'phone_native_calling_code' => Yii::t('backend', 'Phone Native Calling Code'),
+            'phone_native' => Yii::t('backend', 'Phone Native'),
+            'linked_training' => Yii::t('backend', 'Linked Training'),
+            'company_type' => Yii::t('backend', 'Company Type'),
+            'company_title' => Yii::t('backend', 'Company Title'),
+            'created_at' => Yii::t('backend', 'Created At'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
         ];
     }
 
@@ -143,24 +151,24 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'passport_no' => Yii::t('models', '护照号'),
-            'nationality' => Yii::t('models', '国籍'),
-            'passport_full_Name' => Yii::t('models', '护照全名'),
-            'full_name' => Yii::t('models', '全名'),
-            'nick_name' => Yii::t('models', '昵称'),
-            'gender' => Yii::t('models', '性别'),
-            'birthday' => Yii::t('models', '生日'),
-            'passport_src' => Yii::t('models', '护照地址'),
-            'emergency_contact' => Yii::t('models', '紧急联系人'),
-            'phone_calling_code' => Yii::t('models', '国际区号'),
-            'phone' => Yii::t('models', '手机号'),
-            'phone_native_calling_code' => Yii::t('models', '国际区号'),
-            'phone_native' => Yii::t('models', '游学手机号'),
-            'linked_training' => Yii::t('models', '海外进修规划'),
-            'company_type' => Yii::t('models', '公司类型'),
-            'company_title' => Yii::t('models', '公司名称'),
-            'created_at' => Yii::t('models', '创建时间'),
-            'updated_at' => Yii::t('models', '更新时间'),
+            'passport_no' => Yii::t('backend', '护照号'),
+            'nationality' => Yii::t('backend', '国籍'),
+            'passport_full_Name' => Yii::t('backend', '护照全名'),
+            'full_name' => Yii::t('backend', '全名'),
+            'nick_name' => Yii::t('backend', '昵称'),
+            'gender' => Yii::t('backend', '性别'),
+            'birthday' => Yii::t('backend', '生日'),
+            'passport_src' => Yii::t('backend', '护照地址'),
+            'emergency_contact' => Yii::t('backend', '紧急联系人'),
+            'phone_calling_code' => Yii::t('backend', '国际区号'),
+            'phone' => Yii::t('backend', '手机号'),
+            'phone_native_calling_code' => Yii::t('backend', '国际区号'),
+            'phone_native' => Yii::t('backend', '游学手机号'),
+            'linked_training' => Yii::t('backend', '海外进修规划'),
+            'company_type' => Yii::t('backend', '公司类型'),
+            'company_title' => Yii::t('backend', '公司名称'),
+            'created_at' => Yii::t('backend', '创建时间'),
+            'updated_at' => Yii::t('backend', '更新时间'),
         ]);
     }
 
@@ -252,8 +260,8 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     public static function optsGender()
     {
         return [
-            self::GENDER_MALE => Yii::t('models', 'Male'),
-            self::GENDER_FEMALE => Yii::t('models', 'Female'),
+            self::GENDER_MALE => Yii::t('backend', 'Male'),
+            self::GENDER_FEMALE => Yii::t('backend', 'Female'),
         ];
     }
 
@@ -277,8 +285,8 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     public static function optsLinkedTraining()
     {
         return [
-            self::LINKED_TRAINING_YES => Yii::t('models', 'Yes'),
-            self::LINKED_TRAINING_NO => Yii::t('models', 'No'),
+            self::LINKED_TRAINING_YES => Yii::t('backend', 'Yes'),
+            self::LINKED_TRAINING_NO => Yii::t('backend', 'No'),
         ];
     }
 
@@ -302,9 +310,9 @@ abstract class OrgUser extends \yii\db\ActiveRecord
     public static function optsCompanyType()
     {
         return [
-            self::COMPANY_TYPE_INDIVIDUAL => Yii::t('models', 'Individual'),
-            self::COMPANY_TYPE_SCHOOL => Yii::t('models', 'School'),
-            self::COMPANY_TYPE_COMPANY => Yii::t('models', 'Company'),
+            self::COMPANY_TYPE_INDIVIDUAL => Yii::t('backend', 'Individual'),
+            self::COMPANY_TYPE_SCHOOL => Yii::t('backend', 'School'),
+            self::COMPANY_TYPE_COMPANY => Yii::t('backend', 'Company'),
         ];
     }
 

@@ -36,17 +36,25 @@ abstract class Order extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
             [
-                'class' => BlameableBehavior::className(),
+                'class' => BlameableBehavior::class,
                 'updatedByAttribute' => false,
             ],
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -68,12 +76,12 @@ abstract class Order extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'order_id' => Yii::t('models', 'Order ID'),
-            'org_id' => Yii::t('models', 'Org ID'),
-            'user_id' => Yii::t('models', 'User ID'),
-            'created_by' => Yii::t('models', 'Created By'),
-            'updated_at' => Yii::t('models', 'Updated At'),
-            'created_at' => Yii::t('models', 'Created At'),
+            'order_id' => Yii::t('backend', 'Order ID'),
+            'org_id' => Yii::t('backend', 'Org ID'),
+            'user_id' => Yii::t('backend', 'User ID'),
+            'created_by' => Yii::t('backend', 'Created By'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
+            'created_at' => Yii::t('backend', 'Created At'),
         ];
     }
 

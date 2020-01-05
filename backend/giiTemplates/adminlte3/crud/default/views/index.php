@@ -151,25 +151,23 @@ PHP;
                 ?>
             <?php endforeach; ?>
             <?= "<?= \n" ?>
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . <?= $generator->generateString(
-                'Relations'
-            ) ?>,
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [<?= "\n" . $items . "\n" ?>]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . <?= $generator->generateString(
+                    'Relations'
+                ) ?>,
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [<?= "\n" . $items . "\n" ?>]
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             <?= "?>\n" ?>
         </div>
     </div>

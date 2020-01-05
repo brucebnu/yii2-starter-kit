@@ -49,13 +49,21 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -95,14 +103,14 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'user_to_ort_id' => Yii::t('models', 'User To Ort ID'),
-            'org_id' => Yii::t('models', 'Org ID'),
-            'user_id' => Yii::t('models', 'User ID'),
-            'org_title' => Yii::t('models', 'Org Title'),
-            'role_name' => Yii::t('models', 'Role Name'),
-            'status' => Yii::t('models', 'Status'),
-            'updated_at' => Yii::t('models', 'Updated At'),
-            'created_at' => Yii::t('models', 'Created At'),
+            'user_to_ort_id' => Yii::t('backend', 'User To Ort ID'),
+            'org_id' => Yii::t('backend', 'Org ID'),
+            'user_id' => Yii::t('backend', 'User ID'),
+            'org_title' => Yii::t('backend', 'Org Title'),
+            'role_name' => Yii::t('backend', 'Role Name'),
+            'status' => Yii::t('backend', 'Status'),
+            'updated_at' => Yii::t('backend', 'Updated At'),
+            'created_at' => Yii::t('backend', 'Created At'),
         ];
     }
 
@@ -112,13 +120,13 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'org_id' => Yii::t('models', '机构ID'),
-            'user_id' => Yii::t('models', '用户ID'),
-            'org_title' => Yii::t('models', '机构名称'),
-            'role_name' => Yii::t('models', '名称'),
-            'status' => Yii::t('models', '状态'),
-            'updated_at' => Yii::t('models', '更新时间'),
-            'created_at' => Yii::t('models', '创建时间'),
+            'org_id' => Yii::t('backend', '机构ID'),
+            'user_id' => Yii::t('backend', '用户ID'),
+            'org_title' => Yii::t('backend', '机构名称'),
+            'role_name' => Yii::t('backend', '名称'),
+            'status' => Yii::t('backend', '状态'),
+            'updated_at' => Yii::t('backend', '更新时间'),
+            'created_at' => Yii::t('backend', '创建时间'),
         ]);
     }
 
@@ -170,11 +178,11 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
     public static function optsRoleName()
     {
         return [
-            self::ROLE_NAME_STUDENT => Yii::t('models', 'Student'),
-            self::ROLE_NAME_TEACHER => Yii::t('models', 'Teacher'),
-            self::ROLE_NAME_AGENCY => Yii::t('models', 'Agency'),
-            self::ROLE_NAME_PROVIDER => Yii::t('models', 'Provider'),
-            self::ROLE_NAME_EMPLOYEE => Yii::t('models', 'Employee'),
+            self::ROLE_NAME_STUDENT => Yii::t('backend', 'Student'),
+            self::ROLE_NAME_TEACHER => Yii::t('backend', 'Teacher'),
+            self::ROLE_NAME_AGENCY => Yii::t('backend', 'Agency'),
+            self::ROLE_NAME_PROVIDER => Yii::t('backend', 'Provider'),
+            self::ROLE_NAME_EMPLOYEE => Yii::t('backend', 'Employee'),
         ];
     }
 
@@ -198,9 +206,9 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
     public static function optsStatus()
     {
         return [
-            self::STATUS_ACTIVE => Yii::t('models', 'Active'),
-            self::STATUS_CLOSE => Yii::t('models', 'Close'),
-            self::STATUS_DELETE => Yii::t('models', 'Delete'),
+            self::STATUS_ACTIVE => Yii::t('backend', 'Active'),
+            self::STATUS_CLOSE => Yii::t('backend', 'Close'),
+            self::STATUS_DELETE => Yii::t('backend', 'Delete'),
         ];
     }
 

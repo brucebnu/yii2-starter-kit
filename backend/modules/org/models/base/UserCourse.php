@@ -36,6 +36,14 @@ abstract class UserCourse extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -56,13 +64,13 @@ abstract class UserCourse extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'org_user_course_id' => Yii::t('models', 'Org User Course ID'),
-            'org_id' => Yii::t('models', 'Org ID'),
-            'user_id' => Yii::t('models', 'User ID'),
-            'course_id' => Yii::t('models', 'Course ID'),
-            'period_week' => Yii::t('models', 'Period Week'),
-            'started_at' => Yii::t('models', 'Started At'),
-            'ended_at' => Yii::t('models', 'Ended At'),
+            'org_user_course_id' => Yii::t('backend', 'Org User Course ID'),
+            'org_id' => Yii::t('backend', 'Org ID'),
+            'user_id' => Yii::t('backend', 'User ID'),
+            'course_id' => Yii::t('backend', 'Course ID'),
+            'period_week' => Yii::t('backend', 'Period Week'),
+            'started_at' => Yii::t('backend', 'Started At'),
+            'ended_at' => Yii::t('backend', 'Ended At'),
         ];
     }
 
@@ -72,13 +80,13 @@ abstract class UserCourse extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'org_user_course_id' => Yii::t('models', 'ID'),
-            'org_id' => Yii::t('models', '学校'),
-            'user_id' => Yii::t('models', '学生'),
-            'course_id' => Yii::t('models', '课件'),
-            'period_week' => Yii::t('models', '几周'),
-            'started_at' => Yii::t('models', '开始'),
-            'ended_at' => Yii::t('models', '结束'),
+            'org_user_course_id' => Yii::t('backend', 'ID'),
+            'org_id' => Yii::t('backend', '学校'),
+            'user_id' => Yii::t('backend', '学生'),
+            'course_id' => Yii::t('backend', '课件'),
+            'period_week' => Yii::t('backend', '几周'),
+            'started_at' => Yii::t('backend', '开始'),
+            'ended_at' => Yii::t('backend', '结束'),
         ]);
     }
 

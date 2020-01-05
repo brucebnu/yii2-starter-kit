@@ -60,8 +60,8 @@ if (YII_DEBUG) {
 
 
 if (YII_ENV_DEV) {
-    # "schmunk42/yii2-giiant": "^0.10.8",
-    # "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src"
+    # "schmunk42/yii2-giiant": "^0.11.2",
+    # "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src",
     $config['modules']['gii'] = [
         'allowedIPs' => ['*'],
         'generators' => [

@@ -31,6 +31,14 @@ abstract class CnZipcode extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \yii\db\Connection the database connection used by this AR class.
+     */
+    public static function getDb()
+    {
+        return Yii::$app->get('org');
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -49,10 +57,10 @@ abstract class CnZipcode extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'zip_id' => Yii::t('models', 'Zip ID'),
-            'region_id' => Yii::t('models', 'Region ID'),
-            'zip_number' => Yii::t('models', 'Zip Number'),
-            'code' => Yii::t('models', 'Code'),
+            'zip_id' => Yii::t('backend', 'Zip ID'),
+            'region_id' => Yii::t('backend', 'Region ID'),
+            'zip_number' => Yii::t('backend', 'Zip Number'),
+            'code' => Yii::t('backend', 'Code'),
         ];
     }
 
