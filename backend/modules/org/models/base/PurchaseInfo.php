@@ -113,7 +113,7 @@ abstract class PurchaseInfo extends \yii\db\ActiveRecord
      */
     public function getOrg()
     {
-        return $this->hasOne(\backend\modules\org\models\Organization::className(), ['org_id' => 'org_id']);
+        return $this->hasOne(\backend\modules\org\models\Organization::className(), ['org_id' => 'org_id'])->inverseOf('purchaseInfos');
     }
 
 

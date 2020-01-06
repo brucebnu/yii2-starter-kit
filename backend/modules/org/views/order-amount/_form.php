@@ -39,6 +39,9 @@ use yii\helpers\StringHelper;
 <!-- attribute update_at -->
 			<?= $form->field($model, 'update_at')->textInput() ?>
 
+<!-- attribute update_by -->
+			<?= $form->field($model, 'update_by')->textInput() ?>
+
 <!-- attribute transaction_price -->
 			<?= $form->field($model, 'transaction_price')->textInput(['maxlength' => true]) ?>
 
@@ -47,11 +50,18 @@ use yii\helpers\StringHelper;
                             \backend\modules\org\models\OrderAmount::optspaymenttype()
                         ); ?>
 
-<!-- attribute currency_type -->
-			<?= $form->field($model, 'currency_type')->textInput(['maxlength' => true]) ?>
-
 <!-- attribute pay_order_src -->
-			<?= $form->field($model, 'pay_order_src')->textInput(['maxlength' => true]) ?>        <?php $this->endBlock(); ?>
+			<?= $form->field($model, 'pay_order_src')->textInput(['maxlength' => true]) ?>
+
+<!-- attribute currency_type -->
+			<?=                         $form->field($model, 'currency_type')->dropDownList(
+                            \backend\modules\org\models\OrderAmount::optscurrencytype()
+                        ); ?>
+
+<!-- attribute amount_type -->
+			<?=                         $form->field($model, 'amount_type')->dropDownList(
+                            \backend\modules\org\models\OrderAmount::optsamounttype()
+                        ); ?>        <?php $this->endBlock(); ?>
         
         <?=
             yii\bootstrap4\Tabs::widget(

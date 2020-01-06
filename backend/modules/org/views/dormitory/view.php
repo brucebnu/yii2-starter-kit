@@ -144,6 +144,13 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'inland_phone',
         'foreign_phone',
         'email:email',
+        'created_id',
+        'status',
+        'sort',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
 ]
 ])
  . '</div>' 

@@ -21,17 +21,23 @@ use yii\widgets\ActiveForm;
 
 		<?= $form->field($model, 'order_id') ?>
 
-		<?= $form->field($model, 'currency_type') ?>
-
 		<?= $form->field($model, 'transaction_price') ?>
 
-		<?= $form->field($model, 'payment_type') ?>
+		<?= $form->field($model, 'currency_type') ?>
+
+		<?= $form->field($model, 'amount_type') ?>
+
+		<?php // echo $form->field($model, 'payment_type') ?>
 
 		<?php // echo $form->field($model, 'pay_order_src') ?>
 
 		<?php // echo $form->field($model, 'created_at') ?>
 
 		<?php // echo $form->field($model, 'update_at') ?>
+
+		<?php // echo $form->field($model, 'created_by') ?>
+
+		<?php // echo $form->field($model, 'update_by') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>

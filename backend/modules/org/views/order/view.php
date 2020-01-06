@@ -64,6 +64,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     'attributes' => [
             'org_id',
         'user_id',
+        'total_price',
     ],
     ]); ?>
 
@@ -85,12 +86,12 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 <div style='position:absolute; right: 0px; top: -25px;'>
   <?= Html::a(
             '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' Org',
-            ['/crud/organization/index'],
+            ['organization/index'],
             ['class'=>'btn text-muted btn-xs']
         ) ?>
   <?= Html::a(
             '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' Org',
-            ['/crud/organization/create', 'Organization' => ['org_id' => $model->order_id]],
+            ['organization/create', 'Organization' => ['org_id' => $model->order_id]],
             ['class'=>'btn btn-success btn-xs']
         ); ?>
 </div>
@@ -120,14 +121,14 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     'urlCreator' => function ($action, $model, $key, $index) {
         // using the column name as key, not mapping to 'id' like the standard generator
         $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
-        $params[0] = '/crud/organization' . '/' . $action;
+        $params[0] = 'organization' . '/' . $action;
         $params['Organization'] = ['org_id' => $model->primaryKey()[0]];
         return $params;
     },
     'buttons'    => [
         
     ],
-    'controller' => '/crud/organization'
+    'controller' => 'organization'
 ],
         'org_parent_id',
         'title',
@@ -138,6 +139,13 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'inland_phone',
         'foreign_phone',
         'email:email',
+        'created_id',
+        'status',
+        'sort',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
 ]
 ])
  . '</div>' 
@@ -151,12 +159,12 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 <div style='position:absolute; right: 0px; top: -25px;'>
   <?= Html::a(
             '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' Order Amounts',
-            ['/crud/order-amount/index'],
+            ['order-amount/index'],
             ['class'=>'btn text-muted btn-xs']
         ) ?>
   <?= Html::a(
             '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' Order Amount',
-            ['/crud/order-amount/create', 'OrderAmount' => ['order_id' => $model->order_id]],
+            ['order-amount/create', 'OrderAmount' => ['order_id' => $model->order_id]],
             ['class'=>'btn btn-success btn-xs']
         ); ?>
 </div>
@@ -186,22 +194,25 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     'urlCreator' => function ($action, $model, $key, $index) {
         // using the column name as key, not mapping to 'id' like the standard generator
         $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
-        $params[0] = '/crud/order-amount' . '/' . $action;
+        $params[0] = 'order-amount' . '/' . $action;
         $params['OrderAmount'] = ['order_id' => $model->primaryKey()[0]];
         return $params;
     },
     'buttons'    => [
         
     ],
-    'controller' => '/crud/order-amount'
+    'controller' => 'order-amount'
 ],
         'amount_id',
         'currency_type',
         'transaction_price',
+        'amount_type',
         'payment_type',
         'pay_order_src',
         'created_at',
         'update_at',
+        'created_by',
+        'update_by',
 ]
 ])
  . '</div>' 

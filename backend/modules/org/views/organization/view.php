@@ -267,9 +267,76 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 ],
         'order_id',
         'user_id',
-        'created_by',
+        'total_price',
         'updated_at',
         'created_at',
+        'created_by',
+        'updated_by',
+]
+])
+ . '</div>' 
+?>
+<?php Pjax::end() ?>
+<?php $this->endBlock() ?>
+
+
+<?php $this->beginBlock('PurchaseInfos'); ?>
+<div style='position: relative'>
+<div style='position:absolute; right: 0px; top: -25px;'>
+  <?= Html::a(
+            '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' Purchase Infos',
+            ['purchase-info/index'],
+            ['class'=>'btn text-muted btn-xs']
+        ) ?>
+  <?= Html::a(
+            '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' Purchase Info',
+            ['purchase-info/create', 'PurchaseInfo' => ['org_id' => $model->org_id]],
+            ['class'=>'btn btn-success btn-xs']
+        ); ?>
+</div>
+</div>
+<?php Pjax::begin(['id'=>'pjax-PurchaseInfos', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-PurchaseInfos ul.pagination a, th a']) ?>
+<?=
+ '<div class="table-responsive">'
+ . \yii\grid\GridView::widget([
+    'layout' => '{summary}<div class="text-center">{pager}</div>{items}<div class="text-center">{pager}</div>',
+    'dataProvider' => new \yii\data\ActiveDataProvider([
+        'query' => $model->getPurchaseInfos(),
+        'pagination' => [
+            'pageSize' => 20,
+            'pageParam'=>'page-purchaseinfos',
+        ]
+    ]),
+    'pager'        => [
+        'class'          => yii\widgets\LinkPager::className(),
+        'firstPageLabel' => Yii::t('backend', 'First'),
+        'lastPageLabel'  => Yii::t('backend', 'Last')
+    ],
+    'columns' => [
+ [
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'urlCreator' => function ($action, $model, $key, $index) {
+        // using the column name as key, not mapping to 'id' like the standard generator
+        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
+        $params[0] = 'purchase-info' . '/' . $action;
+        $params['PurchaseInfo'] = ['org_id' => $model->primaryKey()[0]];
+        return $params;
+    },
+    'buttons'    => [
+        
+    ],
+    'controller' => 'purchase-info'
+],
+        'purchase_invoice_id',
+        'pubchase_tag',
+        'pubchase_invoice_price',
+        'pubchase_invoice_src',
+        'updated_at',
+        'created_at',
+        'updated_by',
+        'created_by',
 ]
 ])
  . '</div>' 
@@ -464,6 +531,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'pickup_special_request:ntext',
         'visa_expiry_date',
         'travel_insurance',
+        'address',
 ]
 ])
  . '</div>' 
@@ -563,6 +631,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 [
     'content' => $this->blocks['Orders'],
     'label'   => '<small>Orders <span class="badge badge-default">'. $model->getOrders()->count() . '</span></small>',
+    'active'  => false,
+],
+[
+    'content' => $this->blocks['PurchaseInfos'],
+    'label'   => '<small>Purchase Infos <span class="badge badge-default">'. $model->getPurchaseInfos()->count() . '</span></small>',
     'active'  => false,
 ],
 [

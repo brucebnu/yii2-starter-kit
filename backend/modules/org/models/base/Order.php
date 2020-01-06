@@ -14,9 +14,11 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $order_id
  * @property integer $org_id
  * @property integer $user_id
- * @property integer $created_by
+ * @property string $total_price
  * @property integer $updated_at
  * @property integer $created_at
+ * @property integer $created_by
+ * @property integer $updated_by
  *
  * @property \backend\modules\org\models\Organization $org
  * @property \backend\modules\org\models\OrderAmount[] $orderAmounts
@@ -51,7 +53,6 @@ abstract class Order extends \yii\db\ActiveRecord
         return [
             [
                 'class' => BlameableBehavior::class,
-                'updatedByAttribute' => false,
             ],
             [
                 'class' => TimestampBehavior::class,
@@ -66,6 +67,8 @@ abstract class Order extends \yii\db\ActiveRecord
     {
         return [
             [['org_id', 'user_id'], 'integer'],
+            [['user_id'], 'required'],
+            [['total_price'], 'number'],
             [['org_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\Organization::className(), 'targetAttribute' => ['org_id' => 'org_id']]
         ];
     }
@@ -79,10 +82,29 @@ abstract class Order extends \yii\db\ActiveRecord
             'order_id' => Yii::t('backend', 'Order ID'),
             'org_id' => Yii::t('backend', 'Org ID'),
             'user_id' => Yii::t('backend', 'User ID'),
-            'created_by' => Yii::t('backend', 'Created By'),
+            'total_price' => Yii::t('backend', 'Total Price'),
             'updated_at' => Yii::t('backend', 'Updated At'),
             'created_at' => Yii::t('backend', 'Created At'),
+            'created_by' => Yii::t('backend', 'Created By'),
+            'updated_by' => Yii::t('backend', 'Updated By'),
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeHints()
+    {
+        return array_merge(parent::attributeHints(), [
+            'order_id' => Yii::t('backend', '订单ID'),
+            'org_id' => Yii::t('backend', '学校'),
+            'user_id' => Yii::t('backend', '用户'),
+            'total_price' => Yii::t('backend', '总价'),
+            'updated_at' => Yii::t('backend', '更新时间'),
+            'created_at' => Yii::t('backend', '创建时间'),
+            'created_by' => Yii::t('backend', '创建者'),
+            'updated_by' => Yii::t('backend', '更新者'),
+        ]);
     }
 
     /**
@@ -90,7 +112,7 @@ abstract class Order extends \yii\db\ActiveRecord
      */
     public function getOrg()
     {
-        return $this->hasOne(\backend\modules\org\models\Organization::className(), ['org_id' => 'org_id']);
+        return $this->hasOne(\backend\modules\org\models\Organization::className(), ['org_id' => 'org_id'])->inverseOf('orders');
     }
 
     /**
@@ -98,7 +120,7 @@ abstract class Order extends \yii\db\ActiveRecord
      */
     public function getOrderAmounts()
     {
-        return $this->hasMany(\backend\modules\org\models\OrderAmount::className(), ['order_id' => 'order_id']);
+        return $this->hasMany(\backend\modules\org\models\OrderAmount::className(), ['order_id' => 'order_id'])->inverseOf('order');
     }
 
 

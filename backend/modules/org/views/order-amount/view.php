@@ -64,13 +64,21 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     'attributes' => [
             'order_id',
         'update_at',
+        'update_by',
         'transaction_price',
             [
                 'attribute'=>'payment_type',
                 'value'=>\backend\modules\org\models\OrderAmount::getPaymentTypeValueLabel($model->payment_type),
             ],
-        'currency_type',
         'pay_order_src',
+            [
+                'attribute'=>'currency_type',
+                'value'=>\backend\modules\org\models\OrderAmount::getCurrencyTypeValueLabel($model->currency_type),
+            ],
+            [
+                'attribute'=>'amount_type',
+                'value'=>\backend\modules\org\models\OrderAmount::getAmountTypeValueLabel($model->amount_type),
+            ],
     ],
     ]); ?>
 
@@ -138,9 +146,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 ],
         'org_id',
         'user_id',
-        'created_by',
+        'total_price',
         'updated_at',
         'created_at',
+        'created_by',
+        'updated_by',
 ]
 ])
  . '</div>' 

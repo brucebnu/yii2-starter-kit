@@ -39,29 +39,27 @@ $actionColumnTemplateString = '
             </div>
                     <div class="float-right">
                                                                 <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['user-express/index'],
                 'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Express'),
             ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>
@@ -131,20 +129,20 @@ $actionColumnTemplateString = '
 			'country',
 			'province',
 			'city',
-			/*'region',*/
-			/*'town',*/
-			/*'sort',*/
-			/*[
+			'region',
+			'town',
+			'sort',
+			[
 			                'attribute'=>'status',
 			                'value' => function ($model) {
 			                    return \backend\modules\org\models\UserAddress::getStatusValueLabel($model->status);
 			                }    
-			            ],*/
-			/*'longitude',*/
-			/*'latitude',*/
-			/*'email:email',*/
-			/*'alias',*/
-			/*'phone_number',*/
+			            ],
+			'longitude',
+			'latitude',
+			'email:email',
+			'alias',
+			'phone_number',
                 ]
         ]); ?>
     </div>

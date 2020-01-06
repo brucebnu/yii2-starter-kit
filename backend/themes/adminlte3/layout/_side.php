@@ -10,6 +10,8 @@ if(!Yii::$app->user->isGuest){
     $avatar =  Yii::$app->user->identity->userProfile->getAvatar(Yii::$app->params['AdminlteWebUrl'] . '/img/user2-160x160.jpg');
 }
 
+// dd( Yii::$app->controller->module->id, Yii::$app->controller->action->id, Yii::$app->controller->id );
+
 ?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -38,23 +40,23 @@ if(!Yii::$app->user->isGuest){
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <?=
-            Menu::widget([
+            <?php
+            echo Menu::widget([
                 'encodeLabels' => true,
                 'items' => [
                     # Main
-                    [
-                        'label'  => Yii::t('backend', 'Main'),
-                        //'icon' => 'nav-icon fa fa-address-book-o',
-                        'options' => ['class' => 'nav-header'],
-                        'url'    => '#Main'
-                    ],
+//                    [
+//                        'label'  => Yii::t('backend', 'Main'),
+//                        //'icon' => 'nav-icon fa fa-address-book-o',
+//                        'options' => ['class' => 'nav-header'],
+//                        'url'    => '#Main'
+//                    ],
                     [
                         'label' => Yii::t('backend', 'Timeline'),
-                        'icon' => 'nav-icon far fa-calendar-alt',
                         'url' => ['/timeline-event/index'],
+                        'icon' => 'nav-icon far fa-calendar-alt',
                         'badge' => TimelineEvent::find()->today()->count(),
-                        'badgeBgClass' => 'label-success',
+                        'badgeBgClass' => 'badge badge-warning navbar-badge',
                     ],
                     [
                         'label' => Yii::t('backend', 'Users'),
@@ -76,13 +78,56 @@ if(!Yii::$app->user->isGuest){
                         'icon' => 'nav-icon far fa-calendar-alt',
                         'url' => ['/org/organization/index'],
                         'badge' => TimelineEvent::find()->today()->count(),
-                        'badgeBgClass' => 'label-success',
+                        'badgeBgClass' => 'badge badge-danger navbar-badge',
                     ],
                     [
-                        'label' => Yii::t('backend', 'Users'),
-                        'icon' => 'nav-icon fa fa-user-plus',
+                        'label' => Yii::t('backend', '人员管理'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
                         'url' => ['/org/user-org/index'],
                         'active' => Yii::$app->controller->id === 'user-org',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+                    [
+                        'label' => Yii::t('backend', '人员排期'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
+                        'url' => ['/org/user-org/scheduler'],
+                        'active' => Yii::$app->controller->id === 'user-org' && Yii::$app->controller->action->id === 'scheduler',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+                    [
+                        'label' => Yii::t('backend', '公寓宿舍管理'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
+                        'url' => ['/org/dormitory/index'],
+                        'active' => Yii::$app->controller->id === 'dormitory' && Yii::$app->controller->action->id === 'index',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+                    [
+                        'label' => Yii::t('backend', '公寓排期'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
+                        'url' => ['/org/dormitory/scheduler'],
+                        'active' => Yii::$app->controller->id === 'dormitory' && Yii::$app->controller->action->id === 'scheduler',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+
+                    # 财务管理
+                    [
+                        'label'  => Yii::t('backend', 'Financial Management'),
+                        //'icon' => 'nav-icon fa fa-address-book-o',
+                        'options' => ['class' => 'nav-header'],
+                        'url'    => '#Financial Management'
+                    ],
+                    [
+                        'label' => Yii::t('backend', '订单'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
+                        'url' => ['/org/order/index'],
+                        'active' => Yii::$app->controller->id === 'order',
+                        'visible' => Yii::$app->user->can('administrator'),
+                    ],
+                    [
+                        'label' => Yii::t('backend', '采购'),
+                        'icon' => 'nav-icon far fa-circle nav-icon',
+                        'url' => ['/org/purchase-info/index'],
+                        'active' => Yii::$app->controller->id === 'purchase-info' && Yii::$app->controller->action->id === 'index',
                         'visible' => Yii::$app->user->can('administrator'),
                     ],
 
@@ -249,7 +294,7 @@ if(!Yii::$app->user->isGuest){
                         'url' => ['/system/log/index'],
                         'icon' => 'far fa-circle nav-icon',
                         'badge' => SystemLog::find()->count(),
-                        'badgeBgClass' => 'label-danger',
+                        'badgeBgClass' => 'badge badge-danger navbar-badge',
                     ],
                     /*
                     [

@@ -19,7 +19,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $gender
  * @property string $birthday
  * @property string $passport_src
- * @property resource $emergency_contact
+ * @property string $emergency_contact
  * @property string $phone_calling_code
  * @property integer $phone
  * @property string $phone_native_calling_code

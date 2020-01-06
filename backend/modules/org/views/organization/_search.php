@@ -25,9 +25,7 @@ use yii\widgets\ActiveForm;
 
 		<?= $form->field($model, 'home_site') ?>
 
-		<?= $form->field($model, 'school_logo_src') ?>
-
-		<?php // echo $form->field($model, 'country') ?>
+		<?= $form->field($model, 'country') ?>
 
 		<?php // echo $form->field($model, 'address') ?>
 
@@ -40,6 +38,8 @@ use yii\widgets\ActiveForm;
 		<?php // echo $form->field($model, 'created_id') ?>
 
 		<?php // echo $form->field($model, 'status') ?>
+
+		<?php // echo $form->field($model, 'school_logo_src') ?>
 
 		<?php // echo $form->field($model, 'sort') ?>
 

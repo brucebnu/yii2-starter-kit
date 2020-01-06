@@ -15,7 +15,6 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $org_parent_id
  * @property string $title
  * @property string $home_site
- * @property string $school_logo_src
  * @property string $country
  * @property string $address
  * @property string $inland_phone
@@ -23,6 +22,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $email
  * @property integer $created_id
  * @property string $status
+ * @property string $school_logo_src
  * @property integer $sort
  * @property integer $created_at
  * @property integer $updated_at
@@ -32,6 +32,7 @@ use yii\behaviors\TimestampBehavior;
  * @property \backend\modules\org\models\Course[] $courses
  * @property \backend\modules\org\models\Dormitory[] $dormitories
  * @property \backend\modules\org\models\Order[] $orders
+ * @property \backend\modules\org\models\PurchaseInfo[] $purchaseInfos
  * @property \backend\modules\org\models\UserCourse[] $userCourses
  * @property \backend\modules\org\models\UserDormitory[] $userDormitories
  * @property \backend\modules\org\models\UserFlight[] $userFlights
@@ -112,7 +113,6 @@ abstract class Organization extends \yii\db\ActiveRecord
             'org_parent_id' => Yii::t('backend', 'Org Parent ID'),
             'title' => Yii::t('backend', 'Title'),
             'home_site' => Yii::t('backend', 'Home Site'),
-            'school_logo_src' => Yii::t('backend', 'School Logo Src'),
             'country' => Yii::t('backend', 'Country'),
             'address' => Yii::t('backend', 'Address'),
             'inland_phone' => Yii::t('backend', 'Inland Phone'),
@@ -120,6 +120,7 @@ abstract class Organization extends \yii\db\ActiveRecord
             'email' => Yii::t('backend', 'Email'),
             'created_id' => Yii::t('backend', 'Created ID'),
             'status' => Yii::t('backend', 'Status'),
+            'school_logo_src' => Yii::t('backend', 'School Logo Src'),
             'sort' => Yii::t('backend', 'Sort'),
             'created_at' => Yii::t('backend', 'Created At'),
             'updated_at' => Yii::t('backend', 'Updated At'),
@@ -138,7 +139,6 @@ abstract class Organization extends \yii\db\ActiveRecord
             'org_parent_id' => Yii::t('backend', '机构上级ID'),
             'title' => Yii::t('backend', '机构名称'),
             'home_site' => Yii::t('backend', '机构首页'),
-            'school_logo_src' => Yii::t('backend', '学校Logo'),
             'country' => Yii::t('backend', '城市'),
             'address' => Yii::t('backend', '地址'),
             'inland_phone' => Yii::t('backend', '国内联系电话'),
@@ -146,6 +146,7 @@ abstract class Organization extends \yii\db\ActiveRecord
             'email' => Yii::t('backend', '联系邮箱'),
             'created_id' => Yii::t('backend', '创建者'),
             'status' => Yii::t('backend', '状态'),
+            'school_logo_src' => Yii::t('backend', '学校Logo'),
             'sort' => Yii::t('backend', '默认与排序'),
             'created_at' => Yii::t('backend', '创建时间'),
             'updated_at' => Yii::t('backend', '更新时间'),
@@ -176,6 +177,14 @@ abstract class Organization extends \yii\db\ActiveRecord
     public function getOrders()
     {
         return $this->hasMany(\backend\modules\org\models\Order::className(), ['org_id' => 'org_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPurchaseInfos()
+    {
+        return $this->hasMany(\backend\modules\org\models\PurchaseInfo::className(), ['org_id' => 'org_id']);
     }
 
     /**

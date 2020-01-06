@@ -12,14 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Order Amounts'),
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giiant-crud order-amount-create">
-
-    <h1>
-        <?= Yii::t('backend', 'Order Amount') ?>
-        <small>
-                        <?= Html::encode($model->amount_id) ?>
-        </small>
-    </h1>
-
     <div class="clearfix crud-navigation">
         <div class="float-left">
             <?=             Html::a(

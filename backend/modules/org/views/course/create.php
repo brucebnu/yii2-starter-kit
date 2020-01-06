@@ -12,14 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Courses'), 'url'
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giiant-crud course-create">
-
-    <h1>
-        <?= Yii::t('backend', 'Course') ?>
-        <small>
-                        <?= Html::encode($model->title) ?>
-        </small>
-    </h1>
-
     <div class="clearfix crud-navigation">
         <div class="float-left">
             <?=             Html::a(

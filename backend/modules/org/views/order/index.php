@@ -39,33 +39,31 @@ $actionColumnTemplateString = '
             </div>
                     <div class="float-right">
                                                                                             <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
-            [
-                'url' => ['/crud/organization/index'],
+                'url' => ['organization/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Organization'),
             ],
                                 [
-                'url' => ['/crud/order-amount/index'],
+                'url' => ['order-amount/index'],
                 'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'Order Amount'),
             ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>
@@ -125,6 +123,7 @@ $actionColumnTemplateString = '
         ],
 			'org_id',
 			'user_id',
+			'total_price',
                 ]
         ]); ?>
     </div>

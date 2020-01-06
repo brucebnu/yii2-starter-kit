@@ -162,6 +162,20 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'sort',
         'detailed',
         'consignee',
+			[
+                'attribute'=>'gender',
+                'value' => function ($model) {
+                    return \backend\modules\org\models\UserOrg::getGenderValueLabel($model->gender);
+                }    
+            ]        ,
+        'phone_number',
+        'email:email',
+        'longitude',
+        'latitude',
+        'alias',
+        'status',
+        'created_at',
+        'updated_at',
 ]
 ])
  . '</div>' 
@@ -422,6 +436,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'pickup_special_request:ntext',
         'visa_expiry_date',
         'travel_insurance',
+        'address',
 ]
 ])
  . '</div>' 

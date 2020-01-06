@@ -39,17 +39,16 @@ $actionColumnTemplateString = '
             </div>
                     <div class="float-right">
                                                                                             <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['organization/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Organization'),
@@ -60,12 +59,11 @@ $actionColumnTemplateString = '
             ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>

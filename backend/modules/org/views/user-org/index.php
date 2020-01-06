@@ -39,17 +39,16 @@ $actionColumnTemplateString = '
             </div>
                     <div class="float-right">
                                                                                                                                                                                                                                         <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['user-address/index'],
                 'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Address'),
@@ -80,12 +79,11 @@ $actionColumnTemplateString = '
             ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>
@@ -165,16 +163,16 @@ $actionColumnTemplateString = '
 			                }    
 			            ],
 			'birthday',
-			/*'passport_no',*/
-			/*'full_name',*/
-			/*'nick_name',*/
-			/*'passport_src',*/
-			/*'emergency_contact',*/
-			/*'company_title',*/
-			/*'nationality',*/
-			/*'passport_full_Name',*/
-			/*'phone_calling_code',*/
-			/*'phone_native_calling_code',*/
+			'passport_no',
+			'full_name',
+			'nick_name',
+			'passport_src',
+			'emergency_contact',
+			'company_title',
+			'nationality',
+			'passport_full_Name',
+			'phone_calling_code',
+			'phone_native_calling_code',
                 ]
         ]); ?>
     </div>

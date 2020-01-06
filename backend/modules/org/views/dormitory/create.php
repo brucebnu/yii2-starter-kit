@@ -12,14 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Dormitories'), '
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giiant-crud dormitory-create">
-
-    <h1>
-        <?= Yii::t('backend', 'Dormitory') ?>
-        <small>
-                        <?= Html::encode($model->dormitory_id) ?>
-        </small>
-    </h1>
-
     <div class="clearfix crud-navigation">
         <div class="float-left">
             <?=             Html::a(

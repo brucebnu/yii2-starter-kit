@@ -9,28 +9,16 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'request' => [
-            'cookieValidationKey' => env('BACKEND_COOKIE_VALIDATION_KEY'),
-            'baseUrl' => env('BACKEND_BASE_URL'),
+            'cookieValidationKey'   => env('BACKEND_COOKIE_VALIDATION_KEY'),
+            'baseUrl'               => env('BACKEND_BASE_URL'),
         ],
         'user' => [
-            'class' => yii\web\User::class,
-            'identityClass' => common\models\User::class,
-            'loginUrl' => ['sign-in/login'],
+            'class'           => yii\web\User::class,
+            'identityClass'   => common\models\User::class,
+            'loginUrl'        => ['sign-in/login'],
             'enableAutoLogin' => true,
-            'as afterLogin' => common\behaviors\LoginTimestampBehavior::class,
+            'as afterLogin'   => common\behaviors\LoginTimestampBehavior::class,
         ],
-        /*
-        'view' => [
-            'theme' => [
-                'basePath'  => '@backend/themes/adminlte3',
-                'baseUrl'   => '@backendUrl/themes/adminlte3',
-                'pathMap'   => [
-                    '@app/views' => '@backend/themes/adminlte3',
-                ],
-            ],
-        ],
-        */
-
         'view' => [
             'theme' => [
                 'basePath' => '@backend/themes/'.env('THEME_BACKEND'),

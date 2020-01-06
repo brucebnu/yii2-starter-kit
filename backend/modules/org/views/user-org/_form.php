@@ -73,7 +73,7 @@ use yii\helpers\StringHelper;
 			<?= $form->field($model, 'passport_src')->textInput(['maxlength' => true]) ?>
 
 <!-- attribute emergency_contact -->
-			<?= $form->field($model, 'emergency_contact')->textInput() ?>
+			<?= $form->field($model, 'emergency_contact')->textInput(['maxlength' => true]) ?>
 
 <!-- attribute company_title -->
 			<?= $form->field($model, 'company_title')->textInput(['maxlength' => true]) ?>

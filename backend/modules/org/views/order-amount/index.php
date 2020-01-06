@@ -39,29 +39,27 @@ $actionColumnTemplateString = '
             </div>
                     <div class="float-right">
                                                                 <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['order/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Order'),
             ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>
@@ -121,6 +119,7 @@ $actionColumnTemplateString = '
         ],
 			'order_id',
 			'update_at',
+			'update_by',
 			'transaction_price',
 			[
 			                'attribute'=>'payment_type',
@@ -128,8 +127,19 @@ $actionColumnTemplateString = '
 			                    return \backend\modules\org\models\OrderAmount::getPaymentTypeValueLabel($model->payment_type);
 			                }    
 			            ],
-			'currency_type',
 			'pay_order_src',
+			[
+			                'attribute'=>'currency_type',
+			                'value' => function ($model) {
+			                    return \backend\modules\org\models\OrderAmount::getCurrencyTypeValueLabel($model->currency_type);
+			                }    
+			            ],
+			[
+			                'attribute'=>'amount_type',
+			                'value' => function ($model) {
+			                    return \backend\modules\org\models\OrderAmount::getAmountTypeValueLabel($model->amount_type);
+			                }    
+			            ],
                 ]
         ]); ?>
     </div>

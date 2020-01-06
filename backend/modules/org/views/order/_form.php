@@ -37,7 +37,10 @@ use yii\helpers\StringHelper;
 			<?= $form->field($model, 'org_id')->textInput() ?>
 
 <!-- attribute user_id -->
-			<?= $form->field($model, 'user_id')->textInput() ?>        <?php $this->endBlock(); ?>
+			<?= $form->field($model, 'user_id')->textInput() ?>
+
+<!-- attribute total_price -->
+			<?= $form->field($model, 'total_price')->textInput(['maxlength' => true]) ?>        <?php $this->endBlock(); ?>
         
         <?=
             yii\bootstrap4\Tabs::widget(
