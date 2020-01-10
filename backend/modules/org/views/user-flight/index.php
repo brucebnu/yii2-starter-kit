@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\UserFlight $searchModel
+    * @var backend\modules\org\models\search\UserFlightSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'User Flights');
@@ -38,34 +38,28 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                                                                            <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+                                                                <?= 
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['organization/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Organization'),
             ],
-                                [
-                'url' => ['org-user/index'],
-                'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Org User'),
-            ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>
@@ -123,22 +117,21 @@ $actionColumnTemplateString = '
             },
             'contentOptions' => ['nowrap'=>'nowrap']
         ],
-			'org_user_flight_id',
 			'user_id',
 			'org_id',
 			'arrival_datetime',
 			'departure_datetime',
 			'visa_expiry_date',
 			'pickup_special_request:ntext',
-			/*[
+			[
 			                'attribute'=>'travel_insurance',
 			                'value' => function ($model) {
 			                    return \backend\modules\org\models\UserFlight::getTravelInsuranceValueLabel($model->travel_insurance);
 			                }    
-			            ],*/
-			/*'arrival_flight',*/
-			/*'departure_flight',*/
-			/*'address',*/
+			            ],
+			'arrival_flight',
+			'departure_flight',
+			'address',
                 ]
         ]); ?>
     </div>

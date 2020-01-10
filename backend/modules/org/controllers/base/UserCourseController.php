@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserCourse;
-    use backend\modules\org\models\search\UserCourse as UserCourseSearch;
+    use backend\modules\org\models\search\UserCourseSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;
@@ -48,18 +48,18 @@ public function actionIndex()
 
 /**
 * Displays a single UserCourse model.
-* @param integer $org_user_course_id
+* @param integer $user_org_course_id
 *
 * @return mixed
 */
-public function actionView($org_user_course_id)
+public function actionView($user_org_course_id)
 {
     \Yii::$app->session['__crudReturnUrl'] = Url::previous();
     Url::remember();
     Tabs::rememberActiveState();
 
     return $this->render('view', [
-    'model' => $this->findModel($org_user_course_id),
+    'model' => $this->findModel($user_org_course_id),
     ]);
 }
 
@@ -74,7 +74,7 @@ public function actionCreate()
 
     try {
     if ($model->load($_POST) && $model->save()) {
-    return $this->redirect(['view', 'org_user_course_id' => $model->org_user_course_id]);
+    return $this->redirect(['view', 'user_org_course_id' => $model->user_org_course_id]);
     } elseif (!\Yii::$app->request->isPost) {
     $model->load($_GET);
     }
@@ -88,12 +88,12 @@ public function actionCreate()
     /**
     * Updates an existing UserCourse model.
     * If update is successful, the browser will be redirected to the 'view' page.
-    * @param integer $org_user_course_id
+    * @param integer $user_org_course_id
     * @return mixed
     */
-    public function actionUpdate($org_user_course_id)
+    public function actionUpdate($user_org_course_id)
     {
-    $model = $this->findModel($org_user_course_id);
+    $model = $this->findModel($user_org_course_id);
 
     if ($model->load($_POST) && $model->save()) {
     return $this->redirect(Url::previous());
@@ -107,14 +107,14 @@ public function actionCreate()
 /**
 * Deletes an existing UserCourse model.
 * If deletion is successful, the browser will be redirected to the 'index' page.
-* @param integer $org_user_course_id
+* @param integer $user_org_course_id
 * @return mixed
 */
-public function actionDelete($org_user_course_id)
+public function actionDelete($user_org_course_id)
 {
     exit('sorry :(');
     try {
-    $this->findModel($org_user_course_id)->delete();
+    $this->findModel($user_org_course_id)->delete();
     } catch (\Exception $e) {
     $msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
     \Yii::$app->getSession()->addFlash('error', $msg);
@@ -122,7 +122,7 @@ public function actionDelete($org_user_course_id)
     }
 
     // TODO: improve detection
-    $isPivot = strstr('$org_user_course_id',',');
+    $isPivot = strstr('$user_org_course_id',',');
     if ($isPivot == true) {
     return $this->redirect(Url::previous());
     } elseif (isset(\Yii::$app->session['__crudReturnUrl']) && \Yii::$app->session['__crudReturnUrl'] != '/') {
@@ -139,13 +139,13 @@ public function actionDelete($org_user_course_id)
 /**
 * Finds the UserCourse model based on its primary key value.
 * If the model is not found, a 404 HTTP exception will be thrown.
-* @param integer $org_user_course_id
+* @param integer $user_org_course_id
 * @return UserCourse the loaded model
 * @throws HttpException if the model cannot be found
 */
-protected function findModel($org_user_course_id)
+protected function findModel($user_org_course_id)
 {
-        if (($model = UserCourse::findOne($org_user_course_id)) !== null) {
+        if (($model = UserCourse::findOne($user_org_course_id)) !== null) {
     return $model;
     } else {
     throw new HttpException(404, 'The requested page does not exist.');

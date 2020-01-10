@@ -12,14 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'User Flights'), 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="giiant-crud user-flight-create">
-
-    <h1>
-        <?= Yii::t('backend', 'User Flight') ?>
-        <small>
-                        <?= Html::encode($model->org_user_flight_id) ?>
-        </small>
-    </h1>
-
     <div class="clearfix crud-navigation">
         <div class="float-left">
             <?=             Html::a(

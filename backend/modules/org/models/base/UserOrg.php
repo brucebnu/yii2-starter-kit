@@ -18,7 +18,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $nick_name
  * @property string $gender
  * @property string $birthday
- * @property string $passport_src
  * @property string $emergency_contact
  * @property string $phone_calling_code
  * @property integer $phone
@@ -27,6 +26,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $linked_training
  * @property string $company_type
  * @property string $company_title
+ * @property string $passport_info
  * @property integer $created_at
  * @property integer $updated_at
  *
@@ -34,6 +34,7 @@ use yii\behaviors\TimestampBehavior;
  * @property \backend\modules\org\models\UserCourse[] $userCourses
  * @property \backend\modules\org\models\UserDormitory[] $userDormitories
  * @property \backend\modules\org\models\UserExpress[] $userExpresses
+ * @property \backend\modules\org\models\UserFileStorage[] $userFileStorages
  * @property \backend\modules\org\models\UserFlight[] $userFlights
  * @property \backend\modules\org\models\UserToAgency[] $userToAgencies
  * @property \backend\modules\org\models\UserToOrg[] $userToOrgs
@@ -91,9 +92,9 @@ abstract class UserOrg extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'required'],
             [['user_id', 'phone', 'phone_native'], 'integer'],
-            [['gender', 'linked_training', 'company_type'], 'string'],
+            [['gender', 'linked_training', 'company_type', 'passport_info'], 'string'],
             [['birthday'], 'safe'],
-            [['passport_no', 'full_name', 'nick_name', 'passport_src', 'emergency_contact', 'company_title'], 'string', 'max' => 255],
+            [['passport_no', 'full_name', 'nick_name', 'emergency_contact', 'company_title'], 'string', 'max' => 255],
             [['nationality'], 'string', 'max' => 32],
             [['passport_full_Name'], 'string', 'max' => 40],
             [['phone_calling_code', 'phone_native_calling_code'], 'string', 'max' => 8],
@@ -131,7 +132,6 @@ abstract class UserOrg extends \yii\db\ActiveRecord
             'nick_name' => Yii::t('backend', 'Nick Name'),
             'gender' => Yii::t('backend', 'Gender'),
             'birthday' => Yii::t('backend', 'Birthday'),
-            'passport_src' => Yii::t('backend', 'Passport Src'),
             'emergency_contact' => Yii::t('backend', 'Emergency Contact'),
             'phone_calling_code' => Yii::t('backend', 'Phone Calling Code'),
             'phone' => Yii::t('backend', 'Phone'),
@@ -140,6 +140,7 @@ abstract class UserOrg extends \yii\db\ActiveRecord
             'linked_training' => Yii::t('backend', 'Linked Training'),
             'company_type' => Yii::t('backend', 'Company Type'),
             'company_title' => Yii::t('backend', 'Company Title'),
+            'passport_info' => Yii::t('backend', 'Passport Info'),
             'created_at' => Yii::t('backend', 'Created At'),
             'updated_at' => Yii::t('backend', 'Updated At'),
         ];
@@ -158,7 +159,6 @@ abstract class UserOrg extends \yii\db\ActiveRecord
             'nick_name' => Yii::t('backend', '昵称'),
             'gender' => Yii::t('backend', '性别'),
             'birthday' => Yii::t('backend', '生日'),
-            'passport_src' => Yii::t('backend', '护照地址'),
             'emergency_contact' => Yii::t('backend', '紧急联系人'),
             'phone_calling_code' => Yii::t('backend', '国际区号'),
             'phone' => Yii::t('backend', '手机号'),
@@ -167,6 +167,7 @@ abstract class UserOrg extends \yii\db\ActiveRecord
             'linked_training' => Yii::t('backend', '海外进修规划'),
             'company_type' => Yii::t('backend', '公司类型'),
             'company_title' => Yii::t('backend', '公司名称'),
+            'passport_info' => Yii::t('backend', '护照识别'),
             'created_at' => Yii::t('backend', '创建时间'),
             'updated_at' => Yii::t('backend', '更新时间'),
         ]);
@@ -202,6 +203,14 @@ abstract class UserOrg extends \yii\db\ActiveRecord
     public function getUserExpresses()
     {
         return $this->hasMany(\backend\modules\org\models\UserExpress::className(), ['user_id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserFileStorages()
+    {
+        return $this->hasMany(\backend\modules\org\models\UserFileStorage::className(), ['user_id' => 'user_id']);
     }
 
     /**

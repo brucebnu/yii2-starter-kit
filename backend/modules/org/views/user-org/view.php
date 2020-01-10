@@ -77,11 +77,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
                 'attribute'=>'company_type',
                 'value'=>\backend\modules\org\models\UserOrg::getCompanyTypeValueLabel($model->company_type),
             ],
+        'passport_info:ntext',
         'birthday',
         'passport_no',
         'full_name',
         'nick_name',
-        'passport_src',
         'emergency_contact',
         'company_title',
         'nationality',
@@ -378,6 +378,79 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 <?php $this->endBlock() ?>
 
 
+<?php $this->beginBlock('UserFileStorages'); ?>
+<div style='position: relative'>
+<div style='position:absolute; right: 0px; top: -25px;'>
+  <?= Html::a(
+            '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' User File Storages',
+            ['user-file-storage/index'],
+            ['class'=>'btn text-muted btn-xs']
+        ) ?>
+  <?= Html::a(
+            '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' User File Storage',
+            ['user-file-storage/create', 'UserFileStorage' => ['user_id' => $model->user_id]],
+            ['class'=>'btn btn-success btn-xs']
+        ); ?>
+</div>
+</div>
+<?php Pjax::begin(['id'=>'pjax-UserFileStorages', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-UserFileStorages ul.pagination a, th a']) ?>
+<?=
+ '<div class="table-responsive">'
+ . \yii\grid\GridView::widget([
+    'layout' => '{summary}<div class="text-center">{pager}</div>{items}<div class="text-center">{pager}</div>',
+    'dataProvider' => new \yii\data\ActiveDataProvider([
+        'query' => $model->getUserFileStorages(),
+        'pagination' => [
+            'pageSize' => 20,
+            'pageParam'=>'page-userfilestorages',
+        ]
+    ]),
+    'pager'        => [
+        'class'          => yii\widgets\LinkPager::className(),
+        'firstPageLabel' => Yii::t('backend', 'First'),
+        'lastPageLabel'  => Yii::t('backend', 'Last')
+    ],
+    'columns' => [
+ [
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'urlCreator' => function ($action, $model, $key, $index) {
+        // using the column name as key, not mapping to 'id' like the standard generator
+        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
+        $params[0] = 'user-file-storage' . '/' . $action;
+        $params['UserFileStorage'] = ['user_id' => $model->primaryKey()[0]];
+        return $params;
+    },
+    'buttons'    => [
+        
+    ],
+    'controller' => 'user-file-storage'
+],
+        'user_file_storage_id',
+        'component',
+        'base_url:url',
+        'path',
+        'type',
+        'size',
+        'name',
+        'upload_ip',
+        'hash',
+        'status',
+        'longitude',
+        'latitude',
+        'area',
+        'bucket',
+        'created_at',
+        'created_by',
+]
+])
+ . '</div>' 
+?>
+<?php Pjax::end() ?>
+<?php $this->endBlock() ?>
+
+
 <?php $this->beginBlock('UserFlights'); ?>
 <div style='position: relative'>
 <div style='position:absolute; right: 0px; top: -25px;'>
@@ -427,7 +500,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     ],
     'controller' => 'user-flight'
 ],
-        'org_user_flight_id',
+        'user_org_flight_id',
         'org_id',
         'arrival_flight',
         'arrival_datetime',
@@ -596,6 +669,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 [
     'content' => $this->blocks['UserExpresses'],
     'label'   => '<small>User Expresses <span class="badge badge-default">'. $model->getUserExpresses()->count() . '</span></small>',
+    'active'  => false,
+],
+[
+    'content' => $this->blocks['UserFileStorages'],
+    'label'   => '<small>User File Storages <span class="badge badge-default">'. $model->getUserFileStorages()->count() . '</span></small>',
     'active'  => false,
 ],
 [

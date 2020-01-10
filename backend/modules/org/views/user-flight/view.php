@@ -15,7 +15,7 @@ $copyParams = $model->attributes;
 
 $this->title = Yii::t('backend', 'User Flight');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'User Flights'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => (string)$model->org_user_flight_id, 'url' => ['view', 'org_user_flight_id' => $model->org_user_flight_id]];
+$this->params['breadcrumbs'][] = ['label' => (string)$model->user_org_flight_id, 'url' => ['view', 'user_org_flight_id' => $model->user_org_flight_id]];
 $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 ?>
 <div class="giiant-crud user-flight-view">
@@ -33,12 +33,12 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         <div class='float-left'>
             <?= Html::a(
             '<i class="fa fa-list"></i> ' . Yii::t('backend', 'Edit'),
-            [ 'update', 'org_user_flight_id' => $model->org_user_flight_id],
+            [ 'update', 'user_org_flight_id' => $model->user_org_flight_id],
             ['class' => 'btn btn-info']) ?>
 
             <?= Html::a(
             '<i class="fa fa-copy"></i> ' . Yii::t('backend', 'Copy'),
-            ['create', 'org_user_flight_id' => $model->org_user_flight_id, 'UserFlight'=>$copyParams],
+            ['create', 'user_org_flight_id' => $model->user_org_flight_id, 'UserFlight'=>$copyParams],
             ['class' => 'btn btn-success']) ?>
 
             <?= Html::a(
@@ -62,8 +62,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
-            'org_user_flight_id',
-        'user_id',
+            'user_id',
         'org_id',
         'arrival_datetime',
         'departure_datetime',
@@ -82,7 +81,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     
     <hr/>
 
-    <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('backend', 'Delete'), ['delete', 'org_user_flight_id' => $model->org_user_flight_id],
+    <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('backend', 'Delete'), ['delete', 'user_org_flight_id' => $model->user_org_flight_id],
     [
         'class' => 'btn btn-danger',
         'data-confirm' => '' . Yii::t('backend', 'Are you sure to delete this item?') . '',
@@ -102,7 +101,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         ) ?>
   <?= Html::a(
             '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' Org',
-            ['organization/create', 'Organization' => ['org_id' => $model->org_user_flight_id]],
+            ['organization/create', 'Organization' => ['org_id' => $model->user_org_flight_id]],
             ['class'=>'btn btn-success btn-xs']
         ); ?>
 </div>
@@ -144,78 +143,19 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'org_parent_id',
         'title',
         'home_site',
-        'school_logo_src',
         'country',
         'address',
         'inland_phone',
         'foreign_phone',
         'email:email',
-]
-])
- . '</div>' 
-?>
-<?php Pjax::end() ?>
-<?php $this->endBlock() ?>
-
-
-<?php $this->beginBlock('User'); ?>
-<div style='position: relative'>
-<div style='position:absolute; right: 0px; top: -25px;'>
-  <?= Html::a(
-            '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' User',
-            ['org-user/index'],
-            ['class'=>'btn text-muted btn-xs']
-        ) ?>
-  <?= Html::a(
-            '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' User',
-            ['org-user/create', 'OrgUser' => ['user_id' => $model->org_user_flight_id]],
-            ['class'=>'btn btn-success btn-xs']
-        ); ?>
-</div>
-</div>
-<?php Pjax::begin(['id'=>'pjax-User', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-User ul.pagination a, th a']) ?>
-<?=
- '<div class="table-responsive">'
- . \yii\grid\GridView::widget([
-    'layout' => '{summary}<div class="text-center">{pager}</div>{items}<div class="text-center">{pager}</div>',
-    'dataProvider' => new \yii\data\ActiveDataProvider([
-        'query' => $model->getUser(),
-        'pagination' => [
-            'pageSize' => 20,
-            'pageParam'=>'page-user',
-        ]
-    ]),
-    'pager'        => [
-        'class'          => yii\widgets\LinkPager::className(),
-        'firstPageLabel' => Yii::t('backend', 'First'),
-        'lastPageLabel'  => Yii::t('backend', 'Last')
-    ],
-    'columns' => [
- [
-    'class'      => 'yii\grid\ActionColumn',
-    'template'   => '{view} {update}',
-    'contentOptions' => ['nowrap'=>'nowrap'],
-    'urlCreator' => function ($action, $model, $key, $index) {
-        // using the column name as key, not mapping to 'id' like the standard generator
-        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
-        $params[0] = 'org-user' . '/' . $action;
-        $params['OrgUser'] = ['user_id' => $model->primaryKey()[0]];
-        return $params;
-    },
-    'buttons'    => [
-        
-    ],
-    'controller' => 'org-user'
-],
-        'passport_no',
-        'nationality',
-        'passport_full_Name',
-        'full_name',
-        'nick_name',
-        'gender',
-        'birthday',
-        'passport_src',
-        'emergency_contact',
+        'created_id',
+        'status',
+        'school_logo_src',
+        'sort',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
 ]
 ])
  . '</div>' 
@@ -229,18 +169,13 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
              'encodeLabels' => false,
              'items' => [
  [
-    'label'   => '<b class=""># '.Html::encode($model->org_user_flight_id).'</b>',
+    'label'   => '<b class=""># '.Html::encode($model->user_org_flight_id).'</b>',
     'content' => $this->blocks['\backend\modules\org\models\UserFlight'],
     'active'  => true,
 ],
 [
     'content' => $this->blocks['Org'],
     'label'   => '<small>Org <span class="badge badge-default">'. $model->getOrg()->count() . '</span></small>',
-    'active'  => false,
-],
-[
-    'content' => $this->blocks['User'],
-    'label'   => '<small>User <span class="badge badge-default">'. $model->getUser()->count() . '</span></small>',
     'active'  => false,
 ],
  ]

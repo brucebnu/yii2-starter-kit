@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\CnCity;
-    use backend\modules\org\models\search\CnCity as CnCitySearch;
+    use backend\modules\org\models\search\CnCitySearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

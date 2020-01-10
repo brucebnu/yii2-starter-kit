@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var backend\modules\org\models\search\UserCourse $model
+* @var backend\modules\org\models\search\UserCourseSearch $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     'method' => 'get',
     ]); ?>
 
-    		<?= $form->field($model, 'org_user_course_id') ?>
+    		<?= $form->field($model, 'user_org_course_id') ?>
 
 		<?= $form->field($model, 'org_id') ?>
 

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\OrderAmount $searchModel
+    * @var backend\modules\org\models\search\OrderAmountSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'Order Amounts');

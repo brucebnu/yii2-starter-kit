@@ -9,7 +9,7 @@ use Yii;
 /**
  * This is the base-model class for table "user_course".
  *
- * @property integer $org_user_course_id
+ * @property integer $user_org_course_id
  * @property integer $org_id
  * @property integer $user_id
  * @property integer $course_id
@@ -19,7 +19,7 @@ use Yii;
  *
  * @property \backend\modules\org\models\Course $course
  * @property \backend\modules\org\models\Organization $user
- * @property \backend\modules\org\models\OrgUser $user0
+ * @property \backend\modules\org\models\UserOrg $user0
  * @property string $aliasModel
  */
 abstract class UserCourse extends \yii\db\ActiveRecord
@@ -54,7 +54,7 @@ abstract class UserCourse extends \yii\db\ActiveRecord
             [['period_week'], 'string', 'max' => 255],
             [['course_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\Course::className(), 'targetAttribute' => ['course_id' => 'course_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\Organization::className(), 'targetAttribute' => ['user_id' => 'org_id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\OrgUser::className(), 'targetAttribute' => ['user_id' => 'user_id']]
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\UserOrg::className(), 'targetAttribute' => ['user_id' => 'user_id']]
         ];
     }
 
@@ -64,7 +64,7 @@ abstract class UserCourse extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'org_user_course_id' => Yii::t('backend', 'Org User Course ID'),
+            'user_org_course_id' => Yii::t('backend', 'User Org Course ID'),
             'org_id' => Yii::t('backend', 'Org ID'),
             'user_id' => Yii::t('backend', 'User ID'),
             'course_id' => Yii::t('backend', 'Course ID'),
@@ -80,7 +80,7 @@ abstract class UserCourse extends \yii\db\ActiveRecord
     public function attributeHints()
     {
         return array_merge(parent::attributeHints(), [
-            'org_user_course_id' => Yii::t('backend', 'ID'),
+            'user_org_course_id' => Yii::t('backend', 'ID'),
             'org_id' => Yii::t('backend', '学校'),
             'user_id' => Yii::t('backend', '学生'),
             'course_id' => Yii::t('backend', '课件'),
@@ -111,7 +111,7 @@ abstract class UserCourse extends \yii\db\ActiveRecord
      */
     public function getUser0()
     {
-        return $this->hasOne(\backend\modules\org\models\OrgUser::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(\backend\modules\org\models\UserOrg::className(), ['user_id' => 'user_id']);
     }
 
 

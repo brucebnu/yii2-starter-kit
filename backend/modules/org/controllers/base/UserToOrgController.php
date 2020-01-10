@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserToOrg;
-    use backend\modules\org\models\search\UserToOrg as UserToOrgSearch;
+    use backend\modules\org\models\search\UserToOrgSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\UserToOrg $searchModel
+    * @var backend\modules\org\models\search\UserToOrgSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'User To Orgs');
@@ -38,34 +38,28 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                                                                            <?= 
-            \yii\bootstrap4\ButtonDropdown::widget(
-            [
-            'id' => 'giiant-relations',
-            'encodeLabel' => false,
-            'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
-            'dropdown' => [
-            'options' => [
-            'class' => 'dropdown-menu-right'
-            ],
-            'encodeLabels' => false,
-            'items' => [
+                                                                <?= 
+            \yii\bootstrap4\ButtonDropdown::widget([
+                'id' => 'giiant-relations',
+                'encodeLabel' => false,
+                'label' => '<span class="fa fa-paperclip"></span> ' . Yii::t('backend', 'Relations'),
+                'dropdown' => [
+                'options' => [
+                'class' => 'dropdown-menu-right'
+                ],
+                'encodeLabels' => false,
+                'items' => [
             [
                 'url' => ['organization/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Organization'),
             ],
-                                [
-                'url' => ['org-user/index'],
-                'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Org User'),
-            ],
                     
 ]
-            ],
-            'options' => [
-            'class' => 'btn-default'
-            ]
-            ]
-            );
+                ],
+                'options' => [
+                'class' => 'btn-default'
+                ]
+            ]);
             ?>
         </div>
     </div>

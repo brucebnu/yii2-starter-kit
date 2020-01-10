@@ -141,78 +141,24 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
         'org_parent_id',
         'title',
         'home_site',
-        'school_logo_src',
         'country',
         'address',
         'inland_phone',
         'foreign_phone',
         'email:email',
-]
-])
- . '</div>' 
-?>
-<?php Pjax::end() ?>
-<?php $this->endBlock() ?>
-
-
-<?php $this->beginBlock('User'); ?>
-<div style='position: relative'>
-<div style='position:absolute; right: 0px; top: -25px;'>
-  <?= Html::a(
-            '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' User',
-            ['org-user/index'],
-            ['class'=>'btn text-muted btn-xs']
-        ) ?>
-  <?= Html::a(
-            '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' User',
-            ['org-user/create', 'OrgUser' => ['user_id' => $model->user_to_ort_id]],
-            ['class'=>'btn btn-success btn-xs']
-        ); ?>
-</div>
-</div>
-<?php Pjax::begin(['id'=>'pjax-User', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-User ul.pagination a, th a']) ?>
-<?=
- '<div class="table-responsive">'
- . \yii\grid\GridView::widget([
-    'layout' => '{summary}<div class="text-center">{pager}</div>{items}<div class="text-center">{pager}</div>',
-    'dataProvider' => new \yii\data\ActiveDataProvider([
-        'query' => $model->getUser(),
-        'pagination' => [
-            'pageSize' => 20,
-            'pageParam'=>'page-user',
-        ]
-    ]),
-    'pager'        => [
-        'class'          => yii\widgets\LinkPager::className(),
-        'firstPageLabel' => Yii::t('backend', 'First'),
-        'lastPageLabel'  => Yii::t('backend', 'Last')
-    ],
-    'columns' => [
- [
-    'class'      => 'yii\grid\ActionColumn',
-    'template'   => '{view} {update}',
-    'contentOptions' => ['nowrap'=>'nowrap'],
-    'urlCreator' => function ($action, $model, $key, $index) {
-        // using the column name as key, not mapping to 'id' like the standard generator
-        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
-        $params[0] = 'org-user' . '/' . $action;
-        $params['OrgUser'] = ['user_id' => $model->primaryKey()[0]];
-        return $params;
-    },
-    'buttons'    => [
-        
-    ],
-    'controller' => 'org-user'
-],
-        'passport_no',
-        'nationality',
-        'passport_full_Name',
-        'full_name',
-        'nick_name',
-        'gender',
-        'birthday',
-        'passport_src',
-        'emergency_contact',
+        'created_id',
+			[
+                'attribute'=>'status',
+                'value' => function ($model) {
+                    return \backend\modules\org\models\UserToOrg::getStatusValueLabel($model->status);
+                }    
+            ]        ,
+        'school_logo_src',
+        'sort',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
 ]
 ])
  . '</div>' 
@@ -233,11 +179,6 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 [
     'content' => $this->blocks['Org'],
     'label'   => '<small>Org <span class="badge badge-default">'. $model->getOrg()->count() . '</span></small>',
-    'active'  => false,
-],
-[
-    'content' => $this->blocks['User'],
-    'label'   => '<small>User <span class="badge badge-default">'. $model->getUser()->count() . '</span></small>',
     'active'  => false,
 ],
  ]

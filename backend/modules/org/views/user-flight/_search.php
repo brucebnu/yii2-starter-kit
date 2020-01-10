@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var backend\modules\org\models\search\UserFlight $model
+* @var backend\modules\org\models\search\UserFlightSearch $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     'method' => 'get',
     ]); ?>
 
-    		<?= $form->field($model, 'org_user_flight_id') ?>
+    		<?= $form->field($model, 'user_org_flight_id') ?>
 
 		<?= $form->field($model, 'user_id') ?>
 

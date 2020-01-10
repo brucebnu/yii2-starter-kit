@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\UserOrg $searchModel
+    * @var backend\modules\org\models\search\UserOrgSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'User Orgs');
@@ -38,7 +38,7 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                                                                                                                                                                                                                        <?= 
+                                                                                                                                                                                                                                                                    <?= 
             \yii\bootstrap4\ButtonDropdown::widget([
                 'id' => 'giiant-relations',
                 'encodeLabel' => false,
@@ -64,6 +64,10 @@ $actionColumnTemplateString = '
                                 [
                 'url' => ['user-express/index'],
                 'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Express'),
+            ],
+                                [
+                'url' => ['user-file-storage/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User File Storage'),
             ],
                                 [
                 'url' => ['user-flight/index'],
@@ -162,11 +166,11 @@ $actionColumnTemplateString = '
 			                    return \backend\modules\org\models\UserOrg::getCompanyTypeValueLabel($model->company_type);
 			                }    
 			            ],
+			'passport_info:ntext',
 			'birthday',
 			'passport_no',
 			'full_name',
 			'nick_name',
-			'passport_src',
 			'emergency_contact',
 			'company_title',
 			'nationality',

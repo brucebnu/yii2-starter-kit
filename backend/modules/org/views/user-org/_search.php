@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 
 /**
 * @var yii\web\View $this
-* @var backend\modules\org\models\search\UserOrg $model
+* @var backend\modules\org\models\search\UserOrgSearch $model
 * @var yii\widgets\ActiveForm $form
 */
 ?>
@@ -33,8 +33,6 @@ use yii\widgets\ActiveForm;
 
 		<?php // echo $form->field($model, 'birthday') ?>
 
-		<?php // echo $form->field($model, 'passport_src') ?>
-
 		<?php // echo $form->field($model, 'emergency_contact') ?>
 
 		<?php // echo $form->field($model, 'phone_calling_code') ?>
@@ -50,6 +48,8 @@ use yii\widgets\ActiveForm;
 		<?php // echo $form->field($model, 'company_type') ?>
 
 		<?php // echo $form->field($model, 'company_title') ?>
+
+		<?php // echo $form->field($model, 'passport_info') ?>
 
 		<?php // echo $form->field($model, 'created_at') ?>
 

@@ -14,7 +14,7 @@ use Yii;
  * @property string $agency_name
  * @property string $agency_contact
  *
- * @property \backend\modules\org\models\OrgUser $user
+ * @property \backend\modules\org\models\UserOrg $user
  * @property string $aliasModel
  */
 abstract class UserToAgency extends \yii\db\ActiveRecord
@@ -46,7 +46,7 @@ abstract class UserToAgency extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
             [['agency_name', 'agency_contact'], 'string', 'max' => 255],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\OrgUser::className(), 'targetAttribute' => ['user_id' => 'user_id']]
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\UserOrg::className(), 'targetAttribute' => ['user_id' => 'user_id']]
         ];
     }
 
@@ -80,7 +80,7 @@ abstract class UserToAgency extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(\backend\modules\org\models\OrgUser::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(\backend\modules\org\models\UserOrg::className(), ['user_id' => 'user_id']);
     }
 
 

@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserFlight;
-    use backend\modules\org\models\search\UserFlight as UserFlightSearch;
+    use backend\modules\org\models\search\UserFlightSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;
@@ -48,18 +48,18 @@ public function actionIndex()
 
 /**
 * Displays a single UserFlight model.
-* @param integer $org_user_flight_id
+* @param integer $user_org_flight_id
 *
 * @return mixed
 */
-public function actionView($org_user_flight_id)
+public function actionView($user_org_flight_id)
 {
     \Yii::$app->session['__crudReturnUrl'] = Url::previous();
     Url::remember();
     Tabs::rememberActiveState();
 
     return $this->render('view', [
-    'model' => $this->findModel($org_user_flight_id),
+    'model' => $this->findModel($user_org_flight_id),
     ]);
 }
 
@@ -74,7 +74,7 @@ public function actionCreate()
 
     try {
     if ($model->load($_POST) && $model->save()) {
-    return $this->redirect(['view', 'org_user_flight_id' => $model->org_user_flight_id]);
+    return $this->redirect(['view', 'user_org_flight_id' => $model->user_org_flight_id]);
     } elseif (!\Yii::$app->request->isPost) {
     $model->load($_GET);
     }
@@ -88,12 +88,12 @@ public function actionCreate()
     /**
     * Updates an existing UserFlight model.
     * If update is successful, the browser will be redirected to the 'view' page.
-    * @param integer $org_user_flight_id
+    * @param integer $user_org_flight_id
     * @return mixed
     */
-    public function actionUpdate($org_user_flight_id)
+    public function actionUpdate($user_org_flight_id)
     {
-    $model = $this->findModel($org_user_flight_id);
+    $model = $this->findModel($user_org_flight_id);
 
     if ($model->load($_POST) && $model->save()) {
     return $this->redirect(Url::previous());
@@ -107,14 +107,14 @@ public function actionCreate()
 /**
 * Deletes an existing UserFlight model.
 * If deletion is successful, the browser will be redirected to the 'index' page.
-* @param integer $org_user_flight_id
+* @param integer $user_org_flight_id
 * @return mixed
 */
-public function actionDelete($org_user_flight_id)
+public function actionDelete($user_org_flight_id)
 {
     exit('sorry :(');
     try {
-    $this->findModel($org_user_flight_id)->delete();
+    $this->findModel($user_org_flight_id)->delete();
     } catch (\Exception $e) {
     $msg = (isset($e->errorInfo[2]))?$e->errorInfo[2]:$e->getMessage();
     \Yii::$app->getSession()->addFlash('error', $msg);
@@ -122,7 +122,7 @@ public function actionDelete($org_user_flight_id)
     }
 
     // TODO: improve detection
-    $isPivot = strstr('$org_user_flight_id',',');
+    $isPivot = strstr('$user_org_flight_id',',');
     if ($isPivot == true) {
     return $this->redirect(Url::previous());
     } elseif (isset(\Yii::$app->session['__crudReturnUrl']) && \Yii::$app->session['__crudReturnUrl'] != '/') {
@@ -139,13 +139,13 @@ public function actionDelete($org_user_flight_id)
 /**
 * Finds the UserFlight model based on its primary key value.
 * If the model is not found, a 404 HTTP exception will be thrown.
-* @param integer $org_user_flight_id
+* @param integer $user_org_flight_id
 * @return UserFlight the loaded model
 * @throws HttpException if the model cannot be found
 */
-protected function findModel($org_user_flight_id)
+protected function findModel($user_org_flight_id)
 {
-        if (($model = UserFlight::findOne($org_user_flight_id)) !== null) {
+        if (($model = UserFlight::findOne($user_org_flight_id)) !== null) {
     return $model;
     } else {
     throw new HttpException(404, 'The requested page does not exist.');

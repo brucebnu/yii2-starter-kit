@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\Order;
-    use backend\modules\org\models\search\Order as OrderSearch;
+    use backend\modules\org\models\search\OrderSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

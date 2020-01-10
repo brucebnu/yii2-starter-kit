@@ -57,6 +57,9 @@ use yii\helpers\StringHelper;
                             \backend\modules\org\models\UserOrg::optscompanytype()
                         ); ?>
 
+<!-- attribute passport_info -->
+			<?= $form->field($model, 'passport_info')->textarea(['rows' => 6]) ?>
+
 <!-- attribute birthday -->
 			<?= $form->field($model, 'birthday')->textInput() ?>
 
@@ -68,9 +71,6 @@ use yii\helpers\StringHelper;
 
 <!-- attribute nick_name -->
 			<?= $form->field($model, 'nick_name')->textInput(['maxlength' => true]) ?>
-
-<!-- attribute passport_src -->
-			<?= $form->field($model, 'passport_src')->textInput(['maxlength' => true]) ?>
 
 <!-- attribute emergency_contact -->
 			<?= $form->field($model, 'emergency_contact')->textInput(['maxlength' => true]) ?>
@@ -108,7 +108,7 @@ use yii\helpers\StringHelper;
 
     <div class="card-footer">
         <?= Html::submitButton(
-        '<span class="glyphicon glyphicon-check"></span> ' .
+        '<i class="fa fa-check"></i> ' .
         ($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Save')),
         [
             'id' => 'save-' . $model->formName(),

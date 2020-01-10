@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\Course;
-    use backend\modules\org\models\search\Course as CourseSearch;
+    use backend\modules\org\models\search\CourseSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

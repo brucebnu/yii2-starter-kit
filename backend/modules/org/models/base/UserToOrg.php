@@ -20,7 +20,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  *
  * @property \backend\modules\org\models\Organization $org
- * @property \backend\modules\org\models\OrgUser $user
+ * @property \backend\modules\org\models\UserOrg $user
  * @property string $aliasModel
  */
 abstract class UserToOrg extends \yii\db\ActiveRecord
@@ -79,7 +79,7 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
             [['org_title'], 'string', 'max' => 255],
             [['user_id', 'org_id', 'role_name'], 'unique', 'targetAttribute' => ['user_id', 'org_id', 'role_name']],
             [['org_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\Organization::className(), 'targetAttribute' => ['org_id' => 'org_id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\OrgUser::className(), 'targetAttribute' => ['user_id' => 'user_id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \backend\modules\org\models\UserOrg::className(), 'targetAttribute' => ['user_id' => 'user_id']],
             ['role_name', 'in', 'range' => [
                     self::ROLE_NAME_STUDENT,
                     self::ROLE_NAME_TEACHER,
@@ -143,7 +143,7 @@ abstract class UserToOrg extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(\backend\modules\org\models\OrgUser::className(), ['user_id' => 'user_id']);
+        return $this->hasOne(\backend\modules\org\models\UserOrg::className(), ['user_id' => 'user_id']);
     }
 
 

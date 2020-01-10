@@ -34,7 +34,6 @@ use yii\helpers\StringHelper;
         
 
 <!-- attribute org_user_flight_id -->
-			<?= $form->field($model, 'org_user_flight_id')->textInput() ?>
 
 <!-- attribute user_id -->
 			<?= $form->field($model, 'user_id')->textInput() ?>
@@ -86,7 +85,7 @@ use yii\helpers\StringHelper;
 
     <div class="card-footer">
         <?= Html::submitButton(
-        '<span class="glyphicon glyphicon-check"></span> ' .
+        '<i class="fa fa-check"></i> ' .
         ($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Save')),
         [
             'id' => 'save-' . $model->formName(),
