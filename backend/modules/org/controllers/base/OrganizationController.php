@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\Organization;
-    use backend\modules\org\models\search\Organization as OrganizationSearch;
+    use backend\modules\org\models\search\OrganizationSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;
