@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\Dormitory $searchModel
+    * @var backend\modules\org\models\search\DormitorySearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'Dormitories');

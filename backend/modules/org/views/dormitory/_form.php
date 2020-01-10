@@ -68,7 +68,7 @@ use yii\helpers\StringHelper;
 
     <div class="card-footer">
         <?= Html::submitButton(
-        '<span class="glyphicon glyphicon-check"></span> ' .
+        '<i class="fa fa-check"></i> ' .
         ($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Save')),
         [
             'id' => 'save-' . $model->formName(),

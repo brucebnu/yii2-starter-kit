@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\UserAddress $searchModel
+    * @var backend\modules\org\models\search\UserAddressSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'User Addresses');
@@ -38,7 +38,7 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                                                <?= 
+                                                                                            <?= 
             \yii\bootstrap4\ButtonDropdown::widget([
                 'id' => 'giiant-relations',
                 'encodeLabel' => false,
@@ -50,6 +50,10 @@ $actionColumnTemplateString = '
                 'encodeLabels' => false,
                 'items' => [
             [
+                'url' => ['user-org/index'],
+                'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'User Org'),
+            ],
+                                [
                 'url' => ['user-express/index'],
                 'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Express'),
             ],

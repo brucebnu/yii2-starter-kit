@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\PurchaseInfo;
-    use backend\modules\org\models\search\PurchaseInfo as PurchaseInfoSearch;
+    use backend\modules\org\models\search\PurchaseInfoSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\CnZipcode;
-    use backend\modules\org\models\search\CnZipcode as CnZipcodeSearch;
+    use backend\modules\org\models\search\CnZipcodeSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

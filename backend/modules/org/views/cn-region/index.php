@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\CnRegion $searchModel
+    * @var backend\modules\org\models\search\CnRegionSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'Cn Regions');

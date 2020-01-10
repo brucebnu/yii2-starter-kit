@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserEvent;
-    use backend\modules\org\models\search\UserEvent as UserEventSearch;
+    use backend\modules\org\models\search\UserEventSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

@@ -33,7 +33,8 @@ use yii\helpers\StringHelper;
         <?php $this->beginBlock('main'); ?>
         
 
-<!-- attribute org_user_flight_id -->
+<!-- attribute user_org_flight_id -->
+			<?= $form->field($model, 'user_org_flight_id')->textInput() ?>
 
 <!-- attribute user_id -->
 			<?= $form->field($model, 'user_id')->textInput() ?>

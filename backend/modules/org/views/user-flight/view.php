@@ -62,7 +62,8 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
-            'user_id',
+            'user_org_flight_id',
+        'user_id',
         'org_id',
         'arrival_datetime',
         'departure_datetime',
@@ -163,6 +164,81 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 <?php Pjax::end() ?>
 <?php $this->endBlock() ?>
 
+
+<?php $this->beginBlock('User'); ?>
+<div style='position: relative'>
+<div style='position:absolute; right: 0px; top: -25px;'>
+  <?= Html::a(
+            '<span class="fa fa-list-ul"></span> ' . Yii::t('backend', 'List All') . ' User',
+            ['user-org/index'],
+            ['class'=>'btn text-muted btn-xs']
+        ) ?>
+  <?= Html::a(
+            '<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New') . ' User',
+            ['user-org/create', 'UserOrg' => ['user_id' => $model->user_org_flight_id]],
+            ['class'=>'btn btn-success btn-xs']
+        ); ?>
+</div>
+</div>
+<?php Pjax::begin(['id'=>'pjax-User', 'enableReplaceState'=> false, 'linkSelector'=>'#pjax-User ul.pagination a, th a']) ?>
+<?=
+ '<div class="table-responsive">'
+ . \yii\grid\GridView::widget([
+    'layout' => '{summary}<div class="text-center">{pager}</div>{items}<div class="text-center">{pager}</div>',
+    'dataProvider' => new \yii\data\ActiveDataProvider([
+        'query' => $model->getUser(),
+        'pagination' => [
+            'pageSize' => 20,
+            'pageParam'=>'page-user',
+        ]
+    ]),
+    'pager'        => [
+        'class'          => yii\widgets\LinkPager::className(),
+        'firstPageLabel' => Yii::t('backend', 'First'),
+        'lastPageLabel'  => Yii::t('backend', 'Last')
+    ],
+    'columns' => [
+ [
+    'class'      => 'yii\grid\ActionColumn',
+    'template'   => '{view} {update}',
+    'contentOptions' => ['nowrap'=>'nowrap'],
+    'urlCreator' => function ($action, $model, $key, $index) {
+        // using the column name as key, not mapping to 'id' like the standard generator
+        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string) $key];
+        $params[0] = 'user-org' . '/' . $action;
+        $params['UserOrg'] = ['user_id' => $model->primaryKey()[0]];
+        return $params;
+    },
+    'buttons'    => [
+        
+    ],
+    'controller' => 'user-org'
+],
+        'passport_no',
+        'nationality',
+        'passport_full_Name',
+        'full_name',
+        'nick_name',
+        'gender',
+        'birthday',
+        'emergency_contact',
+        'phone_calling_code',
+        'phone',
+        'phone_native_calling_code',
+        'phone_native',
+        'linked_training',
+        'company_type',
+        'company_title',
+        'passport_info:ntext',
+        'created_at',
+        'updated_at',
+]
+])
+ . '</div>' 
+?>
+<?php Pjax::end() ?>
+<?php $this->endBlock() ?>
+
     <?= yii\bootstrap4\Tabs::widget(
          [
              'id' => 'relation-tabs',
@@ -176,6 +252,11 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
 [
     'content' => $this->blocks['Org'],
     'label'   => '<small>Org <span class="badge badge-default">'. $model->getOrg()->count() . '</span></small>',
+    'active'  => false,
+],
+[
+    'content' => $this->blocks['User'],
+    'label'   => '<small>User <span class="badge badge-default">'. $model->getUser()->count() . '</span></small>',
     'active'  => false,
 ],
  ]

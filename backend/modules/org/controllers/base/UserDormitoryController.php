@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserDormitory;
-    use backend\modules\org\models\search\UserDormitory as UserDormitorySearch;
+    use backend\modules\org\models\search\UserDormitorySearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

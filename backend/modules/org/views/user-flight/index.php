@@ -38,7 +38,7 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                                                <?= 
+                                                                                            <?= 
             \yii\bootstrap4\ButtonDropdown::widget([
                 'id' => 'giiant-relations',
                 'encodeLabel' => false,
@@ -52,6 +52,10 @@ $actionColumnTemplateString = '
             [
                 'url' => ['organization/index'],
                 'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'Organization'),
+            ],
+                                [
+                'url' => ['user-org/index'],
+                'label' => '<i class="fa fa-arrow-left"></i> ' . Yii::t('backend', 'User Org'),
             ],
                     
 ]
@@ -117,6 +121,7 @@ $actionColumnTemplateString = '
             },
             'contentOptions' => ['nowrap'=>'nowrap']
         ],
+			'user_org_flight_id',
 			'user_id',
 			'org_id',
 			'arrival_datetime',

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /**
 * @var yii\web\View $this
 * @var yii\data\ActiveDataProvider $dataProvider
-    * @var backend\modules\org\models\search\UserEvent $searchModel
+    * @var backend\modules\org\models\search\UserEventSearch $searchModel
 */
 
 $this->title = Yii::t('backend', 'User Events');

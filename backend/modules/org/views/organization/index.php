@@ -38,7 +38,7 @@ $actionColumnTemplateString = '
                 <?= Html::a('<span class="fa fa-plus"></span> ' . Yii::t('backend', 'New'), ['create'], ['class' => 'btn btn-success']) ?>
             </div>
                     <div class="float-right">
-                                    <?= 
+                                                                                                                                                                                                                                                                    <?= 
             \yii\bootstrap4\ButtonDropdown::widget([
                 'id' => 'giiant-relations',
                 'encodeLabel' => false,
@@ -49,7 +49,39 @@ $actionColumnTemplateString = '
                 ],
                 'encodeLabels' => false,
                 'items' => [
-
+            [
+                'url' => ['course/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'Course'),
+            ],
+                                [
+                'url' => ['dormitory/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'Dormitory'),
+            ],
+                                [
+                'url' => ['order/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'Order'),
+            ],
+                                [
+                'url' => ['purchase-info/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'Purchase Info'),
+            ],
+                                [
+                'url' => ['user-course/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Course'),
+            ],
+                                [
+                'url' => ['user-dormitory/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Dormitory'),
+            ],
+                                [
+                'url' => ['user-flight/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User Flight'),
+            ],
+                                [
+                'url' => ['user-to-org/index'],
+                'label' => '<i class="fa fa-arrow-right"></i> ' . Yii::t('backend', 'User To Org'),
+            ],
+                    
 ]
                 ],
                 'options' => [

@@ -233,7 +233,7 @@ $this->params['breadcrumbs'][] = Yii::t('backend', 'View');
     ],
     'controller' => 'user-course'
 ],
-        'org_user_course_id',
+        'user_org_course_id',
         'org_id',
         'course_id',
         'period_week',

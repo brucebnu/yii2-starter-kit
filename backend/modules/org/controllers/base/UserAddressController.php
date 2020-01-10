@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserAddress;
-    use backend\modules\org\models\search\UserAddress as UserAddressSearch;
+    use backend\modules\org\models\search\UserAddressSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;

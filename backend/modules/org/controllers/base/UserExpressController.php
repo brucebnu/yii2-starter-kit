@@ -5,7 +5,7 @@
 namespace backend\modules\org\controllers\base;
 
 use backend\modules\org\models\UserExpress;
-    use backend\modules\org\models\search\UserExpress as UserExpressSearch;
+    use backend\modules\org\models\search\UserExpressSearch;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\helpers\Url;
