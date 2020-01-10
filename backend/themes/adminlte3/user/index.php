@@ -31,12 +31,39 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'grid-view table-responsive table table-striped table-bordered table-hover'
             ],
             'columns' => [
-                'id',
-                'username',
+                [
+                    'attribute' => 'id',
+                    'options' => ['width' => '5%'],
+                    'value' => function($model){
+                        return $model->id;
+                    }
+                ],
+                [
+                    'attribute' => 'username',
+                    'options' => ['width' => '5%'],
+                    'value' => function($model){
+                        return $model->username;
+                    }
+                ],
                 'email:email',
+                [
+                    'attribute' => 'phone_calling_code',
+                    'options' => ['width' => '5%'],
+                    'value' => function($model){
+                        return $model->phone_calling_code;
+                    }
+                ],
+                [
+                    'attribute' => 'phone_number',
+                    'options' => ['width' => '8%'],
+                    'value' => function($model){
+                        return $model->phone_number;
+                    }
+                ],
                 [
                     'class' => EnumColumn::class,
                     'attribute' => 'status',
+                    'options' => ['width' => '5%'],
                     'enum' => User::statuses(),
                     'filter' => User::statuses()
                 ],
@@ -72,8 +99,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'created_at:datetime',
                 'updated_at:datetime',
                 [
-                    'class' => 'yii\grid\ActionColumn',
+                    'class' => yii\grid\ActionColumn::class,
                     'template' => '{login} {view} {update} {delete}',
+                    'options' => ['width' => '15%'],
                     'buttons' => [
                         'login' => function ($url, $model, $key) {
                             $options = [
