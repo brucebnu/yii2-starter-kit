@@ -69,18 +69,25 @@
     "miloschuman/yii2-highcharts-widget": "7.0",
     "borales/yii2-phone-input": "~0.1.2",
 
+    "phpoffice/phpexcel": "~1.8.2",
     "phpoffice/phpspreadsheet": "^1.5.2",
     "moxuandi/yii2-phpspreadsheet": "~2.0",
 
     "brucebnu/yii3-widget-affix": "dev-master",
     "light/yii2-swagger": "~2.0.0-alpha",
     "yii2mod/yii2-swagger": "^1.1",
+    "qiniu/php-sdk": "^7.2",
+    "kartik-v/yii2-mpdf": "dev-master",
+    "jianyan74/yii2-easy-wechat": "^1.1",
+    "hedeqiang/umeng": "^1.0",
+
     "2amigos/yii2-translateable-behavior": "~1.1",
 
     "dmstr/yii2-web": "~0.4.2",
     "dmstr/yii2-helpers": "~0.4.17",
     "dmstr/yii2-bootstrap": "~0.2.2",
     "rmrevin/yii2-fontawesome": "dev-master"
+
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",
@@ -93,8 +100,9 @@
   "autoload-dev": {
     "psr-4": {
       "tests\\": "tests/",
-      "bnu\\widgets\\": "brucebnu/yii2-widget-pack/src",
-      "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src"
+      "schmunk42\\giiant\\": "brucebnu/yii2-giiant/src",
+      "brucebnu\\widgets\\": "brucebnu/yii2-widget-pack/src",
+      "brucebnu\\swagger\\": "brucebnu/yii3-api-swagger/src"
     }
   },
 

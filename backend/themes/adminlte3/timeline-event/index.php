@@ -6,6 +6,7 @@
  * @var $dataProvider \yii\data\ActiveDataProvider
  */
 $this->title = Yii::t('backend', 'Application timeline');
+$this->params['subtitle'] = '这是一个时间线的副标题';
 $icons = [
     'user' => '<i class="fa fa-user bg-blue"></i>'
 ];

@@ -1,7 +1,7 @@
 <?php
 
 use backend\modules\system\models\SystemLog;
-use bnu\widgets\adminlte3\Menu;
+use common\widgets\adminlte3\Menu;
 use common\models\TimelineEvent;
 use yii\helpers\Url;
 
@@ -45,12 +45,12 @@ if(!Yii::$app->user->isGuest){
                 'encodeLabels' => true,
                 'items' => [
                     # Main
-//                    [
-//                        'label'  => Yii::t('backend', 'Main'),
-//                        //'icon' => 'nav-icon fa fa-address-book-o',
-//                        'options' => ['class' => 'nav-header'],
-//                        'url'    => '#Main'
-//                    ],
+                    [
+                        'label'  => Yii::t('backend', 'Main'),
+                        'icon' => 'nav-icon fa fa-address-book-o',
+                        'options' => ['class' => 'nav-header'],
+                        'url'    => '#Main'
+                    ],
                     [
                         'label' => Yii::t('backend', 'Timeline'),
                         'url' => ['/timeline-event/index'],
@@ -210,7 +210,7 @@ if(!Yii::$app->user->isGuest){
 
                     [
                         'label' => Yii::t('backend', 'Translation'),
-                        'options' => ['class' => 'header'],
+                        'options' => ['class' => 'nav-header'],
                         'visible' => Yii::$app->components["i18n"]["translations"]['*']['class'] === \yii\i18n\DbMessageSource::class,
                     ],
                     [

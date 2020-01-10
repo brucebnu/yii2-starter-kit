@@ -106,7 +106,7 @@ EOS;
 
     <div class="card-footer">
         <?= '<?= ' ?>Html::submitButton(
-        '<span class="glyphicon glyphicon-check"></span> ' .
+        '<i class="fa fa-check"></i> ' .
         ($model->isNewRecord ? <?= $generator->generateString('Create') ?> : <?= $generator->generateString('Save') ?>),
         [
             'id' => 'save-' . $model->formName(),
