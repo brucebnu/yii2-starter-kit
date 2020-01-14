@@ -20,7 +20,7 @@ class UserSearch extends User
             [['id', 'status'], 'integer'],
             [['created_at', 'updated_at', 'logged_at'], 'filter', 'filter' => 'strtotime', 'skipOnEmpty' => true],
             [['created_at', 'updated_at', 'logged_at'], 'default', 'value' => null],
-            [['username', 'auth_key', 'password_hash', 'email','phone_calling_code','phone_number'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'email','calling_code','phone_number'], 'safe'],
         ];
     }
 

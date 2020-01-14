@@ -46,3 +46,16 @@ body .error-summary {
 body .table .bootstrap-datetimepicker-widget {
   z-index: 9999;
 }
+
+.help-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: #737373;
+}
+.help-block-error{
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: red;
+}

@@ -28,6 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'username',
+            'calling_code',
+            'phone_number',
+            'country_code',
             'auth_key',
             'email:email',
             'status',

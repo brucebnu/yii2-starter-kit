@@ -6,6 +6,7 @@ use trntv\yii\datetime\DateTimeWidget;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\web\JsExpression;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\UserSearch */
@@ -47,10 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'email:email',
                 [
-                    'attribute' => 'phone_calling_code',
+                    'attribute' => 'calling_code',
                     'options' => ['width' => '5%'],
                     'value' => function($model){
-                        return $model->phone_calling_code;
+                        return $model->calling_code;
                     }
                 ],
                 [
@@ -99,17 +100,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'created_at:datetime',
                 'updated_at:datetime',
                 [
-                    'class' => yii\grid\ActionColumn::class,
-                    'template' => '{login} {view} {update} {delete}',
-                    'options' => ['width' => '15%'],
-                    'buttons' => [
-                        'login' => function ($url, $model, $key) {
+                    'class'     => yii\grid\ActionColumn::class,
+                    'template'  => '{register} {view} {update}',
+                    'options'   => ['width' => '15%'],
+                    'buttons'   => [
+                        'register' => function ($url, $model, $key) {
+                            // dd($url, $model, $key);
                             $options = [
-                                'title' => Yii::t('backend', 'Login'),
-                                'aria-label' => Yii::t('backend', 'Login'),
+                                'title' => Yii::t('backend', 'Register'),
+                                'aria-label' => Yii::t('backend', 'Register'),
                                 'data-pjax' => '0',
                             ];
-                            return Html::a( '<i class="fa fa-sign-in" aria-hidden="true"></i>Login', $url, $options);
+                            return Html::a( '<i class="fa fa-sign-in" aria-hidden="true"></i> Register', $url, $options);
                         },
                         'view' => function ($url, $model, $key) {
                             $options = [
@@ -136,7 +138,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a('<i class="fa fa-trash"></i>', $url, $options);
                         }
                     ],
+                    'urlCreator' => function ($action, $model, $key, $index) {
+                        // using the column name as key, not mapping to 'id' like the standard generator
+                        $params = is_array($key) ? $key : [$model->primaryKey()[0] => (string)$key];
+                        $params['user_id'] = $model->id;
+                        $params['org_id'] = '1';
 
+                        if ($action === 'register') {
+                            $params[0] = 'org/user-org' . '/' . $action;
+                            //dd($params);
+                            return Url::toRoute($params);
+                        }else{
+                            $params[0] = 'user' . '/' . $action;
+                            return Url::toRoute($params);
+                        }
+
+                    },
+                    'contentOptions' => ['nowrap' => 'nowrap'],
                     'visibleButtons' => [
                         'login' => Yii::$app->user->can('administrator')
                     ]
